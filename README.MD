@@ -58,20 +58,20 @@ In addition, it is possible to create 100% custom cells by deriving from `FormBa
 
 Here are the methods that help you to define custom cell behavior.
 ```swift
-    func configure() {
-        /// override
-    }
+func configure() {
+    /// override
+}
     
-    func update() {
-        /// override
-    }
+func update() {
+    /// override
+}
     
-    class func formRowCellHeight() -> CGFloat {
-        return 44.0
-    }
+class func formRowCellHeight() -> CGFloat {
+    return 44.0
+}
     
-    class func formViewController(formViewController: FormViewController, didSelectRow: FormBaseCell) {
-    }
+class func formViewController(formViewController: FormViewController, didSelectRow: FormBaseCell) {
+}
 ```
 Once you have defined your custom cell, and in order to use it for a concrete row, you'll have to set `FormRowDescriptor` cellClass property.
 
