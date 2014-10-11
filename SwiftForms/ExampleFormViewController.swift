@@ -78,7 +78,7 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         row = FormRowDescriptor(tag: Static.URLTag, rowType: .URL, title: "URL")
         section3.addRow(row)
         
-        row = FormRowDescriptor(tag: Static.phoneTag, rowType: .URL, title: "Phone")
+        row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
         section3.addRow(row)
         
         let section4 = FormSectionDescriptor()

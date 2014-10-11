@@ -10,14 +10,14 @@
 	<string>SwiftForms</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>067CBCB9E5816DE6B5E28DDC3A7489CD776C04CF</key>
+		<key>9357D744973586C05D84AB3EC15F8B7328063773</key>
 		<string>bitbucket.org:ortuman/swiftforms.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SwiftForms.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>067CBCB9E5816DE6B5E28DDC3A7489CD776C04CF</key>
+		<key>9357D744973586C05D84AB3EC15F8B7328063773</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>067CBCB9E5816DE6B5E28DDC3A7489CD776C04CF</string>
+	<string>9357D744973586C05D84AB3EC15F8B7328063773</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>067CBCB9E5816DE6B5E28DDC3A7489CD776C04CF</string>
+			<string>9357D744973586C05D84AB3EC15F8B7328063773</string>
 			<key>IDESourceControlWCCName</key>
 			<string>swiftforms</string>
 		</dict>
