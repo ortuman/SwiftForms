@@ -87,6 +87,13 @@ Requirements
 
 * iOS 7.0 and above
 
+Copyright
+---------
+
+SwiftForms is originally based on XLForm github project. (https://github.com/xmartlabs/XLForm)
+
+Check LICENSE file for more details.
+
 Contact
 -------
 
