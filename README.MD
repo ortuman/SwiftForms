@@ -87,6 +87,10 @@ Requirements
 
 * iOS 7.0 and above
 
+Installation
+---------------------
+Swift projects is currently not supported by Cocoapods. Until support is available you should just clone the repository and drag the source folder into your project to use SwiftForms. 
+
 Copyright
 ---------
 
