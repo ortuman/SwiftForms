@@ -29,7 +29,7 @@ class FormDateCell: FormBaseCell {
     
     override func update() {
         super.update()
-        textLabel?.text = rowDescriptor.title
+        textLabel.text = rowDescriptor.title
         
         switch( rowDescriptor.rowType! ) {
         case .Date:

@@ -20,7 +20,7 @@ class FormCheckCell: FormBaseCell {
     
     override func update() {
         super.update()
-        textLabel?.text = rowDescriptor.title
+        textLabel.text = rowDescriptor.title
         
         if rowDescriptor.value == nil {
             rowDescriptor.value = false

@@ -96,7 +96,7 @@ class FormTextFieldCell: FormBaseCell {
         
         var views = ["titleLabel" : titleLabel, "textField" : textField]
         
-        if self.imageView?.image != nil {
+        if self.imageView.image != nil {
             
             views["imageView"] = imageView
             
