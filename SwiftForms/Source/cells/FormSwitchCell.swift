@@ -25,7 +25,7 @@ class FormSwitchCell: FormBaseCell {
     
     override func update() {
         super.update()
-        textLabel?.text = rowDescriptor.title
+        textLabel.text = rowDescriptor.title
         
         if rowDescriptor.value != nil {
             switchView.on = rowDescriptor.value as Bool

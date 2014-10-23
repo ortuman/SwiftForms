@@ -27,7 +27,7 @@ class FormPickerCell: FormBaseCell, UIPickerViewDelegate, UIPickerViewDataSource
     
     override func update() {
         super.update()
-        textLabel?.text = rowDescriptor.title
+        textLabel.text = rowDescriptor.title
         
         if rowDescriptor.value != nil {
             detailTextLabel?.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)

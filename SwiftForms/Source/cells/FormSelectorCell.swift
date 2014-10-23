@@ -17,7 +17,7 @@ class FormSelectorCell: FormBaseCell {
     
     override func update() {
         super.update()
-        textLabel?.text = rowDescriptor.title
+        textLabel.text = rowDescriptor.title
 
         if let selectedValues = rowDescriptor.value as? [NSObject] {
             
