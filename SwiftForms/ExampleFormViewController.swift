@@ -14,6 +14,7 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         static let nameTag = "name"
         static let passwordTag = "password"
         static let lastNameTag = "lastName"
+        static let jobTag = "job"
         static let emailTag = "email"
         static let URLTag = "url"
         static let phoneTag = "phone"
@@ -23,7 +24,6 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         static let picker = "picker"
         static let birthday = "birthday"
         static let categories = "categories"
-        
         static let button = "button"
     }
     
@@ -55,11 +55,11 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         
         let form = FormDescriptor()
         
-        form.title = "Example form"
+        form.title = "Example Form"
         
         let section1 = FormSectionDescriptor()
         
-        var row: FormRowDescriptor! = FormRowDescriptor(tag: Static.nameTag, rowType: .Email, title: "Email")
+        var row: FormRowDescriptor! = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
         section1.addRow(row)
 
         row = FormRowDescriptor(tag: Static.passwordTag, rowType: .Password, title: "Password")
@@ -67,10 +67,13 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         
         let section2 = FormSectionDescriptor()
         
-        row = FormRowDescriptor(tag: Static.nameTag, rowType: .Text, title: "Name")
+        row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "First Name")
         section2.addRow(row)
         
-        row = FormRowDescriptor(tag: Static.lastNameTag, rowType: .Text, title: "Last name")
+        row = FormRowDescriptor(tag: Static.lastNameTag, rowType: .Name, title: "Last Name")
+        section2.addRow(row)
+        
+        row = FormRowDescriptor(tag: Static.jobTag, rowType: .Text, title: "Job")
         section2.addRow(row)
         
         let section3 = FormSectionDescriptor()
