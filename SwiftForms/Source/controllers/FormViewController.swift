@@ -146,6 +146,7 @@ class FormViewController : UITableViewController {
     private class func defaultCellClassForRowType(rowType: FormRowType) -> FormBaseCell.Type {
         dispatch_once(&Static.onceDefaultCellClass) {
             Static.defaultCellClasses[FormRowType.Text] = FormTextFieldCell.self
+            Static.defaultCellClasses[FormRowType.Name] = FormTextFieldCell.self
             Static.defaultCellClasses[FormRowType.Phone] = FormTextFieldCell.self
             Static.defaultCellClasses[FormRowType.URL] = FormTextFieldCell.self
             Static.defaultCellClasses[FormRowType.Email] = FormTextFieldCell.self
