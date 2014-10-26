@@ -43,7 +43,13 @@ class FormPickerCell: FormBaseCell, UIPickerViewDelegate, UIPickerViewDataSource
                 selectedRow.detailTextLabel?.text = selectedRow.rowDescriptor.titleForOptionValue(optionValue)
                 row.hiddenTextField.becomeFirstResponder()
             }
-        }
+        } else {
+			if let row = selectedRow as? FormPickerCell {
+                let optionValue = selectedRow.rowDescriptor.value
+                selectedRow.detailTextLabel?.text = selectedRow.rowDescriptor.titleForOptionValue(optionValue)
+                row.hiddenTextField.becomeFirstResponder()
+            }
+		}
     }
     
     /// MARK: UIPickerViewDelegate
