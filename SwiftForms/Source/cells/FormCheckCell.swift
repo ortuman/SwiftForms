@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FormCheckCell: FormBaseCell {
+class FormCheckCell: FormTitleCell {
 
     /// MARK: FormBaseCell
     
@@ -19,8 +19,8 @@ class FormCheckCell: FormBaseCell {
     }
     
     override func update() {
-        super.update()
-        textLabel.text = rowDescriptor.title
+
+        titleLabel.text = rowDescriptor.title
         
         if rowDescriptor.value == nil {
             rowDescriptor.value = false

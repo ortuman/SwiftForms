@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FormSwitchCell: FormBaseCell {
+class FormSwitchCell: FormTitleCell {
 
-    /// MARK: Properties
+    /// MARK: Cell views
     
     let switchView = UISwitch()
     
@@ -18,14 +18,16 @@ class FormSwitchCell: FormBaseCell {
     
     override func configure() {
         super.configure()
+        
         selectionStyle = .None
-        accessoryView = switchView
+        
         switchView.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
+        accessoryView = switchView
     }
     
     override func update() {
-        super.update()
-        textLabel.text = rowDescriptor.title
+
+        titleLabel.text =  rowDescriptor.title
         
         if rowDescriptor.value != nil {
             switchView.on = rowDescriptor.value as Bool

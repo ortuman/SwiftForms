@@ -8,13 +8,12 @@
 
 import UIKit
 
-class FormDateCell: FormBaseCell {
+class FormDateCell: FormValueCell {
 
     /// MARK: Properties
     
-    private let hiddenTextField = UITextField(frame: CGRectZero)
     private let datePicker = UIDatePicker()
-    
+    private let hiddenTextField = UITextField(frame: CGRectZero)
     private let defaultDateFormatter = NSDateFormatter()
     
     /// MARK: FormBaseCell
@@ -29,9 +28,10 @@ class FormDateCell: FormBaseCell {
     
     override func update() {
         super.update()
-        textLabel.text = rowDescriptor.title
+
+        titleLabel.text = rowDescriptor.title
         
-        switch( rowDescriptor.rowType! ) {
+        switch( rowDescriptor.rowType ) {
         case .Date:
             datePicker.datePickerMode = .Date
             defaultDateFormatter.dateStyle = .LongStyle
@@ -49,7 +49,7 @@ class FormDateCell: FormBaseCell {
         if rowDescriptor.value != nil {
             let date = rowDescriptor.value as? NSDate
             datePicker.date = date!
-            detailTextLabel?.text = self.getDateFormatter().stringFromDate(date!)
+            valueLabel.text = self.getDateFormatter().stringFromDate(date!)
         }
     }
     
@@ -60,7 +60,7 @@ class FormDateCell: FormBaseCell {
         if row.rowDescriptor.value == nil {
             let date = NSDate()
             row.rowDescriptor.value = date
-            row.detailTextLabel?.text = row.getDateFormatter().stringFromDate(date)
+            row.valueLabel.text = row.getDateFormatter().stringFromDate(date)
         }
         
         row.hiddenTextField.becomeFirstResponder()

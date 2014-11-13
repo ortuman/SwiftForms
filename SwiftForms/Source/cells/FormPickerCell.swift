@@ -8,29 +8,34 @@
 
 import UIKit
 
-class FormPickerCell: FormBaseCell, UIPickerViewDelegate, UIPickerViewDataSource {
+class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDataSource {
     
     /// MARK: Properties
     
-    private let hiddenTextField = UITextField(frame: CGRectZero)
     private let picker = UIPickerView()
+    private let hiddenTextField = UITextField(frame: CGRectZero)
     
     /// MARK: FormBaseCell
     
     override func configure() {
         super.configure()
-        contentView.addSubview(hiddenTextField)
+        
+        accessoryType = .None
+        
         picker.delegate = self
         picker.dataSource = self
         hiddenTextField.inputView = picker
+        
+        contentView.addSubview(hiddenTextField)
     }
     
     override func update() {
         super.update()
-        textLabel.text = rowDescriptor.title
+        
+        titleLabel.text = rowDescriptor.title
         
         if rowDescriptor.value != nil {
-            detailTextLabel?.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)
+            valueLabel.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)
         }
     }
     
@@ -40,13 +45,13 @@ class FormPickerCell: FormBaseCell, UIPickerViewDelegate, UIPickerViewDataSource
             if let row = selectedRow as? FormPickerCell {
                 let optionValue = selectedRow.rowDescriptor.options[0]
                 selectedRow.rowDescriptor.value = optionValue
-                selectedRow.detailTextLabel?.text = selectedRow.rowDescriptor.titleForOptionValue(optionValue)
+                row.valueLabel.text = selectedRow.rowDescriptor.titleForOptionValue(optionValue)
                 row.hiddenTextField.becomeFirstResponder()
             }
         } else {
 			if let row = selectedRow as? FormPickerCell {
                 let optionValue = selectedRow.rowDescriptor.value
-                selectedRow.detailTextLabel?.text = selectedRow.rowDescriptor.titleForOptionValue(optionValue)
+                row.valueLabel.text = selectedRow.rowDescriptor.titleForOptionValue(optionValue)
                 row.hiddenTextField.becomeFirstResponder()
             }
 		}
@@ -61,7 +66,7 @@ class FormPickerCell: FormBaseCell, UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let optionValue = rowDescriptor.options[row]
         rowDescriptor.value = optionValue
-        detailTextLabel?.text = rowDescriptor.titleForOptionValue(optionValue)
+        valueLabel.text = rowDescriptor.titleForOptionValue(optionValue)
     }
     
     /// MARK: UIPickerViewDataSource

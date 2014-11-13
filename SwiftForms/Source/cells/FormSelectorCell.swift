@@ -8,16 +8,13 @@
 
 import UIKit
 
-class FormSelectorCell: FormBaseCell {
-
-    override func configure() {
-        super.configure()
-        accessoryType = .DisclosureIndicator
-    }
+class FormSelectorCell: FormValueCell {
+    
+    /// MARK: FormBaseCell
     
     override func update() {
-        super.update()
-        textLabel.text = rowDescriptor.title
+ 
+        titleLabel.text = rowDescriptor.title
 
         if let selectedValues = rowDescriptor.value as? [NSObject] {
             
@@ -34,7 +31,7 @@ class FormSelectorCell: FormBaseCell {
                 }
             }
             
-            detailTextLabel?.text = title
+            valueLabel.text = title
         }
     }
     

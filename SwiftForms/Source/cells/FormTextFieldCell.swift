@@ -10,10 +10,12 @@ import UIKit
 
 class FormTextFieldCell: FormBaseCell {
 
-    /// MARK: Properties
+    /// MARK: Cell views
     
     let titleLabel = UILabel()
     let textField = UITextField()
+    
+    /// MARK: Properties
     
     private var customConstraints: [AnyObject]!
     
@@ -33,13 +35,16 @@ class FormTextFieldCell: FormBaseCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(textField)
         
-        contentView.addConstraints(layoutConstraints())
+        titleLabel.setContentHuggingPriority(500, forAxis: .Horizontal)
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
         
         textField.addTarget(self, action: "editingChanged:", forControlEvents: .EditingChanged)
     }
     
     override func update() {
-        super.update()
         
         titleLabel.text = rowDescriptor.title
         textField.text = rowDescriptor.value as? String
@@ -47,7 +52,7 @@ class FormTextFieldCell: FormBaseCell {
         textField.secureTextEntry = false
         textField.clearButtonMode = .WhileEditing
         
-        switch( rowDescriptor.rowType! ) {
+        switch( rowDescriptor.rowType ) {
         case .Text:
             textField.autocorrectionType = .Default
             textField.autocapitalizationType = .Sentences
@@ -76,48 +81,33 @@ class FormTextFieldCell: FormBaseCell {
         }
     }
     
-    /// MARK: Constraints
-    
-    private func layoutConstraints() -> [AnyObject] {
-        var result: [AnyObject] = []
-        titleLabel.setContentHuggingPriority(500, forAxis: .Horizontal)
-        result.append(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
-        result.append(NSLayoutConstraint(item: textField, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
-        result.append(NSLayoutConstraint(item: titleLabel, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
-        result.append(NSLayoutConstraint(item: textField, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
-        return result
+    override func constraintsViews() -> [String : UIView] {
+        var views = ["titleLabel" : titleLabel, "textField" : textField]
+        if self.imageView.image != nil {
+            views["imageView"] = imageView
+        }
+        return views
     }
     
-    override func updateConstraints() {
-        
-        if customConstraints != nil {
-            contentView.removeConstraints(customConstraints)
-        }
-        
-        var views = ["titleLabel" : titleLabel, "textField" : textField]
+    override func defaultVisualConstraints() -> [String] {
         
         if self.imageView.image != nil {
             
-            views["imageView"] = imageView
-            
             if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
-                customConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[imageView]-[titleLabel]-[textField]-4-|", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+                return ["H:[imageView]-[titleLabel]-[textField]-4-|"]
             }
             else {
-                customConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[imageView]-[textField]-4-|", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+                return ["H:[imageView]-[textField]-4-|"]
             }
         }
         else {
             if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
-                customConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[titleLabel]-[textField]-4-|", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+                return ["H:|-16-[titleLabel]-[textField]-4-|"]
             }
             else {
-                customConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[textField]-4-|", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+                return ["H:|-16-[textField]-4-|"]
             }
         }
-        
-        contentView.addConstraints(customConstraints)
-        super.updateConstraints()
     }
     
     /// MARK: Actions

@@ -88,8 +88,10 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         
         row = FormRowDescriptor(tag: Static.enabled, rowType: .BooleanSwitch, title: "Enable")
         section4.addRow(row)
+        
         row = FormRowDescriptor(tag: Static.check, rowType: .BooleanCheck, title: "Doable")
         section4.addRow(row)
+        
         row = FormRowDescriptor(tag: Static.segmented, rowType: .SegmentedControl, title: "Priority")
         row.options = [0, 1, 2, 3]
         row.titleFormatter = { value in

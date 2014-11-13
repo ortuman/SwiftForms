@@ -9,6 +9,7 @@
 import UIKit
 
 enum FormRowType {
+    case Unknown
     case Text
     case Name
     case Phone
@@ -33,7 +34,7 @@ class FormRowDescriptor: NSObject {
     /// MARK: Properties
     
     var title: String!
-    var rowType: FormRowType!
+    var rowType: FormRowType = .Unknown
     var tag: String!
     
     var value: NSObject!
@@ -43,8 +44,10 @@ class FormRowDescriptor: NSObject {
     
     var cellStyle: UITableViewCellStyle = .Value1
     var cellClass: AnyClass!
-    var cellConfiguration: Dictionary<String, NSObject> = [:]
+    var cellConfiguration: [String : AnyObject] = [:]
     var cellAccessoryView: UIView!
+    
+    var updateConstraintsBlock: ((FormBaseCell) -> [String])!
     
     var dateFormatter: NSDateFormatter!
     
