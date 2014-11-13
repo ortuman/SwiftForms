@@ -94,18 +94,18 @@ class FormTextFieldCell: FormBaseCell {
         if self.imageView.image != nil {
             
             if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
-                return ["H:[imageView]-[titleLabel]-[textField]-4-|"]
+                return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
             }
             else {
-                return ["H:[imageView]-[textField]-4-|"]
+                return ["H:[imageView]-[textField]-16-|"]
             }
         }
         else {
             if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
-                return ["H:|-16-[titleLabel]-[textField]-4-|"]
+                return ["H:|-16-[titleLabel]-[textField]-16-|"]
             }
             else {
-                return ["H:|-16-[textField]-4-|"]
+                return ["H:|-16-[textField]-16-|"]
             }
         }
     }
