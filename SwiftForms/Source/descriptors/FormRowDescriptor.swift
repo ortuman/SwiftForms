@@ -39,6 +39,7 @@ class FormRowDescriptor: NSObject {
     
     var value: NSObject!
     var options: [NSObject]!
+    var allowsMultipleSelection = false
     
     var titleFormatter: TitleFormatter!
     
