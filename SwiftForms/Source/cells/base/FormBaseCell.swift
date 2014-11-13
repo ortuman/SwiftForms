@@ -71,8 +71,8 @@ class FormBaseCell: UITableViewCell {
         
         var visualConstraints: [String]!
         
-        if rowDescriptor.updateConstraintsBlock != nil {
-            visualConstraints = rowDescriptor.updateConstraintsBlock(self)
+        if rowDescriptor.visualConstraintsBlock != nil {
+            visualConstraints = rowDescriptor.visualConstraintsBlock(self)
         }
         else {
             visualConstraints = self.defaultVisualConstraints()

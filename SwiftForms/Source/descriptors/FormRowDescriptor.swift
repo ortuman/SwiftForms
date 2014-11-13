@@ -47,7 +47,7 @@ class FormRowDescriptor: NSObject {
     var cellConfiguration: [String : AnyObject] = [:]
     var cellAccessoryView: UIView!
     
-    var updateConstraintsBlock: ((FormBaseCell) -> [String])!
+    var visualConstraintsBlock: ((FormBaseCell) -> [String])!
     
     var dateFormatter: NSDateFormatter!
     
