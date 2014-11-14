@@ -37,6 +37,9 @@ class FormValueCell: FormBaseCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(valueLabel)
         
+        titleLabel.setContentHuggingPriority(500, forAxis: .Horizontal)
+        titleLabel.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
+        
         // apply constant constraints
         contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
         contentView.addConstraint(NSLayoutConstraint(item: valueLabel, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
