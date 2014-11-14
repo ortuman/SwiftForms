@@ -36,23 +36,23 @@ class FormRowDescriptor: NSObject {
     var title: String!
     var rowType: FormRowType = .Unknown
     var tag: String!
-    
     var value: NSObject!
-    var options: [NSObject]!
-    var allowsMultipleSelection = false
-    
-    var titleFormatter: TitleFormatter!
     
     var cellStyle: UITableViewCellStyle = .Value1
     var cellClass: AnyClass!
-    var cellConfiguration: [String : AnyObject] = [:]
     var cellAccessoryView: UIView!
     
+    var cellConfiguration: [String : AnyObject] = [:]
     var visualConstraintsBlock: ((FormBaseCell) -> [String])!
+    
+    var options: [NSObject]!
+    var titleFormatter: TitleFormatter!
+    var allowsMultipleSelection = false
+    var selectorControllerClass: AnyClass!
     
     var dateFormatter: NSDateFormatter!
     
-    var selectorControllerClass: AnyClass!
+    var userInfo: [NSObject : AnyObject] = [:]
     
     /// MARK: Init
     
