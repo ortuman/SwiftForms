@@ -56,10 +56,11 @@ class FormRowDescriptor: NSObject {
     
     /// MARK: Init
     
-    init(tag: String, rowType: FormRowType, title: String) {
+    init(tag: String, rowType: FormRowType, title: String, placeholder: String! = nil) {
         self.tag = tag
         self.rowType = rowType
         self.title = title
+        self.placeholder = placeholder
     }
     
     /// MARK: Public interface
