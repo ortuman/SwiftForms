@@ -43,6 +43,10 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         return formCell.rowDescriptor.options.count
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let reuseIdentifier = NSStringFromClass(self.dynamicType)
@@ -102,7 +106,12 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
                     }
                 }
                 
-                formCell.rowDescriptor.value = selectedOptions
+                if selectedOptions.count > 0 {
+                    formCell.rowDescriptor.value = selectedOptions
+                }
+                else {
+                    formCell.rowDescriptor.value = nil
+                }
             }
         }
         else {

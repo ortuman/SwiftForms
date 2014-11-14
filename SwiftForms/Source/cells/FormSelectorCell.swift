@@ -16,9 +16,10 @@ class FormSelectorCell: FormValueCell {
  
         titleLabel.text = rowDescriptor.title
 
+        var title: String!
+        
         if let selectedValues = rowDescriptor.value as? [NSObject] { // multiple values
             
-            var title: String! = nil
             for optionValue in rowDescriptor.options {
                 if find(selectedValues, optionValue) != nil {
                     let optionTitle = rowDescriptor.titleForOptionValue(optionValue)
@@ -30,11 +31,18 @@ class FormSelectorCell: FormValueCell {
                     }
                 }
             }
-            
-            valueLabel.text = title
         }
         else if let selectedValue = rowDescriptor.value { // single value
-            valueLabel.text = rowDescriptor.titleForOptionValue(selectedValue)
+            title = rowDescriptor.titleForOptionValue(selectedValue)
+        }
+        
+        if title != nil && countElements(title) > 0 {
+            valueLabel.text = title
+            valueLabel.textColor = UIColor.blackColor()
+        }
+        else {
+            valueLabel.text = rowDescriptor.placeholder
+            valueLabel.textColor = UIColor.lightGrayColor()
         }
     }
     

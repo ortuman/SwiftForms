@@ -83,7 +83,7 @@ class FormViewController : UITableViewController {
         var cell: FormBaseCell? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? FormBaseCell
         if cell == nil {
             
-            cell = formBaseCellClass(style: rowDescriptor.cellStyle, reuseIdentifier: reuseIdentifier)
+            cell = formBaseCellClass(style: .Default, reuseIdentifier: reuseIdentifier)
             cell?.configure()
         }
         

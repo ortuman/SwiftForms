@@ -38,9 +38,9 @@ class FormRowDescriptor: NSObject {
     var tag: String!
     var value: NSObject!
     
-    var cellStyle: UITableViewCellStyle = .Value1
     var cellClass: AnyClass!
     var cellAccessoryView: UIView!
+    var placeholder: String!
     
     var cellConfiguration: [String : AnyObject] = [:]
     var visualConstraintsBlock: ((FormBaseCell) -> [String])!

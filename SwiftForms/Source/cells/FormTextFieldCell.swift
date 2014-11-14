@@ -49,11 +49,12 @@ class FormTextFieldCell: FormBaseCell {
         
         titleLabel.text = rowDescriptor.title
         textField.text = rowDescriptor.value as? String
+        textField.placeholder = rowDescriptor.placeholder
     
         textField.secureTextEntry = false
         textField.clearButtonMode = .WhileEditing
         
-        switch( rowDescriptor.rowType ) {
+        switch rowDescriptor.rowType {
         case .Text:
             textField.autocorrectionType = .Default
             textField.autocapitalizationType = .Sentences
