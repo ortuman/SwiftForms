@@ -16,7 +16,7 @@ class FormSelectorCell: FormValueCell {
  
         titleLabel.text = rowDescriptor.title
 
-        if let selectedValues = rowDescriptor.value as? [NSObject] {
+        if let selectedValues = rowDescriptor.value as? [NSObject] { // multiple values
             
             var title: String! = nil
             for optionValue in rowDescriptor.options {
@@ -32,6 +32,9 @@ class FormSelectorCell: FormValueCell {
             }
             
             valueLabel.text = title
+        }
+        else if let selectedValue = rowDescriptor.value { // single value
+            valueLabel.text = rowDescriptor.titleForOptionValue(selectedValue)
         }
     }
     
