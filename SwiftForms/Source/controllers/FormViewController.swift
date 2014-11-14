@@ -59,7 +59,7 @@ class FormViewController : UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = form.title
+        navigationItem.title = form?.title
     }
     
     /// MARK: UITableViewDataSource
