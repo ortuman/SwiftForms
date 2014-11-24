@@ -22,7 +22,8 @@ class FormSegmentedControlCell: FormBaseCell {
     /// MARK: FormBaseCell
     
     override func configure() {
-
+        super.configure()
+        
         selectionStyle = .None
         
         titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -43,14 +44,15 @@ class FormSegmentedControlCell: FormBaseCell {
     }
     
     override func update() {
-
+        super.update()
+        
         titleLabel.text = rowDescriptor.title
         updateSegmentedControl()
         
         var idx = 0
         if rowDescriptor.value != nil {
             for optionValue in rowDescriptor.options {
-                if optionValue == rowDescriptor.value {
+                if optionValue as NSObject == rowDescriptor.value {
                     segmentedControl.selectedSegmentIndex = idx
                     break
                 }
@@ -76,7 +78,7 @@ class FormSegmentedControlCell: FormBaseCell {
     /// MARK: Actions
     
     func valueChanged(sender: UISegmentedControl) {
-        let optionValue = rowDescriptor.options[sender.selectedSegmentIndex]
+        let optionValue = rowDescriptor.options[sender.selectedSegmentIndex] as? NSObject
         rowDescriptor.value = optionValue
     }
     
@@ -86,7 +88,7 @@ class FormSegmentedControlCell: FormBaseCell {
         segmentedControl.removeAllSegments()
         var idx = 0
         for optionValue in rowDescriptor.options {
-            segmentedControl.insertSegmentWithTitle(rowDescriptor.titleForOptionValue(optionValue), atIndex: idx, animated: false)
+            segmentedControl.insertSegmentWithTitle(rowDescriptor.titleForOptionValue(optionValue as NSObject), atIndex: idx, animated: false)
             ++idx
         }
     }

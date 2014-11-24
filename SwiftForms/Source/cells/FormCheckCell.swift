@@ -19,7 +19,8 @@ class FormCheckCell: FormTitleCell {
     }
     
     override func update() {
-
+        super.update()
+        
         titleLabel.text = rowDescriptor.title
         
         if rowDescriptor.value == nil {

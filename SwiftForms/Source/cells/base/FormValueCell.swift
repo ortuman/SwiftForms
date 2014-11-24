@@ -22,6 +22,7 @@ class FormValueCell: FormBaseCell {
     /// MARK: FormBaseCell
     
     override func configure() {
+        super.configure()
         
         accessoryType = .DisclosureIndicator
         

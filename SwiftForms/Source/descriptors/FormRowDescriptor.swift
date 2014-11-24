@@ -11,10 +11,16 @@ import UIKit
 enum FormRowType {
     case Unknown
     case Text
+    case URL
+    case Number
+    case NumbersAndPunctuation
+    case Decimal
     case Name
     case Phone
-    case URL
+    case NamePhone
     case Email
+    case Twitter
+    case ASCIICapable
     case Password
     case Button
     case BooleanSwitch
@@ -36,23 +42,38 @@ class FormRowDescriptor: NSObject {
     var title: String!
     var rowType: FormRowType = .Unknown
     var tag: String!
-    var value: NSObject!
+
+    var value: NSObject! {
+        willSet {
+            self.willUpdateValueBlock?(self)
+        }
+        didSet {
+            self.didUpdateValueBlock?(self)
+        }
+    }
+    
+    var required = true
     
     var cellClass: AnyClass!
     var cellAccessoryView: UIView!
     var placeholder: String!
     
-    var cellConfiguration: [String : AnyObject] = [:]
-    var visualConstraintsBlock: ((FormBaseCell) -> [String])!
+    var cellConfiguration: NSDictionary!
     
-    var options: [NSObject]!
+    var willUpdateValueBlock: ((FormRowDescriptor) -> Void)!
+    var didUpdateValueBlock: ((FormRowDescriptor) -> Void)!
+    
+    var visualConstraintsBlock: ((FormBaseCell) -> NSArray)!
+    
+    var options: NSArray!
     var titleFormatter: TitleFormatter!
-    var allowsMultipleSelection = false
     var selectorControllerClass: AnyClass!
+    var allowsMultipleSelection = false
     
+    var showInputToolbar = false
     var dateFormatter: NSDateFormatter!
     
-    var userInfo: [NSObject : AnyObject] = [:]
+    var userInfo: NSDictionary!
     
     /// MARK: Init
     
@@ -66,7 +87,7 @@ class FormRowDescriptor: NSObject {
     /// MARK: Public interface
     
     func titleForOptionAtIndex(index: Int) -> String! {
-        return titleForOptionValue(options[index])
+        return titleForOptionValue(options[index] as NSObject)
     }
     
     func titleForOptionValue(optionValue: NSObject) -> String! {

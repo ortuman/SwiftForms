@@ -40,7 +40,10 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return formCell.rowDescriptor.options.count
+        if let options = formCell.rowDescriptor.options {
+            return options.count
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -56,21 +59,29 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
             cell = UITableViewCell(style: .Default, reuseIdentifier: reuseIdentifier)
         }
         
-        let optionValue = formCell.rowDescriptor.options[indexPath.row]
+        let optionValue = formCell.rowDescriptor.options[indexPath.row] as NSObject
 
-        cell?.textLabel.text = formCell.rowDescriptor.titleForOptionValue(optionValue)
+        cell!.textLabel!.text = formCell.rowDescriptor.titleForOptionValue(optionValue)
         
         if let selectedOptions = formCell.rowDescriptor.value as? [NSObject] {
             if (find(selectedOptions, optionValue as NSObject) != nil) {
                 if formCell.rowDescriptor.cellAccessoryView == nil {
-                    cell?.accessoryType = .Checkmark
+                    cell!.accessoryType = .Checkmark
                 }
                 else {
-                    cell?.accessoryView = formCell.rowDescriptor.cellAccessoryView
+                    cell!.accessoryView = formCell.rowDescriptor.cellAccessoryView
                 }
             }
             else {
-                cell?.accessoryType = .None
+                cell!.accessoryType = .None
+            }
+        }
+        else if let selectedOption = formCell.rowDescriptor.value {
+            if optionValue == selectedOption {
+                cell!.accessoryType = .Checkmark
+            }
+            else {
+                cell!.accessoryType = .None
             }
         }
         return cell!
@@ -82,22 +93,23 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        if formCell.rowDescriptor.value == nil {
-            formCell.rowDescriptor.value = []
-        }
-        
         let allowsMultipleSelection = formCell.rowDescriptor.allowsMultipleSelection
-        let optionValue = formCell.rowDescriptor.options[indexPath.row]
+        let optionValue = formCell.rowDescriptor.options[indexPath.row] as NSObject
         
         if allowsMultipleSelection {
-            if var selectedOptions = formCell.rowDescriptor.value as? [NSObject] {
+            
+            if formCell.rowDescriptor.value == nil {
+                formCell.rowDescriptor.value = NSMutableArray()
+            }
+                        
+            if var selectedOptions = formCell.rowDescriptor.value as? NSMutableArray {
                 
-                if let index = find(selectedOptions, optionValue) {
-                    selectedOptions.removeAtIndex(index)
+                if selectedOptions.containsObject(optionValue) {
+                    selectedOptions.removeObject(optionValue)
                     cell?.accessoryType = .None
                 }
                 else {
-                    selectedOptions.append(optionValue)
+                    selectedOptions.addObject(optionValue)
                     if formCell.rowDescriptor.cellAccessoryView == nil {
                         cell?.accessoryType = .Checkmark
                     }
@@ -115,7 +127,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
             }
         }
         else {
-            formCell.rowDescriptor.value = [optionValue]
+            formCell.rowDescriptor.value = NSMutableArray(object: optionValue)
         }
         
         formCell.update()

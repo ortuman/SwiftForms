@@ -13,16 +13,19 @@ class FormSelectorCell: FormValueCell {
     /// MARK: FormBaseCell
     
     override func update() {
- 
+        super.update()
+        
         titleLabel.text = rowDescriptor.title
 
         var title: String!
         
-        if let selectedValues = rowDescriptor.value as? [NSObject] { // multiple values
+        if let selectedValues = rowDescriptor.value as? NSMutableArray { // multiple values
+            
+            let indexedSelectedValues = NSSet(array: selectedValues)
             
             for optionValue in rowDescriptor.options {
-                if find(selectedValues, optionValue) != nil {
-                    let optionTitle = rowDescriptor.titleForOptionValue(optionValue)
+                if indexedSelectedValues.containsObject(optionValue) {
+                    let optionTitle = rowDescriptor.titleForOptionValue(optionValue as NSObject)
                     if title != nil {
                         title = title + ", \(optionTitle)"
                     }

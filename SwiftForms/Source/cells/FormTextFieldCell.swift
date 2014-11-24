@@ -36,6 +36,7 @@ class FormTextFieldCell: FormBaseCell {
         contentView.addSubview(textField)
         
         titleLabel.setContentHuggingPriority(500, forAxis: .Horizontal)
+        titleLabel.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
         
         contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
         contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
@@ -46,6 +47,11 @@ class FormTextFieldCell: FormBaseCell {
     }
     
     override func update() {
+        super.update()
+        
+        if rowDescriptor.showInputToolbar && textField.inputAccessoryView == nil {
+            textField.inputAccessoryView = inputAccesoryView()
+        }
         
         titleLabel.text = rowDescriptor.title
         textField.text = rowDescriptor.value as? String
@@ -59,20 +65,38 @@ class FormTextFieldCell: FormBaseCell {
             textField.autocorrectionType = .Default
             textField.autocapitalizationType = .Sentences
             textField.keyboardType = .Default
+        case .Number:
+            textField.keyboardType = .NumberPad
+        case .NumbersAndPunctuation:
+            textField.keyboardType = .NumbersAndPunctuation
+        case .Decimal:
+            textField.keyboardType = .DecimalPad
         case .Name:
             textField.autocorrectionType = .No
             textField.autocapitalizationType = .Words
             textField.keyboardType = .Default
         case .Phone:
             textField.keyboardType = .PhonePad
+        case .NamePhone:
+            textField.autocorrectionType = .No
+            textField.autocapitalizationType = .Words
+            textField.keyboardType = .NamePhonePad
         case .URL:
             textField.autocorrectionType = .No
             textField.autocapitalizationType = .None
             textField.keyboardType = .URL
+        case .Twitter:
+            textField.autocorrectionType = .No
+            textField.autocapitalizationType = .None
+            textField.keyboardType = .Twitter
         case .Email:
             textField.autocorrectionType = .No
             textField.autocapitalizationType = .None
             textField.keyboardType = .EmailAddress
+        case .ASCIICapable:
+            textField.autocorrectionType = .No
+            textField.autocapitalizationType = .None
+            textField.keyboardType = .ASCIICapable
         case .Password:
             textField.autocorrectionType = .No
             textField.autocapitalizationType = .None
@@ -85,7 +109,7 @@ class FormTextFieldCell: FormBaseCell {
     
     override func constraintsViews() -> [String : UIView] {
         var views = ["titleLabel" : titleLabel, "textField" : textField]
-        if self.imageView.image != nil {
+        if self.imageView!.image != nil {
             views["imageView"] = imageView
         }
         return views
@@ -93,7 +117,7 @@ class FormTextFieldCell: FormBaseCell {
     
     override func defaultVisualConstraints() -> [String] {
         
-        if self.imageView.image != nil {
+        if self.imageView!.image != nil {
             
             if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
                 return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
@@ -112,9 +136,19 @@ class FormTextFieldCell: FormBaseCell {
         }
     }
     
+    override func firstResponderElement() -> UIResponder? {
+        return textField
+    }
+    
+    override class func formRowCanBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
     /// MARK: Actions
     
     func editingChanged(sender: UITextField) {
-        rowDescriptor.value = sender.text
+        let trimmedText = sender.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        rowDescriptor.value = countElements(trimmedText) > 0 ? sender.text : nil
+        update()
     }
 }

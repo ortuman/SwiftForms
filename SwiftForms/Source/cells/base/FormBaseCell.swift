@@ -18,6 +18,8 @@ class FormBaseCell: UITableViewCell {
         }
     }
     
+    var formViewController: FormViewController!
+    
     private var customConstraints: [AnyObject] = []
     
     /// MARK: Init
@@ -50,8 +52,46 @@ class FormBaseCell: UITableViewCell {
         return [:]
     }
     
+    func firstResponderElement() -> UIResponder? {
+        /// override
+        return nil
+    }
+    
+    func inputAccesoryView() -> UIToolbar {
+        
+        let actionBar = UIToolbar()
+        actionBar.translucent = true
+        actionBar.sizeToFit()
+        actionBar.barStyle = .Default
+        
+//        let prevNext = UISegmentedControl(items: [NSLocalizedString("Previous", comment: ""), NSLocalizedString("Next", comment: "")])
+//        prevNext.momentary = true
+//        prevNext.tintColor = actionBar.tintColor
+//        prevNext.addTarget(self, action: "handleActionBarPreviousNext:", forControlEvents: .ValueChanged)
+        
+        let doneButton = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .Done, target: self, action: "handleDoneAction:")
+        
+//        let prevNextWrapper = UIBarButtonItem(customView: prevNext)
+        let flexible = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        actionBar.items = [/*prevNextWrapper, */ flexible, doneButton]
+        
+        return actionBar
+    }
+    
+    func handleActionBarPreviousNext(segmentedControl: UISegmentedControl) {
+        
+    }
+    
+    func handleDoneAction(_: UIBarButtonItem) {
+        firstResponderElement()?.resignFirstResponder()
+    }
+    
     class func formRowCellHeight() -> CGFloat {
         return 44.0
+    }
+    
+    class func formRowCanBecomeFirstResponder() -> Bool {
+        return false
     }
     
     class func formViewController(formViewController: FormViewController, didSelectRow: FormBaseCell) {
@@ -69,7 +109,7 @@ class FormBaseCell: UITableViewCell {
         
         customConstraints.removeAll()
         
-        var visualConstraints: [String]!
+        var visualConstraints: NSArray!
         
         if rowDescriptor.visualConstraintsBlock != nil {
             visualConstraints = rowDescriptor.visualConstraintsBlock(self)
@@ -79,7 +119,7 @@ class FormBaseCell: UITableViewCell {
         }
         
         for visualConstraint in visualConstraints {
-            let constraints = NSLayoutConstraint.constraintsWithVisualFormat(visualConstraint, options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+            let constraints = NSLayoutConstraint.constraintsWithVisualFormat(visualConstraint as String, options: NSLayoutFormatOptions(0), metrics: nil, views: views)
             for constraint in constraints {
                 customConstraints.append(constraint)
             }

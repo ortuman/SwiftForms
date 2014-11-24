@@ -28,10 +28,14 @@ class FormDateCell: FormValueCell {
     
     override func update() {
         super.update()
-
+        
+        if rowDescriptor.showInputToolbar && hiddenTextField.inputAccessoryView == nil {
+            hiddenTextField.inputAccessoryView = inputAccesoryView()
+        }
+        
         titleLabel.text = rowDescriptor.title
         
-        switch( rowDescriptor.rowType ) {
+        switch rowDescriptor.rowType {
         case .Date:
             datePicker.datePickerMode = .Date
             defaultDateFormatter.dateStyle = .LongStyle
@@ -61,16 +65,26 @@ class FormDateCell: FormValueCell {
             let date = NSDate()
             row.rowDescriptor.value = date
             row.valueLabel.text = row.getDateFormatter().stringFromDate(date)
+            row.update()
         }
         
         row.hiddenTextField.becomeFirstResponder()
+    }
+    
+    override func firstResponderElement() -> UIResponder? {
+        return hiddenTextField
+    }
+    
+    override class func formRowCanBecomeFirstResponder() -> Bool {
+        return true
     }
     
     /// MARK: Actions
     
     func valueChanged(sender: UIDatePicker) {
         rowDescriptor.value = sender.date
-        detailTextLabel?.text = getDateFormatter().stringFromDate(sender.date)
+        valueLabel.text = getDateFormatter().stringFromDate(sender.date)
+        update()
     }
     
     /// MARK: Private interface

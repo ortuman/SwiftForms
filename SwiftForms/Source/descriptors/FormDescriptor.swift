@@ -16,7 +16,7 @@ class FormDescriptor: NSObject {
     
     var sections: [FormSectionDescriptor] = []
     
-    /// MARK: Public interface
+    /// MARK: Public
     
     func addSection(section: FormSectionDescriptor) {
         sections.append(section)
@@ -28,9 +28,9 @@ class FormDescriptor: NSObject {
         }
     }
     
-    func formValues() -> Dictionary<String, NSObject> {
+    func formValues() -> NSDictionary {
         
-        var formValues: Dictionary<String, NSObject> = [:]
+        var formValues = NSMutableDictionary()
 
         for section in sections {
             for row in section.rows {
@@ -44,6 +44,17 @@ class FormDescriptor: NSObject {
                 }
             }
         }
-        return formValues
+        return formValues.copy() as NSDictionary
+    }
+    
+    func validateForm() -> FormRowDescriptor! {
+        for section in sections {
+            for row in section.rows {
+                if row.required && row.value == nil {
+                    return row
+                }
+            }
+        }
+        return nil
     }
 }
