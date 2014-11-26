@@ -18,7 +18,7 @@ class FormBaseCell: UITableViewCell {
         }
     }
     
-    var formViewController: FormViewController!
+    weak var formViewController: FormViewController!
     
     private var customConstraints: [AnyObject] = []
     
