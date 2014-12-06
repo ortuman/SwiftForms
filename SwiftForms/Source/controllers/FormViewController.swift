@@ -203,6 +203,7 @@ class FormViewController : UITableViewController {
             Static.defaultCellClasses[FormRowType.Time] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.DateAndTime] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.MultipleSelector] = FormSelectorCell.self
+            Static.defaultCellClasses[FormRowType.MultilineText] = FormTextViewCell.self
         }
         return Static.defaultCellClasses[rowType]!
     }

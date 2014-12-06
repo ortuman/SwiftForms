@@ -25,6 +25,7 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         static let birthday = "birthday"
         static let categories = "categories"
         static let button = "button"
+        static let textView = "textview"
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -163,11 +164,16 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         section5.addRow(row)
         
         let section6 = FormSectionDescriptor()
-        
-        row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Dismiss")
+        row = FormRowDescriptor(tag: Static.textView, rowType: .MultilineText, title: "Notes")
+        section6.headerTitle = "Multiline TextView"
         section6.addRow(row)
         
-        form.sections = [section1, section2, section3, section4, section5, section6]
+        let section7 = FormSectionDescriptor()
+        
+        row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Dismiss")
+        section7.addRow(row)
+        
+        form.sections = [section1, section2, section3, section4, section5, section6, section7]
         
         self.form = form
     }
