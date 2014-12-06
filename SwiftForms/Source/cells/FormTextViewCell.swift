@@ -62,7 +62,7 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     
     override func constraintsViews() -> [String : UIView] {
         var views = ["titleLabel" : titleLabel, "textField" : textField]
-        if self.imageView.image != nil {
+        if self.imageView!.image != nil {
             views["imageView"] = imageView
         }
         return views
@@ -70,7 +70,7 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     
     override func defaultVisualConstraints() -> [String] {
         
-        if self.imageView.image != nil {
+        if self.imageView!.image != nil {
             
             if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
                 return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
