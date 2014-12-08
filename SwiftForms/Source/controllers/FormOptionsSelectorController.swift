@@ -61,7 +61,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         
         let optionValue = formCell.rowDescriptor.options[indexPath.row] as NSObject
 
-        cell!.textLabel.text = formCell.rowDescriptor.titleForOptionValue(optionValue)
+        cell!.textLabel!.text = formCell.rowDescriptor.titleForOptionValue(optionValue)
         
         if let selectedOptions = formCell.rowDescriptor.value as? [NSObject] {
             if (find(selectedOptions, optionValue as NSObject) != nil) {

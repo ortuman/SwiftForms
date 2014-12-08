@@ -31,7 +31,6 @@ enum FormRowType {
     case Time
     case DateAndTime
     case MultipleSelector
-    case MultilineText
 }
 
 typealias TitleFormatter = (NSObject) -> String!
