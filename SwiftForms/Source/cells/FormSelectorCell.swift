@@ -19,7 +19,7 @@ class FormSelectorCell: FormValueCell {
 
         var title: String!
         
-        if let selectedValues = rowDescriptor.value as? NSArray { // multiple values
+        if let selectedValues = rowDescriptor.value as? NSMutableArray { // multiple values
             
             let indexedSelectedValues = NSSet(array: selectedValues)
             

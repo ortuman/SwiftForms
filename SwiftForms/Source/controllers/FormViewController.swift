@@ -29,9 +29,30 @@ class FormViewController : UITableViewController {
     
     /// MARK: Init
     
-    convenience init(form: FormDescriptor) {
+    override convenience init() {
         self.init(style: .Grouped)
+    }
+    
+    convenience init(form: FormDescriptor) {
+        self.init()
         self.form = form
+    }
+    
+    override init(style: UITableViewStyle) {
+        super.init(style: style)
+    }
+    
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        baseInit()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        baseInit()
+    }
+    
+    private func baseInit() {
     }
     
     /// MARK: View life cycle
@@ -182,6 +203,7 @@ class FormViewController : UITableViewController {
             Static.defaultCellClasses[FormRowType.Time] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.DateAndTime] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.MultipleSelector] = FormSelectorCell.self
+            Static.defaultCellClasses[FormRowType.MultilineText] = FormTextViewCell.self
         }
         return Static.defaultCellClasses[rowType]!
     }
