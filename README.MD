@@ -48,7 +48,7 @@ Cell appearance
 Every row descriptor has a cellConfiguration dictionary which allows to customize cell appearance by defining its subviews property values using key-value coding.
 
 ```swift
-row.cellConfiguration = ["titleLabel.font" : UIFont.boldSystemFontOfSize(30.0), "segmentedControl.tintColor" : UIColor.redColor()]
+row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["titleLabel.font" : UIFont.boldSystemFontOfSize(30.0), "segmentedControl.tintColor" : UIColor.redColor()]
 ```
 
 Custom cells
