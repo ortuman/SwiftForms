@@ -50,8 +50,10 @@ class FormDescriptor: NSObject {
     func validateForm() -> FormRowDescriptor! {
         for section in sections {
             for row in section.rows {
-                if row.required && row.value == nil {
-                    return row
+                if let required = row.configuration[FormRowDescriptor.Configuration.Required] as? Bool {
+                    if required && row.value == nil {
+                        return row
+                    }
                 }
             }
         }

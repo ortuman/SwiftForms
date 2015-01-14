@@ -49,14 +49,19 @@ class FormTextFieldCell: FormBaseCell {
     override func update() {
         super.update()
         
-        if rowDescriptor.showInputToolbar && textField.inputAccessoryView == nil {
-            textField.inputAccessoryView = inputAccesoryView()
+        if let showsInputToolbar = rowDescriptor.configuration[FormRowDescriptor.Configuration.ShowsInputToolbar] as? Bool {
+            if showsInputToolbar && textField.inputAccessoryView == nil {
+                textField.inputAccessoryView = inputAccesoryView()
+            }
         }
-        
+    
+        println(rowDescriptor.value)
         titleLabel.text = rowDescriptor.title
         textField.text = rowDescriptor.value as? String
-        textField.placeholder = rowDescriptor.placeholder
+        textField.placeholder = rowDescriptor.configuration[FormRowDescriptor.Configuration.Placeholder] as? String
     
+        println(textField.text)
+        
         textField.secureTextEntry = false
         textField.clearButtonMode = .WhileEditing
         
@@ -98,10 +103,8 @@ class FormTextFieldCell: FormBaseCell {
             textField.autocapitalizationType = .None
             textField.keyboardType = .ASCIICapable
         case .Password:
-            textField.autocorrectionType = .No
-            textField.autocapitalizationType = .None
-            textField.keyboardType = .ASCIICapable
             textField.secureTextEntry = true
+            textField.clearsOnBeginEditing = false
         default:
             break
         }
@@ -148,7 +151,6 @@ class FormTextFieldCell: FormBaseCell {
     
     func editingChanged(sender: UITextField) {
         let trimmedText = sender.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        rowDescriptor.value = countElements(trimmedText) > 0 ? sender.text : nil
-        update()
+        rowDescriptor.value = countElements(trimmedText) > 0 ? trimmedText : nil
     }
 }

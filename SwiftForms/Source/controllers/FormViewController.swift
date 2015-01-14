@@ -125,12 +125,11 @@ class FormViewController : UITableViewController {
         cell?.rowDescriptor = rowDescriptor
         
         // apply cell custom design
-        if let cellConfiguration = rowDescriptor.cellConfiguration {
-            for (keyPath, value) in rowDescriptor.cellConfiguration {
+        if let cellConfiguration = rowDescriptor.configuration[FormRowDescriptor.Configuration.CellConfiguration] as? NSDictionary {
+            for (keyPath, value) in cellConfiguration {
                 cell?.setValue(value, forKeyPath: keyPath as String)
-            }            
+            }
         }
-        
         return cell!
     }
     
@@ -218,14 +217,14 @@ class FormViewController : UITableViewController {
         
         var formBaseCellClass: FormBaseCell.Type!
         
-        if rowDescriptor.cellClass == nil { // fallback to default cell class
-            formBaseCellClass = FormViewController.defaultCellClassForRowType(rowDescriptor.rowType)
+        if let cellClass: AnyClass = rowDescriptor.configuration[FormRowDescriptor.Configuration.CellClass] as? AnyClass {
+            formBaseCellClass = cellClass as? FormBaseCell.Type
         }
         else {
-            formBaseCellClass = rowDescriptor.cellClass as? FormBaseCell.Type
+            formBaseCellClass = FormViewController.defaultCellClassForRowType(rowDescriptor.rowType)
         }
         
-        assert(formBaseCellClass != nil, "cellClass must be a FormBaseCell derived class value.")
+        assert(formBaseCellClass != nil, "FormRowDescriptor.Configuration.CellClass must be a FormBaseCell derived class value.")
         
         return formBaseCellClass
     }

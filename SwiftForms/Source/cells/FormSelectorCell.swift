@@ -23,14 +23,16 @@ class FormSelectorCell: FormValueCell {
             
             let indexedSelectedValues = NSSet(array: selectedValues)
             
-            for optionValue in rowDescriptor.options {
-                if indexedSelectedValues.containsObject(optionValue) {
-                    let optionTitle = rowDescriptor.titleForOptionValue(optionValue as NSObject)
-                    if title != nil {
-                        title = title + ", \(optionTitle)"
-                    }
-                    else {
-                        title = optionTitle
+            if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
+                for optionValue in options {
+                    if indexedSelectedValues.containsObject(optionValue) {
+                        let optionTitle = rowDescriptor.titleForOptionValue(optionValue as NSObject)
+                        if title != nil {
+                            title = title + ", \(optionTitle)"
+                        }
+                        else {
+                            title = optionTitle
+                        }
                     }
                 }
             }
@@ -44,7 +46,7 @@ class FormSelectorCell: FormValueCell {
             valueLabel.textColor = UIColor.blackColor()
         }
         else {
-            valueLabel.text = rowDescriptor.placeholder
+            valueLabel.text = rowDescriptor.configuration[FormRowDescriptor.Configuration.Placeholder] as? String
             valueLabel.textColor = UIColor.lightGrayColor()
         }
     }
@@ -56,11 +58,11 @@ class FormSelectorCell: FormValueCell {
             
             var selectorClass: UIViewController.Type!
             
-            if row.rowDescriptor.selectorControllerClass == nil { // fallback to default cell class
-                selectorClass = FormOptionsSelectorController.self
+            if let selectorControllerClass: AnyClass = row.rowDescriptor.configuration[FormRowDescriptor.Configuration.SelectorControllerClass] as? AnyClass {
+                selectorClass = selectorControllerClass as? UIViewController.Type
             }
-            else {
-                selectorClass = row.rowDescriptor.selectorControllerClass as? UIViewController.Type
+            else { // fallback to default cell class
+                selectorClass = FormOptionsSelectorController.self
             }
             
             if selectorClass != nil {
@@ -70,7 +72,7 @@ class FormSelectorCell: FormValueCell {
                     formViewController.navigationController?.pushViewController(selectorController, animated: true)
                 }
                 else {
-                    fatalError("selectorControllerClass must conform to FormSelector protocol.")
+                    fatalError("FormRowDescriptor.Configuration.SelectorControllerClass must conform to FormSelector protocol.")
                 }
             }
         }

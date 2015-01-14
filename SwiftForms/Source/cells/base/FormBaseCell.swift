@@ -111,8 +111,8 @@ class FormBaseCell: UITableViewCell {
         
         var visualConstraints: NSArray!
         
-        if rowDescriptor.visualConstraintsBlock != nil {
-            visualConstraints = rowDescriptor.visualConstraintsBlock(self)
+        if let visualConstraintsClosure = rowDescriptor.configuration[FormRowDescriptor.Configuration.VisualConstraintsClosure] as? VisualConstraintsClosure {
+            visualConstraints = visualConstraintsClosure(self)
         }
         else {
             visualConstraints = self.defaultVisualConstraints()

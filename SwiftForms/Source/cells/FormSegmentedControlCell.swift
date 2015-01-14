@@ -51,12 +51,14 @@ class FormSegmentedControlCell: FormBaseCell {
         
         var idx = 0
         if rowDescriptor.value != nil {
-            for optionValue in rowDescriptor.options {
-                if optionValue as NSObject == rowDescriptor.value {
-                    segmentedControl.selectedSegmentIndex = idx
-                    break
+            if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
+                for optionValue in options {
+                    if optionValue as NSObject == rowDescriptor.value {
+                        segmentedControl.selectedSegmentIndex = idx
+                        break
+                    }
+                    ++idx
                 }
-                ++idx
             }
         }
     }
@@ -78,7 +80,8 @@ class FormSegmentedControlCell: FormBaseCell {
     /// MARK: Actions
     
     func valueChanged(sender: UISegmentedControl) {
-        let optionValue = rowDescriptor.options[sender.selectedSegmentIndex] as? NSObject
+        let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray
+        let optionValue = options?[sender.selectedSegmentIndex] as? NSObject
         rowDescriptor.value = optionValue
     }
     
@@ -87,9 +90,11 @@ class FormSegmentedControlCell: FormBaseCell {
     private func updateSegmentedControl() {
         segmentedControl.removeAllSegments()
         var idx = 0
-        for optionValue in rowDescriptor.options {
-            segmentedControl.insertSegmentWithTitle(rowDescriptor.titleForOptionValue(optionValue as NSObject), atIndex: idx, animated: false)
-            ++idx
+        if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
+            for optionValue in options {
+                segmentedControl.insertSegmentWithTitle(rowDescriptor.titleForOptionValue(optionValue as NSObject), atIndex: idx, animated: false)
+                ++idx
+            }
         }
     }
 }

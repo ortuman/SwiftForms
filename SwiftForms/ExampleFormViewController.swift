@@ -61,35 +61,35 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         let section1 = FormSectionDescriptor()
         
         var row: FormRowDescriptor! = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
-        row.cellConfiguration = ["textField.placeholder" : "john@gmail.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "john@gmail.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
 
         row = FormRowDescriptor(tag: Static.passwordTag, rowType: .Password, title: "Password")
-        row.cellConfiguration = ["textField.placeholder" : "Enter password", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "Enter password", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
         
         let section2 = FormSectionDescriptor()
         
         row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "First Name")
-        row.cellConfiguration = ["textField.placeholder" : "e.g. Miguel Ángel", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. Miguel Ángel", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section2.addRow(row)
         
         row = FormRowDescriptor(tag: Static.lastNameTag, rowType: .Name, title: "Last Name")
-        row.cellConfiguration = ["textField.placeholder" : "e.g. Ortuño", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. Ortuño", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section2.addRow(row)
         
         row = FormRowDescriptor(tag: Static.jobTag, rowType: .Text, title: "Job")
-        row.cellConfiguration = ["textField.placeholder" : "e.g. Entrepreneur", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. Entrepreneur", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section2.addRow(row)
         
         let section3 = FormSectionDescriptor()
 
         row = FormRowDescriptor(tag: Static.URLTag, rowType: .URL, title: "URL")
-        row.cellConfiguration = ["textField.placeholder" : "e.g. gethooksapp.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. gethooksapp.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section3.addRow(row)
         
         row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
-        row.cellConfiguration = ["textField.placeholder" : "e.g. 0034666777999", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. 0034666777999", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section3.addRow(row)
         
         let section4 = FormSectionDescriptor()
@@ -101,8 +101,8 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         section4.addRow(row)
         
         row = FormRowDescriptor(tag: Static.segmented, rowType: .SegmentedControl, title: "Priority")
-        row.options = [0, 1, 2, 3]
-        row.titleFormatter = { value in
+        row.configuration[FormRowDescriptor.Configuration.Options] = [0, 1, 2, 3]
+        row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
             switch( value ) {
             case 0:
                 return "None"
@@ -115,8 +115,10 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
             default:
                 return nil
             }
-        }
-        row.cellConfiguration = ["titleLabel.font" : UIFont.boldSystemFontOfSize(30.0), "segmentedControl.tintColor" : UIColor.redColor()]
+        } as TitleFormatterClosure
+        
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["titleLabel.font" : UIFont.boldSystemFontOfSize(30.0), "segmentedControl.tintColor" : UIColor.redColor()]
+        
         section4.addRow(row)
         
         section4.headerTitle = "An example header title"
@@ -125,8 +127,8 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         let section5 = FormSectionDescriptor()
         
         row = FormRowDescriptor(tag: Static.picker, rowType: .Picker, title: "Gender")
-        row.options = ["F", "M", "U"]
-        row.titleFormatter = { value in
+        row.configuration[FormRowDescriptor.Configuration.Options] = ["F", "M", "U"]
+        row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
             switch( value ) {
             case "F":
                 return "Female"
@@ -137,15 +139,16 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
             default:
                 return nil
             }
-        }
+        } as TitleFormatterClosure
+        
         section5.addRow(row)
 
         row = FormRowDescriptor(tag: Static.birthday, rowType: .Date, title: "Birthday")
         section5.addRow(row)
         row = FormRowDescriptor(tag: Static.categories, rowType: .MultipleSelector, title: "Categories")
-        row.options = [0, 1, 2, 3, 4]
-        row.allowsMultipleSelection = true
-        row.titleFormatter = { value in
+        row.configuration[FormRowDescriptor.Configuration.Options] = [0, 1, 2, 3, 4]
+        row.configuration[FormRowDescriptor.Configuration.AllowsMultipleSelection] = true
+        row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
             switch( value ) {
             case 0:
                 return "Restaurant"
@@ -160,7 +163,8 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
             default:
                 return nil
             }
-        }
+        } as TitleFormatterClosure
+        
         section5.addRow(row)
         
         let section6 = FormSectionDescriptor()

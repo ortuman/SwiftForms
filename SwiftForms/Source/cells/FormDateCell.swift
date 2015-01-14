@@ -29,8 +29,10 @@ class FormDateCell: FormValueCell {
     override func update() {
         super.update()
         
-        if rowDescriptor.showInputToolbar && hiddenTextField.inputAccessoryView == nil {
-            hiddenTextField.inputAccessoryView = inputAccesoryView()
+        if let showsInputToolbar = rowDescriptor.configuration[FormRowDescriptor.Configuration.ShowsInputToolbar] as? Bool {
+            if showsInputToolbar && hiddenTextField.inputAccessoryView == nil {
+                hiddenTextField.inputAccessoryView = inputAccesoryView()
+            }
         }
         
         titleLabel.text = rowDescriptor.title
@@ -90,8 +92,9 @@ class FormDateCell: FormValueCell {
     /// MARK: Private interface
     
     private func getDateFormatter() -> NSDateFormatter {
-        if self.rowDescriptor.dateFormatter != nil {
-            return self.rowDescriptor.dateFormatter
+        
+        if let dateFormatter = self.rowDescriptor.configuration[FormRowDescriptor.Configuration.DateFormatter] as? NSDateFormatter {
+            return dateFormatter
         }
         return defaultDateFormatter
     }

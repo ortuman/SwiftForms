@@ -42,7 +42,8 @@ class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDataSourc
         
         if selectedRow.rowDescriptor.value == nil {
             if let row = selectedRow as? FormPickerCell {
-                let optionValue = selectedRow.rowDescriptor.options[0] as? NSObject
+                let options = selectedRow.rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray
+                let optionValue = options?[0] as? NSObject
                 selectedRow.rowDescriptor.value = optionValue
                 row.valueLabel.text = selectedRow.rowDescriptor.titleForOptionValue(optionValue!)
                 row.hiddenTextField.becomeFirstResponder()
@@ -63,7 +64,8 @@ class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let optionValue = rowDescriptor.options[row] as? NSObject
+        let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray
+        let optionValue = options?[row] as? NSObject
         rowDescriptor.value = optionValue
         valueLabel.text = rowDescriptor.titleForOptionValue(optionValue!)
     }
@@ -75,6 +77,9 @@ class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return rowDescriptor.options.count
+        if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
+            return options.count
+        }
+        return 0
     }
 }
