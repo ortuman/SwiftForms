@@ -55,12 +55,9 @@ class FormTextFieldCell: FormBaseCell {
             }
         }
     
-        println(rowDescriptor.value)
         titleLabel.text = rowDescriptor.title
         textField.text = rowDescriptor.value as? String
         textField.placeholder = rowDescriptor.configuration[FormRowDescriptor.Configuration.Placeholder] as? String
-    
-        println(textField.text)
         
         textField.secureTextEntry = false
         textField.clearButtonMode = .WhileEditing
