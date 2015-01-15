@@ -113,7 +113,7 @@ class FormRowDescriptor: NSObject {
     /// MARK: Public interface
     
     func titleForOptionAtIndex(index: Int) -> String! {
-        if let options = configuration[FormRowDescriptor.Configuration.Placeholder] as? NSArray {
+        if let options = configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
             return titleForOptionValue(options[index] as NSObject)
         }
         return nil
