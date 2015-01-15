@@ -45,10 +45,12 @@ To see a more complex form definition you can take a look to the example applica
 Cell appearance
 ----------------------
 
-Every row descriptor has a cellConfiguration dictionary which allows to customize cell appearance by defining its subviews property values using key-value coding.
+Every row descriptor has a `configuration` dictionary that allows to customize cell's appearance and behavior. In order to change concrete visual aspects of a row simply set `FormRowDescriptor.Configuration.CellConfiguration` value to a dictionary containing custom key-value coding properties.
+
+Here's an example:
 
 ```swift
-row.cellConfiguration = ["titleLabel.font" : UIFont.boldSystemFontOfSize(30.0), "segmentedControl.tintColor" : UIColor.redColor()]
+row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["titleLabel.font" : UIFont.boldSystemFontOfSize(30.0), "segmentedControl.tintColor" : UIColor.redColor()]
 ```
 
 Custom cells
@@ -80,7 +82,7 @@ Custom selector controllers
 
 In order to customize selector controller your class should conform to `FormSelector` protocol. That way you'll have access to the cell instance that pushed the controller, being able to alter its properties or setting it's row value accordingly to user interaction. 
 
-After defining your class, don't forget to set `FormRowDescriptor` selectorControllerClass property to use your custom selector controller.
+After defining your class, don't forget to set `FormRowType.Configuration.SelectorControllerClass` value in the configuration dictionary to use your custom selector controller.
 
 Requirements
 ---------------------
