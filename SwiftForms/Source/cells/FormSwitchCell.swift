@@ -42,6 +42,8 @@ class FormSwitchCell: FormTitleCell {
     /// MARK: Actions
     
     func valueChanged(_: UISwitch) {
-        rowDescriptor.value = switchView.on as Bool
+        if switchView.on != rowDescriptor.value {
+            rowDescriptor.value = switchView.on as Bool
+        }
     }
 }
