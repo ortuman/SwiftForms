@@ -90,7 +90,9 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     }
     
     /// MARK: UITextViewDelegate
-    func textViewDidEndEditing(textView: UITextView) {
-        rowDescriptor.value = textView.text
+    
+    func textViewDidChange(textView: UITextView) {
+        let trimmedText = textView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        rowDescriptor.value = countElements(trimmedText) > 0 ? trimmedText : nil
     }
 }
