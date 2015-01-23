@@ -141,6 +141,8 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
             }
         } as TitleFormatterClosure
         
+        row.value = "M"
+        
         section5.addRow(row)
 
         row = FormRowDescriptor(tag: Static.birthday, rowType: .Date, title: "Birthday")

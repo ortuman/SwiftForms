@@ -35,6 +35,12 @@ class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDataSourc
         
         if rowDescriptor.value != nil {
             valueLabel.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)
+            if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
+                let index = options.indexOfObject(rowDescriptor.value)
+                if index != NSNotFound {
+                    picker.selectRow(index, inComponent: 0, animated: false)
+                }
+            }
         }
     }
     
