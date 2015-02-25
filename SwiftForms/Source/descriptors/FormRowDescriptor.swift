@@ -10,6 +10,7 @@ import UIKit
 
 enum FormRowType {
     case Unknown
+    case Label
     case Text
     case URL
     case Number
