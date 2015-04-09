@@ -114,7 +114,7 @@ class FormRowDescriptor: NSObject {
     
     func titleForOptionAtIndex(index: Int) -> String! {
         if let options = configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
-            return titleForOptionValue(options[index] as NSObject)
+            return titleForOptionValue(options[index] as! NSObject)
         }
         return nil
     }
@@ -124,7 +124,7 @@ class FormRowDescriptor: NSObject {
             return titleFormatter(optionValue)
         }
         else if optionValue is String {
-            return optionValue as String
+            return optionValue as! String
         }
         return "\(optionValue)"
     }

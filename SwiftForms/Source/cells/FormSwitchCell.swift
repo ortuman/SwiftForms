@@ -31,7 +31,7 @@ class FormSwitchCell: FormTitleCell {
         titleLabel.text = rowDescriptor.title
         
         if rowDescriptor.value != nil {
-            switchView.on = rowDescriptor.value as Bool
+            switchView.on = rowDescriptor.value as! Bool
         }
         else {
             switchView.on = false

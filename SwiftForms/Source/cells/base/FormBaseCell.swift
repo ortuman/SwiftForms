@@ -119,7 +119,7 @@ class FormBaseCell: UITableViewCell {
         }
         
         for visualConstraint in visualConstraints {
-            let constraints = NSLayoutConstraint.constraintsWithVisualFormat(visualConstraint as String, options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+            let constraints = NSLayoutConstraint.constraintsWithVisualFormat(visualConstraint as! String, options: NSLayoutFormatOptions(0), metrics: nil, views: views)
             for constraint in constraints {
                 customConstraints.append(constraint)
             }
