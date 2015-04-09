@@ -72,7 +72,7 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
         
         if self.imageView!.image != nil {
             
-            if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
+            if titleLabel.text != nil && count(titleLabel.text!) > 0 {
                 return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
             }
             else {
@@ -80,7 +80,7 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
             }
         }
         else {
-            if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
+            if titleLabel.text != nil && count(titleLabel.text!) > 0 {
                 return ["H:|-16-[titleLabel]-[textField]-16-|"]
             }
             else {
@@ -93,6 +93,6 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     
     func textViewDidChange(textView: UITextView) {
         let trimmedText = textView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        rowDescriptor.value = countElements(trimmedText) > 0 ? trimmedText : nil
+        rowDescriptor.value = count(trimmedText) > 0 ? trimmedText : nil
     }
 }

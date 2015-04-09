@@ -53,7 +53,7 @@ class FormSegmentedControlCell: FormBaseCell {
         if rowDescriptor.value != nil {
             if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
                 for optionValue in options {
-                    if optionValue as NSObject == rowDescriptor.value {
+                    if optionValue as! NSObject == rowDescriptor.value {
                         segmentedControl.selectedSegmentIndex = idx
                         break
                     }
@@ -69,7 +69,7 @@ class FormSegmentedControlCell: FormBaseCell {
     
     override func defaultVisualConstraints() -> [String] {
         
-        if titleLabel.text != nil && countElements(titleLabel.text!) > 0 {
+        if titleLabel.text != nil && count(titleLabel.text!) > 0 {
             return ["H:|-16-[titleLabel]-16-[segmentedControl]-16-|"]
         }
         else {
@@ -92,7 +92,7 @@ class FormSegmentedControlCell: FormBaseCell {
         var idx = 0
         if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
             for optionValue in options {
-                segmentedControl.insertSegmentWithTitle(rowDescriptor.titleForOptionValue(optionValue as NSObject), atIndex: idx, animated: false)
+                segmentedControl.insertSegmentWithTitle(rowDescriptor.titleForOptionValue(optionValue as! NSObject), atIndex: idx, animated: false)
                 ++idx
             }
         }

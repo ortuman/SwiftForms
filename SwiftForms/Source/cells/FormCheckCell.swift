@@ -27,7 +27,7 @@ class FormCheckCell: FormTitleCell {
             rowDescriptor.value = false
         }
         
-        accessoryType = (rowDescriptor.value as Bool) ? .Checkmark : .None
+        accessoryType = (rowDescriptor.value as! Bool) ? .Checkmark : .None
     }
     
     override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
@@ -41,11 +41,11 @@ class FormCheckCell: FormTitleCell {
     
     private func check() {
         if rowDescriptor.value != nil {
-            rowDescriptor.value = !(rowDescriptor.value as Bool)
+            rowDescriptor.value = !(rowDescriptor.value as! Bool)
         }
         else {
             rowDescriptor.value = true
         }
-        accessoryType = (rowDescriptor.value as Bool) ? .Checkmark : .None
+        accessoryType = (rowDescriptor.value as! Bool) ? .Checkmark : .None
     }
 }
