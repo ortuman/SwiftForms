@@ -8,7 +8,7 @@ SwiftForms is a powerful and extremely flexible library written in Swift that al
 
 #####Here is an screenshot from an example application using SwiftForms
 
-![Screenshot of Example application](SwiftForms/Example.gif)
+![Screenshot of Example application](SwiftFormsApplication/Example.gif)
 
 How to create a form
 --------------------
