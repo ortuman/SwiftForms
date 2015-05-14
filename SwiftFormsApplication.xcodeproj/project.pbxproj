@@ -15,25 +15,25 @@
 		0CCA34311B04FBE0006D9666 /* SwiftForms.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CCA34301B04FBE0006D9666 /* SwiftForms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0CCA34431B04FBE0006D9666 /* SwiftForms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCA342C1B04FBDF006D9666 /* SwiftForms.framework */; };
 		0CCA34441B04FBE0006D9666 /* SwiftForms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCA342C1B04FBDF006D9666 /* SwiftForms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0CCA344C1B04FBFB006D9666 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34111B04FAD3006D9666 /* FormDescriptor.swift */; };
-		0CCA344D1B04FBFB006D9666 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34121B04FAD3006D9666 /* FormRowDescriptor.swift */; };
-		0CCA344E1B04FBFB006D9666 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34131B04FAD3006D9666 /* FormSectionDescriptor.swift */; };
-		0CCA344F1B04FC00006D9666 /* FormOptionsSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA340D1B04FAD3006D9666 /* FormOptionsSelectorController.swift */; };
-		0CCA34501B04FC00006D9666 /* FormSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA340E1B04FAD3006D9666 /* FormSelector.swift */; };
-		0CCA34511B04FC00006D9666 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA340F1B04FAD3006D9666 /* FormViewController.swift */; };
-		0CCA34521B04FC07006D9666 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34031B04FAD3006D9666 /* FormButtonCell.swift */; };
-		0CCA34531B04FC07006D9666 /* FormCheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34041B04FAD3006D9666 /* FormCheckCell.swift */; };
-		0CCA34541B04FC07006D9666 /* FormDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34051B04FAD3006D9666 /* FormDateCell.swift */; };
-		0CCA34551B04FC07006D9666 /* FormPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34061B04FAD3006D9666 /* FormPickerCell.swift */; };
-		0CCA34561B04FC07006D9666 /* FormSegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34071B04FAD3006D9666 /* FormSegmentedControlCell.swift */; };
-		0CCA34571B04FC07006D9666 /* FormSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34081B04FAD3006D9666 /* FormSelectorCell.swift */; };
-		0CCA34581B04FC07006D9666 /* FormSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34091B04FAD3006D9666 /* FormSwitchCell.swift */; };
-		0CCA34591B04FC07006D9666 /* FormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA340A1B04FAD3006D9666 /* FormTextFieldCell.swift */; };
-		0CCA345A1B04FC07006D9666 /* FormTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA340B1B04FAD3006D9666 /* FormTextViewCell.swift */; };
-		0CCA345B1B04FC0D006D9666 /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34001B04FAD3006D9666 /* FormBaseCell.swift */; };
-		0CCA345C1B04FC0D006D9666 /* FormTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34011B04FAD3006D9666 /* FormTitleCell.swift */; };
-		0CCA345D1B04FC0D006D9666 /* FormValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34021B04FAD3006D9666 /* FormValueCell.swift */; };
 		0CCA34611B0502B5006D9666 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CCA34601B0502B5006D9666 /* Launch.storyboard */; };
+		0CCA34781B050525006D9666 /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34641B050525006D9666 /* FormBaseCell.swift */; };
+		0CCA34791B050525006D9666 /* FormTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34651B050525006D9666 /* FormTitleCell.swift */; };
+		0CCA347A1B050525006D9666 /* FormValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34661B050525006D9666 /* FormValueCell.swift */; };
+		0CCA347B1B050525006D9666 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34671B050525006D9666 /* FormButtonCell.swift */; };
+		0CCA347C1B050525006D9666 /* FormCheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34681B050525006D9666 /* FormCheckCell.swift */; };
+		0CCA347D1B050525006D9666 /* FormDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34691B050525006D9666 /* FormDateCell.swift */; };
+		0CCA347E1B050525006D9666 /* FormPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346A1B050525006D9666 /* FormPickerCell.swift */; };
+		0CCA347F1B050525006D9666 /* FormSegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346B1B050525006D9666 /* FormSegmentedControlCell.swift */; };
+		0CCA34801B050525006D9666 /* FormSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346C1B050525006D9666 /* FormSelectorCell.swift */; };
+		0CCA34811B050525006D9666 /* FormSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346D1B050525006D9666 /* FormSwitchCell.swift */; };
+		0CCA34821B050525006D9666 /* FormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346E1B050525006D9666 /* FormTextFieldCell.swift */; };
+		0CCA34831B050525006D9666 /* FormTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346F1B050525006D9666 /* FormTextViewCell.swift */; };
+		0CCA34841B050525006D9666 /* FormOptionsSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34711B050525006D9666 /* FormOptionsSelectorController.swift */; };
+		0CCA34851B050525006D9666 /* FormSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34721B050525006D9666 /* FormSelector.swift */; };
+		0CCA34861B050525006D9666 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34731B050525006D9666 /* FormViewController.swift */; };
+		0CCA34871B050525006D9666 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34751B050525006D9666 /* FormDescriptor.swift */; };
+		0CCA34881B050525006D9666 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34761B050525006D9666 /* FormRowDescriptor.swift */; };
+		0CCA34891B050525006D9666 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34771B050525006D9666 /* FormSectionDescriptor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,30 +68,30 @@
 		0CCA33E11B04FA5A006D9666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CCA33E31B04FA5A006D9666 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0CCA33FC1B04FAD3006D9666 /* ExampleFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleFormViewController.swift; sourceTree = "<group>"; };
-		0CCA34001B04FAD3006D9666 /* FormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBaseCell.swift; sourceTree = "<group>"; };
-		0CCA34011B04FAD3006D9666 /* FormTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTitleCell.swift; sourceTree = "<group>"; };
-		0CCA34021B04FAD3006D9666 /* FormValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueCell.swift; sourceTree = "<group>"; };
-		0CCA34031B04FAD3006D9666 /* FormButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButtonCell.swift; sourceTree = "<group>"; };
-		0CCA34041B04FAD3006D9666 /* FormCheckCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCheckCell.swift; sourceTree = "<group>"; };
-		0CCA34051B04FAD3006D9666 /* FormDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDateCell.swift; sourceTree = "<group>"; };
-		0CCA34061B04FAD3006D9666 /* FormPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormPickerCell.swift; sourceTree = "<group>"; };
-		0CCA34071B04FAD3006D9666 /* FormSegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSegmentedControlCell.swift; sourceTree = "<group>"; };
-		0CCA34081B04FAD3006D9666 /* FormSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSelectorCell.swift; sourceTree = "<group>"; };
-		0CCA34091B04FAD3006D9666 /* FormSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSwitchCell.swift; sourceTree = "<group>"; };
-		0CCA340A1B04FAD3006D9666 /* FormTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextFieldCell.swift; sourceTree = "<group>"; };
-		0CCA340B1B04FAD3006D9666 /* FormTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextViewCell.swift; sourceTree = "<group>"; };
-		0CCA340D1B04FAD3006D9666 /* FormOptionsSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormOptionsSelectorController.swift; sourceTree = "<group>"; };
-		0CCA340E1B04FAD3006D9666 /* FormSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSelector.swift; sourceTree = "<group>"; };
-		0CCA340F1B04FAD3006D9666 /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
-		0CCA34111B04FAD3006D9666 /* FormDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDescriptor.swift; sourceTree = "<group>"; };
-		0CCA34121B04FAD3006D9666 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormRowDescriptor.swift; sourceTree = "<group>"; };
-		0CCA34131B04FAD3006D9666 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionDescriptor.swift; sourceTree = "<group>"; };
 		0CCA342C1B04FBDF006D9666 /* SwiftForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCA342F1B04FBE0006D9666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CCA34301B04FBE0006D9666 /* SwiftForms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftForms.h; sourceTree = "<group>"; };
 		0CCA343E1B04FBE0006D9666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CCA343F1B04FBE0006D9666 /* SwiftFormsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFormsTests.swift; sourceTree = "<group>"; };
 		0CCA34601B0502B5006D9666 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		0CCA34641B050525006D9666 /* FormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBaseCell.swift; sourceTree = "<group>"; };
+		0CCA34651B050525006D9666 /* FormTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTitleCell.swift; sourceTree = "<group>"; };
+		0CCA34661B050525006D9666 /* FormValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueCell.swift; sourceTree = "<group>"; };
+		0CCA34671B050525006D9666 /* FormButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButtonCell.swift; sourceTree = "<group>"; };
+		0CCA34681B050525006D9666 /* FormCheckCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCheckCell.swift; sourceTree = "<group>"; };
+		0CCA34691B050525006D9666 /* FormDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDateCell.swift; sourceTree = "<group>"; };
+		0CCA346A1B050525006D9666 /* FormPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormPickerCell.swift; sourceTree = "<group>"; };
+		0CCA346B1B050525006D9666 /* FormSegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSegmentedControlCell.swift; sourceTree = "<group>"; };
+		0CCA346C1B050525006D9666 /* FormSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSelectorCell.swift; sourceTree = "<group>"; };
+		0CCA346D1B050525006D9666 /* FormSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSwitchCell.swift; sourceTree = "<group>"; };
+		0CCA346E1B050525006D9666 /* FormTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextFieldCell.swift; sourceTree = "<group>"; };
+		0CCA346F1B050525006D9666 /* FormTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextViewCell.swift; sourceTree = "<group>"; };
+		0CCA34711B050525006D9666 /* FormOptionsSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormOptionsSelectorController.swift; sourceTree = "<group>"; };
+		0CCA34721B050525006D9666 /* FormSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSelector.swift; sourceTree = "<group>"; };
+		0CCA34731B050525006D9666 /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		0CCA34751B050525006D9666 /* FormDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDescriptor.swift; sourceTree = "<group>"; };
+		0CCA34761B050525006D9666 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormRowDescriptor.swift; sourceTree = "<group>"; };
+		0CCA34771B050525006D9666 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionDescriptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				0CCA33FC1B04FAD3006D9666 /* ExampleFormViewController.swift */,
-				0CCA33FD1B04FAD3006D9666 /* Source */,
 				0CCA33DC1B04FA5A006D9666 /* AppDelegate.swift */,
 				0CCA33DE1B04FA5A006D9666 /* ViewController.swift */,
 				0CCA33E01B04FA5A006D9666 /* Main.storyboard */,
@@ -155,66 +154,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0CCA33FD1B04FAD3006D9666 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				0CCA33FE1B04FAD3006D9666 /* cells */,
-				0CCA340C1B04FAD3006D9666 /* controllers */,
-				0CCA34101B04FAD3006D9666 /* descriptors */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		0CCA33FE1B04FAD3006D9666 /* cells */ = {
-			isa = PBXGroup;
-			children = (
-				0CCA33FF1B04FAD3006D9666 /* base */,
-				0CCA34031B04FAD3006D9666 /* FormButtonCell.swift */,
-				0CCA34041B04FAD3006D9666 /* FormCheckCell.swift */,
-				0CCA34051B04FAD3006D9666 /* FormDateCell.swift */,
-				0CCA34061B04FAD3006D9666 /* FormPickerCell.swift */,
-				0CCA34071B04FAD3006D9666 /* FormSegmentedControlCell.swift */,
-				0CCA34081B04FAD3006D9666 /* FormSelectorCell.swift */,
-				0CCA34091B04FAD3006D9666 /* FormSwitchCell.swift */,
-				0CCA340A1B04FAD3006D9666 /* FormTextFieldCell.swift */,
-				0CCA340B1B04FAD3006D9666 /* FormTextViewCell.swift */,
-			);
-			path = cells;
-			sourceTree = "<group>";
-		};
-		0CCA33FF1B04FAD3006D9666 /* base */ = {
-			isa = PBXGroup;
-			children = (
-				0CCA34001B04FAD3006D9666 /* FormBaseCell.swift */,
-				0CCA34011B04FAD3006D9666 /* FormTitleCell.swift */,
-				0CCA34021B04FAD3006D9666 /* FormValueCell.swift */,
-			);
-			path = base;
-			sourceTree = "<group>";
-		};
-		0CCA340C1B04FAD3006D9666 /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0CCA340D1B04FAD3006D9666 /* FormOptionsSelectorController.swift */,
-				0CCA340E1B04FAD3006D9666 /* FormSelector.swift */,
-				0CCA340F1B04FAD3006D9666 /* FormViewController.swift */,
-			);
-			path = controllers;
-			sourceTree = "<group>";
-		};
-		0CCA34101B04FAD3006D9666 /* descriptors */ = {
-			isa = PBXGroup;
-			children = (
-				0CCA34111B04FAD3006D9666 /* FormDescriptor.swift */,
-				0CCA34121B04FAD3006D9666 /* FormRowDescriptor.swift */,
-				0CCA34131B04FAD3006D9666 /* FormSectionDescriptor.swift */,
-			);
-			path = descriptors;
-			sourceTree = "<group>";
-		};
 		0CCA342D1B04FBE0006D9666 /* SwiftForms */ = {
 			isa = PBXGroup;
 			children = (
+				0CCA34621B050525006D9666 /* cells */,
+				0CCA34701B050525006D9666 /* controllers */,
+				0CCA34741B050525006D9666 /* descriptors */,
 				0CCA34301B04FBE0006D9666 /* SwiftForms.h */,
 				0CCA342E1B04FBE0006D9666 /* Supporting Files */,
 			);
@@ -244,6 +189,53 @@
 				0CCA343E1B04FBE0006D9666 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0CCA34621B050525006D9666 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				0CCA34631B050525006D9666 /* base */,
+				0CCA34671B050525006D9666 /* FormButtonCell.swift */,
+				0CCA34681B050525006D9666 /* FormCheckCell.swift */,
+				0CCA34691B050525006D9666 /* FormDateCell.swift */,
+				0CCA346A1B050525006D9666 /* FormPickerCell.swift */,
+				0CCA346B1B050525006D9666 /* FormSegmentedControlCell.swift */,
+				0CCA346C1B050525006D9666 /* FormSelectorCell.swift */,
+				0CCA346D1B050525006D9666 /* FormSwitchCell.swift */,
+				0CCA346E1B050525006D9666 /* FormTextFieldCell.swift */,
+				0CCA346F1B050525006D9666 /* FormTextViewCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		0CCA34631B050525006D9666 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				0CCA34641B050525006D9666 /* FormBaseCell.swift */,
+				0CCA34651B050525006D9666 /* FormTitleCell.swift */,
+				0CCA34661B050525006D9666 /* FormValueCell.swift */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		0CCA34701B050525006D9666 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0CCA34711B050525006D9666 /* FormOptionsSelectorController.swift */,
+				0CCA34721B050525006D9666 /* FormSelector.swift */,
+				0CCA34731B050525006D9666 /* FormViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		0CCA34741B050525006D9666 /* descriptors */ = {
+			isa = PBXGroup;
+			children = (
+				0CCA34751B050525006D9666 /* FormDescriptor.swift */,
+				0CCA34761B050525006D9666 /* FormRowDescriptor.swift */,
+				0CCA34771B050525006D9666 /* FormSectionDescriptor.swift */,
+			);
+			path = descriptors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,24 +360,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CCA34531B04FC07006D9666 /* FormCheckCell.swift in Sources */,
-				0CCA34511B04FC00006D9666 /* FormViewController.swift in Sources */,
-				0CCA344E1B04FBFB006D9666 /* FormSectionDescriptor.swift in Sources */,
-				0CCA344C1B04FBFB006D9666 /* FormDescriptor.swift in Sources */,
-				0CCA34521B04FC07006D9666 /* FormButtonCell.swift in Sources */,
-				0CCA34591B04FC07006D9666 /* FormTextFieldCell.swift in Sources */,
-				0CCA34551B04FC07006D9666 /* FormPickerCell.swift in Sources */,
-				0CCA345A1B04FC07006D9666 /* FormTextViewCell.swift in Sources */,
-				0CCA34571B04FC07006D9666 /* FormSelectorCell.swift in Sources */,
-				0CCA34541B04FC07006D9666 /* FormDateCell.swift in Sources */,
-				0CCA34561B04FC07006D9666 /* FormSegmentedControlCell.swift in Sources */,
-				0CCA34581B04FC07006D9666 /* FormSwitchCell.swift in Sources */,
-				0CCA345B1B04FC0D006D9666 /* FormBaseCell.swift in Sources */,
-				0CCA344D1B04FBFB006D9666 /* FormRowDescriptor.swift in Sources */,
-				0CCA344F1B04FC00006D9666 /* FormOptionsSelectorController.swift in Sources */,
-				0CCA34501B04FC00006D9666 /* FormSelector.swift in Sources */,
-				0CCA345C1B04FC0D006D9666 /* FormTitleCell.swift in Sources */,
-				0CCA345D1B04FC0D006D9666 /* FormValueCell.swift in Sources */,
+				0CCA34851B050525006D9666 /* FormSelector.swift in Sources */,
+				0CCA34791B050525006D9666 /* FormTitleCell.swift in Sources */,
+				0CCA34891B050525006D9666 /* FormSectionDescriptor.swift in Sources */,
+				0CCA34871B050525006D9666 /* FormDescriptor.swift in Sources */,
+				0CCA34781B050525006D9666 /* FormBaseCell.swift in Sources */,
+				0CCA34831B050525006D9666 /* FormTextViewCell.swift in Sources */,
+				0CCA34841B050525006D9666 /* FormOptionsSelectorController.swift in Sources */,
+				0CCA34861B050525006D9666 /* FormViewController.swift in Sources */,
+				0CCA347B1B050525006D9666 /* FormButtonCell.swift in Sources */,
+				0CCA34801B050525006D9666 /* FormSelectorCell.swift in Sources */,
+				0CCA34811B050525006D9666 /* FormSwitchCell.swift in Sources */,
+				0CCA347C1B050525006D9666 /* FormCheckCell.swift in Sources */,
+				0CCA347A1B050525006D9666 /* FormValueCell.swift in Sources */,
+				0CCA347F1B050525006D9666 /* FormSegmentedControlCell.swift in Sources */,
+				0CCA34821B050525006D9666 /* FormTextFieldCell.swift in Sources */,
+				0CCA347E1B050525006D9666 /* FormPickerCell.swift in Sources */,
+				0CCA347D1B050525006D9666 /* FormDateCell.swift in Sources */,
+				0CCA34881B050525006D9666 /* FormRowDescriptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +565,7 @@
 				0CCA33F81B04FA5A006D9666 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0CCA34451B04FBE0006D9666 /* Build configuration list for PBXNativeTarget "SwiftForms" */ = {
 			isa = XCConfigurationList;
@@ -581,6 +574,7 @@
 				0CCA34471B04FBE0006D9666 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
