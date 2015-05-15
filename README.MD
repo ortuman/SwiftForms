@@ -1,4 +1,8 @@
 
+[![Version](https://img.shields.io/badge/pod-0.8-blue.svg](http://cocoadocs.org/docsets/SwiftForms)
+[![License](https://img.shields.io/badge/license-MIT-gray.svg)](http://cocoadocs.org/docsets/SwiftForms)
+[![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](http://cocoadocs.org/docsets/SwiftForms)
+
 SwiftForms
 ==========
 
