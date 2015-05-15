@@ -89,9 +89,37 @@ Requirements
 
 * iOS 7.0 and above
 
-Installation
----------------------
-Swift projects is currently not supported by Cocoapods. Until support is available you should just clone the repository and drag the source folder into your project to use SwiftForms. 
+## Installation
+
+> **Embedded frameworks require a minimum deployment target of iOS 8 or OS X Mavericks.**
+>
+> To use SwiftForms with a project targeting iOS 7, you must include all Swift files located inside the `SwiftForms` directory directly in your project.
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects.
+
+CocoaPods 0.36 adds supports for Swift and embedded frameworks. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate SwiftForms into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'SwiftForms'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
 
 Copyright
 ---------
