@@ -47,7 +47,7 @@ public class FormDescriptor: NSObject {
         return formValues.copy() as! NSDictionary
     }
     
-    func validateForm() -> FormRowDescriptor! {
+    public func validateForm() -> FormRowDescriptor! {
         for section in sections {
             for row in section.rows {
                 if let required = row.configuration[FormRowDescriptor.Configuration.Required] as? Bool {
