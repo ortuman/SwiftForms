@@ -201,6 +201,7 @@ public class FormViewController : UITableViewController {
             Static.defaultCellClasses[FormRowType.Date] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.Time] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.DateAndTime] = FormDateCell.self
+            Static.defaultCellClasses[FormRowType.Stepper] = FormStepperCell.self
             Static.defaultCellClasses[FormRowType.MultipleSelector] = FormSelectorCell.self
             Static.defaultCellClasses[FormRowType.MultilineText] = FormTextViewCell.self
         }

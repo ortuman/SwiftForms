@@ -30,6 +30,7 @@ public enum FormRowType {
     case Date
     case Time
     case DateAndTime
+    case Stepper
     case MultipleSelector
     case MultilineText
 }
@@ -53,6 +54,10 @@ public class FormRowDescriptor: NSObject {
         
         public static let WillUpdateClosure = "FormRowDescriptorConfigurationWillUpdateClosure"
         public static let DidUpdateClosure = "FormRowDescriptorConfigurationDidUpdateClosure"
+        
+        public static let MaximumValue = "FormRowDescriptorConfigurationMaximumValue"
+        public static let MinimumValue = "FormRowDescriptorConfigurationMinimumValue"
+        public static let Steps = "FormRowDescriptorConfigurationSteps"
         
         public static let VisualConstraintsClosure = "FormRowDescriptorConfigurationVisualConstraintsClosure"
         

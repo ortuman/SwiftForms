@@ -26,6 +26,7 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         static let birthday = "birthday"
         static let categories = "categories"
         static let button = "button"
+        static let stepper = "stepper"
         static let textView = "textview"
     }
     
@@ -171,16 +172,24 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         section5.addRow(row)
         
         let section6 = FormSectionDescriptor()
-        row = FormRowDescriptor(tag: Static.textView, rowType: .MultilineText, title: "Notes")
-        section6.headerTitle = "Multiline TextView"
+        row = FormRowDescriptor(tag: Static.stepper, rowType: .Stepper, title: "Step count")
+        row.configuration[FormRowDescriptor.Configuration.MaximumValue] = 200.0
+        row.configuration[FormRowDescriptor.Configuration.MinimumValue] = 20.0
+        row.configuration[FormRowDescriptor.Configuration.Steps] = 2.0
+        section6.headerTitle = "Stepper"
         section6.addRow(row)
         
         let section7 = FormSectionDescriptor()
-        
-        row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Dismiss")
+        row = FormRowDescriptor(tag: Static.textView, rowType: .MultilineText, title: "Notes")
+        section7.headerTitle = "Multiline TextView"
         section7.addRow(row)
         
-        form.sections = [section1, section2, section3, section4, section5, section6, section7]
+        let section8 = FormSectionDescriptor()
+        
+        row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Dismiss")
+        section8.addRow(row)
+        
+        form.sections = [section1, section2, section3, section4, section5, section6, section7, section8]
         
         self.form = form
     }
