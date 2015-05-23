@@ -8,10 +8,6 @@
 
 import UIKit
 
-@objc public protocol FormViewControllerDelegate: NSObjectProtocol {
-    optional func formViewController(controller: FormViewController, didSelectRowDescriptor: FormRowDescriptor)
-}
-
 public class FormViewController : UITableViewController {
 
     /// MARK: Types
@@ -24,8 +20,6 @@ public class FormViewController : UITableViewController {
     /// MARK: Properties
     
     public var form: FormDescriptor!
-    
-    public weak var delegate: FormViewControllerDelegate?
     
     /// MARK: Init
     
@@ -163,20 +157,11 @@ public class FormViewController : UITableViewController {
             }
         }
         
-        delegate?.formViewController?(self, didSelectRowDescriptor: rowDescriptor)
+        if let didSelectClosure = rowDescriptor.configuration[FormRowDescriptor.Configuration.DidSelectClosure] as? DidSelectClosure {
+            didSelectClosure()
+        }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    /// MARK: Private interface
-    
-    private class func isSelectionableRowDescriptor(rowType: FormRowType) -> Bool {
-        switch( rowType ) {
-        case .Button, .BooleanCheck, .Picker, .Date, .Time, .DateAndTime:
-            return true
-        default:
-            return false
-        }
     }
     
     private class func defaultCellClassForRowType(rowType: FormRowType) -> FormBaseCell.Type {
@@ -202,6 +187,7 @@ public class FormViewController : UITableViewController {
             Static.defaultCellClasses[FormRowType.Time] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.DateAndTime] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.Stepper] = FormStepperCell.self
+            Static.defaultCellClasses[FormRowType.Slider] = FormSliderCell.self
             Static.defaultCellClasses[FormRowType.MultipleSelector] = FormSelectorCell.self
             Static.defaultCellClasses[FormRowType.MultilineText] = FormTextViewCell.self
         }

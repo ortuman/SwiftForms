@@ -31,10 +31,12 @@ public enum FormRowType {
     case Time
     case DateAndTime
     case Stepper
+    case Slider
     case MultipleSelector
     case MultilineText
 }
 
+public typealias DidSelectClosure = (Void) -> Void
 public typealias UpdateClosure = (FormRowDescriptor) -> Void
 public typealias TitleFormatterClosure = (NSObject) -> String!
 public typealias VisualConstraintsClosure = (FormBaseCell) -> NSArray
@@ -58,6 +60,10 @@ public class FormRowDescriptor: NSObject {
         public static let MaximumValue = "FormRowDescriptorConfigurationMaximumValue"
         public static let MinimumValue = "FormRowDescriptorConfigurationMinimumValue"
         public static let Steps = "FormRowDescriptorConfigurationSteps"
+        
+        public static let Continuous = "FormRowDescriptorConfigurationContinuous"
+        
+        public static let DidSelectClosure = "FormRowDescriptorConfigurationDidSelectClosure"
         
         public static let VisualConstraintsClosure = "FormRowDescriptorConfigurationVisualConstraintsClosure"
         

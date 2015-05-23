@@ -35,6 +35,7 @@
 		0CCA34881B050525006D9666 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34761B050525006D9666 /* FormRowDescriptor.swift */; };
 		0CCA34891B050525006D9666 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34771B050525006D9666 /* FormSectionDescriptor.swift */; };
 		0CDBB4F11B10699A00BE6ACF /* FormStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4F01B10699A00BE6ACF /* FormStepperCell.swift */; };
+		0CDBB4F31B10724600BE6ACF /* FormSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4F21B10724600BE6ACF /* FormSliderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		0CCA34761B050525006D9666 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormRowDescriptor.swift; sourceTree = "<group>"; };
 		0CCA34771B050525006D9666 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionDescriptor.swift; sourceTree = "<group>"; };
 		0CDBB4F01B10699A00BE6ACF /* FormStepperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormStepperCell.swift; sourceTree = "<group>"; };
+		0CDBB4F21B10724600BE6ACF /* FormSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSliderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				0CCA346E1B050525006D9666 /* FormTextFieldCell.swift */,
 				0CCA346F1B050525006D9666 /* FormTextViewCell.swift */,
 				0CDBB4F01B10699A00BE6ACF /* FormStepperCell.swift */,
+				0CDBB4F21B10724600BE6ACF /* FormSliderCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			files = (
 				0CCA34851B050525006D9666 /* FormSelector.swift in Sources */,
 				0CCA34791B050525006D9666 /* FormTitleCell.swift in Sources */,
+				0CDBB4F31B10724600BE6ACF /* FormSliderCell.swift in Sources */,
 				0CCA34891B050525006D9666 /* FormSectionDescriptor.swift in Sources */,
 				0CCA34871B050525006D9666 /* FormDescriptor.swift in Sources */,
 				0CCA34781B050525006D9666 /* FormBaseCell.swift in Sources */,

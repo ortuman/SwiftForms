@@ -9,7 +9,7 @@
 import UIKit
 import SwiftForms
 
-class ExampleFormViewController: FormViewController, FormViewControllerDelegate {
+class ExampleFormViewController: FormViewController {
     
     struct Static {
         static let nameTag = "name"
@@ -27,6 +27,7 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         static let categories = "categories"
         static let button = "button"
         static let stepper = "stepper"
+        static let slider = "slider"
         static let textView = "textview"
     }
     
@@ -37,7 +38,6 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "submit:")
     }
     
@@ -172,11 +172,16 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         section5.addRow(row)
         
         let section6 = FormSectionDescriptor()
+        section6.headerTitle = "Stepper & Slider"
+        
         row = FormRowDescriptor(tag: Static.stepper, rowType: .Stepper, title: "Step count")
         row.configuration[FormRowDescriptor.Configuration.MaximumValue] = 200.0
         row.configuration[FormRowDescriptor.Configuration.MinimumValue] = 20.0
         row.configuration[FormRowDescriptor.Configuration.Steps] = 2.0
-        section6.headerTitle = "Stepper"
+        section6.addRow(row)
+        
+        row = FormRowDescriptor(tag: Static.slider, rowType: .Slider, title: "Slider")
+        row.value = 0.5
         section6.addRow(row)
         
         let section7 = FormSectionDescriptor()
@@ -187,18 +192,13 @@ class ExampleFormViewController: FormViewController, FormViewControllerDelegate 
         let section8 = FormSectionDescriptor()
         
         row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Dismiss")
+        row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
+            self.view.endEditing(true)
+        } as DidSelectClosure
         section8.addRow(row)
         
         form.sections = [section1, section2, section3, section4, section5, section6, section7, section8]
         
         self.form = form
-    }
-    
-    /// MARK: FormViewControllerDelegate
-    
-    func formViewController(controller: FormViewController, didSelectRowDescriptor rowDescriptor: FormRowDescriptor) {
-        if rowDescriptor.tag == Static.button {
-            self.view.endEditing(true)
-        }
     }
 }
