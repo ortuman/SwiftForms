@@ -95,7 +95,7 @@ Requirements
 
 ## Installation
 
-> **Embedded frameworks require a minimum deployment target of iOS 8 or OS X Mavericks.**
+> **Embedded frameworks require a minimum deployment target of iOS 8.**
 >
 > To use SwiftForms with a project targeting iOS 7, you must include all Swift files located inside the `SwiftForms` directory directly in your project.
 
