@@ -125,6 +125,22 @@ Then, run the following command:
 $ pod install
 ```
 
+### Carthage
+
+Simply add the following line to your `Cartfile`:
+
+```
+github "ortuman/SwiftForms"
+```
+
+Then run:
+
+```bash
+$ carthage update
+```
+
+For more information on [Carthage](https://github.com/Carthage/Carthage) see the [README](https://github.com/Carthage/Carthage/blob/master/README.md)
+
 Copyright
 ---------
 
