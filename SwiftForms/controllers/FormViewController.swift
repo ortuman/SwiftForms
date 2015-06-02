@@ -87,6 +87,7 @@ public class FormViewController : UITableViewController {
                 ++rowIndex
             }
             ++sectionIndex
+            rowIndex = 0
         }
     }
     
