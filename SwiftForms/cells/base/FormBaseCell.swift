@@ -12,7 +12,7 @@ public class FormBaseCell: UITableViewCell {
 
     /// MARK: Properties
     
-    var rowDescriptor: FormRowDescriptor! {
+    public var rowDescriptor: FormRowDescriptor! {
         didSet {
             self.update()
         }
