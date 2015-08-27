@@ -73,7 +73,7 @@ public class FormRowDescriptor: NSObject {
         
         public static let SelectorControllerClass = "FormRowDescriptorConfigurationSelectorControllerClass"
         
-        public static let AllowsMultipleSelection = "FormRowDescriptorConfigurationSelectorControllerClass"
+        public static let AllowsMultipleSelection = "FormRowDescriptorConfigurationAllowsMultipleSelection"
         
         public static let ShowsInputToolbar = "FormRowDescriptorConfigurationShowsInputToolbar"
         
