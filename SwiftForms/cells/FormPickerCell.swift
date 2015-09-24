@@ -65,7 +65,7 @@ public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDa
     
     /// MARK: UIPickerViewDelegate
     
-    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return rowDescriptor.titleForOptionAtIndex(row)
     }
     
