@@ -23,14 +23,14 @@ public class FormDescriptor: NSObject {
     }
     
     public func removeSection(section: FormSectionDescriptor) {
-        if let index = find(sections, section) {
+        if let index = sections.indexOf(section) {
             sections.removeAtIndex(index)
         }
     }
     
     public func formValues() -> NSDictionary {
         
-        var formValues = NSMutableDictionary()
+        let formValues = NSMutableDictionary()
 
         for section in sections {
             for row in section.rows {

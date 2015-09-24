@@ -26,8 +26,8 @@ public class FormTextFieldCell: FormBaseCell {
         
         selectionStyle = .None
         
-        titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textField.setTranslatesAutoresizingMaskIntoConstraints(false)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        textField.translatesAutoresizingMaskIntoConstraints = false
 
         titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         textField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
@@ -119,7 +119,7 @@ public class FormTextFieldCell: FormBaseCell {
         
         if self.imageView!.image != nil {
             
-            if titleLabel.text != nil && count(titleLabel.text!) > 0 {
+            if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
                 return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
             }
             else {
@@ -127,7 +127,7 @@ public class FormTextFieldCell: FormBaseCell {
             }
         }
         else {
-            if titleLabel.text != nil && count(titleLabel.text!) > 0 {
+            if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
                 return ["H:|-16-[titleLabel]-[textField]-16-|"]
             }
             else {
@@ -147,7 +147,7 @@ public class FormTextFieldCell: FormBaseCell {
     /// MARK: Actions
     
     internal func editingChanged(sender: UITextField) {
-        let trimmedText = sender.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        rowDescriptor.value = count(trimmedText) > 0 ? trimmedText : nil
+        let trimmedText = sender.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        rowDescriptor.value = trimmedText.characters.count > 0 ? trimmedText : nil
     }
 }
