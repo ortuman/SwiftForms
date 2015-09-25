@@ -1,5 +1,5 @@
 
-[![Version](https://img.shields.io/badge/pod-1.0-blue.svg)](http://cocoadocs.org/docsets/SwiftForms)
+[![Version](https://img.shields.io/badge/pod-1.0.2-blue.svg)](http://cocoadocs.org/docsets/SwiftForms)
 [![License](https://img.shields.io/badge/license-MIT-gray.svg)](http://cocoadocs.org/docsets/SwiftForms)
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](http://cocoadocs.org/docsets/SwiftForms)
 
