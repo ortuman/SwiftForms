@@ -1,5 +1,7 @@
 
 [![Version](https://img.shields.io/badge/pod-1.0.2-blue.svg)](http://cocoadocs.org/docsets/SwiftForms)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 [![License](https://img.shields.io/badge/license-MIT-gray.svg)](http://cocoadocs.org/docsets/SwiftForms)
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](http://cocoadocs.org/docsets/SwiftForms)
 
@@ -124,6 +126,22 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
+
+### Carthage
+
+Simply add the following line to your `Cartfile`:
+
+```
+github "ortuman/SwiftForms"
+```
+
+Then run:
+
+```bash
+$ carthage update
+```
+
+For more information on [Carthage](https://github.com/Carthage/Carthage) see the [README](https://github.com/Carthage/Carthage/blob/master/README.md)
 
 Copyright
 ---------
