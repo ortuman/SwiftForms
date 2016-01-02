@@ -10,21 +10,21 @@ import UIKit
 
 public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
 
-    /// MARK: Cell views
+    // MARK: Cell views
     
     public let titleLabel = UILabel()
     public let textField = UITextView()
     
-    /// MARK: Properties
+    // MARK: Properties
     
     private var customConstraints: [AnyObject]!
     
-    /// MARK: Class Funcs
+    // MARK: Class Funcs
     public override class func formRowCellHeight() -> CGFloat {
         return 110.0
     }
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -90,7 +90,7 @@ public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
         }
     }
     
-    /// MARK: UITextViewDelegate
+    // MARK: UITextViewDelegate
     
     public func textViewDidChange(textView: UITextView) {
         let trimmedText = textView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())

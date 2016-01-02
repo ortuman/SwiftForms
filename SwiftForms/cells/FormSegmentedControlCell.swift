@@ -10,16 +10,16 @@ import UIKit
 
 public class FormSegmentedControlCell: FormBaseCell {
     
-    /// MARK: Cell views
+    // MARK: Cell views
     
     public let titleLabel = UILabel()
     public let segmentedControl = UISegmentedControl()
     
-    /// MARK: Properties
+    // MARK: Properties
     
     private var customConstraints: [AnyObject]!
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -77,7 +77,7 @@ public class FormSegmentedControlCell: FormBaseCell {
         }
     }
     
-    /// MARK: Actions
+    // MARK: Actions
     
     internal func valueChanged(sender: UISegmentedControl) {
         let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray
@@ -85,7 +85,7 @@ public class FormSegmentedControlCell: FormBaseCell {
         rowDescriptor.value = optionValue
     }
     
-    /// MARK: Private
+    // MARK: Private
     
     private func updateSegmentedControl() {
         segmentedControl.removeAllSegments()

@@ -10,7 +10,7 @@ import UIKit
 
 public class FormBaseCell: UITableViewCell {
 
-    /// MARK: Properties
+    // MARK: Properties
     
     public var rowDescriptor: FormRowDescriptor! {
         didSet {
@@ -22,7 +22,7 @@ public class FormBaseCell: UITableViewCell {
     
     private var customConstraints: [NSLayoutConstraint] = []
     
-    /// MARK: Init
+    // MARK: Init
     
     public required override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,7 +32,7 @@ public class FormBaseCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    /// MARK: Public interface
+    // MARK: Public interface
     
     public func configure() {
         /// override
@@ -87,7 +87,7 @@ public class FormBaseCell: UITableViewCell {
     public class func formViewController(formViewController: FormViewController, didSelectRow: FormBaseCell) {
     }
     
-    /// MARK: Constraints
+    // MARK: Constraints
     
     public override func updateConstraints() {
         

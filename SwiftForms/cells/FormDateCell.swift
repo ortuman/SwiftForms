@@ -10,13 +10,13 @@ import UIKit
 
 public class FormDateCell: FormValueCell {
 
-    /// MARK: Properties
+    // MARK: Properties
     
     private let datePicker = UIDatePicker()
     private let hiddenTextField = UITextField(frame: CGRectZero)
     private let defaultDateFormatter = NSDateFormatter()
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -81,7 +81,7 @@ public class FormDateCell: FormValueCell {
         return true
     }
     
-    /// MARK: Actions
+    // MARK: Actions
     
     internal func valueChanged(sender: UIDatePicker) {
         rowDescriptor.value = sender.date
@@ -89,7 +89,7 @@ public class FormDateCell: FormValueCell {
         update()
     }
     
-    /// MARK: Private interface
+    // MARK: Private interface
     
     private func getDateFormatter() -> NSDateFormatter {
         

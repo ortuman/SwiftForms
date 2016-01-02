@@ -10,7 +10,7 @@ import UIKit
 
 public class FormSelectorCell: FormValueCell {
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func update() {
         super.update()

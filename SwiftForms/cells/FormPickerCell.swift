@@ -10,12 +10,12 @@ import UIKit
 
 public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    /// MARK: Properties
+    // MARK: Properties
     
     private let picker = UIPickerView()
     private let hiddenTextField = UITextField(frame: CGRectZero)
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -63,7 +63,7 @@ public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDa
 		}
     }
     
-    /// MARK: UIPickerViewDelegate
+    // MARK: UIPickerViewDelegate
     
     public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return rowDescriptor.titleForOptionAtIndex(row)
@@ -76,7 +76,7 @@ public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDa
         valueLabel.text = rowDescriptor.titleForOptionValue(optionValue!)
     }
     
-    /// MARK: UIPickerViewDataSource
+    // MARK: UIPickerViewDataSource
     
     public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1

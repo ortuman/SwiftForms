@@ -10,11 +10,11 @@ import UIKit
 
 public class FormSwitchCell: FormTitleCell {
 
-    /// MARK: Cell views
+    // MARK: Cell views
     
     public let switchView = UISwitch()
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -39,7 +39,7 @@ public class FormSwitchCell: FormTitleCell {
         }
     }
     
-    /// MARK: Actions
+    // MARK: Actions
     
     internal func valueChanged(_: UISwitch) {
         if switchView.on != rowDescriptor.value {

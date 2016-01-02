@@ -10,7 +10,7 @@ import UIKit
 
 public class FormCheckCell: FormTitleCell {
 
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -37,7 +37,7 @@ public class FormCheckCell: FormTitleCell {
         }
     }
     
-    /// MARK: Private interface
+    // MARK: Private interface
     
     private func check() {
         if rowDescriptor.value != nil {

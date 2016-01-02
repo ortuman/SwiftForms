@@ -8,12 +8,12 @@
 
 public class FormStepperCell: FormTitleCell {
 
-    /// MARK: Cell views
+    // MARK: Cell views
     
     public let stepperView = UIStepper()
     public let countLabel = UILabel()
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -80,7 +80,7 @@ public class FormStepperCell: FormTitleCell {
         return constraints
     }
     
-    /// MARK: Actions
+    // MARK: Actions
     
     internal func valueChanged(_: UISwitch) {
         rowDescriptor.value = stepperView.value

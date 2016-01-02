@@ -41,9 +41,9 @@ public typealias UpdateClosure = (FormRowDescriptor) -> Void
 public typealias TitleFormatterClosure = (NSObject) -> String!
 public typealias VisualConstraintsClosure = (FormBaseCell) -> NSArray
 
-public class FormRowDescriptor: NSObject {
+public struct FormRowDescriptor {
 
-    /// MARK: Types
+    // MARK: Types
     
     public struct Configuration {
         public static let Required = "FormRowDescriptorConfigurationRequired"
@@ -80,11 +80,11 @@ public class FormRowDescriptor: NSObject {
         public static let DateFormatter = "FormRowDescriptorConfigurationDateFormatter"
     }
     
-    /// MARK: Properties
+    // MARK: Properties
     
-    public var title: String!
-    public var rowType: FormRowType = .Unknown
-    public var tag: String!
+    public let tag: String?
+    public let title: String?
+    public let rowType: FormRowType
 
     public var value: NSObject! {
         willSet {
@@ -99,43 +99,36 @@ public class FormRowDescriptor: NSObject {
         }
     }
     
-    public var configuration: [NSObject : Any] = [:]
+    public var configuration: [String : Any] = [:]
     
-    /// MARK: Init
+    // MARK: Init
     
-    public override init() {
-        super.init()
-        configuration[Configuration.Required] = true
-        configuration[Configuration.AllowsMultipleSelection] = false
-        configuration[Configuration.ShowsInputToolbar] = false
-    }
-    
-    public convenience init(tag: String, rowType: FormRowType, title: String, placeholder: String! = nil) {
-        self.init()
+    public init(tag: String, rowType: FormRowType, title: String, placeholder: String? = nil) {
         self.tag = tag
         self.rowType = rowType
         self.title = title
         
         if placeholder != nil {
-            configuration[FormRowDescriptor.Configuration.Placeholder] = placeholder
+            configuration[FormRowDescriptor.Configuration.Placeholder] = placeholder!
         }
+        
+        configuration[Configuration.Required] = true
+        configuration[Configuration.AllowsMultipleSelection] = false
+        configuration[Configuration.ShowsInputToolbar] = false
     }
     
-    /// MARK: Public interface
+    // MARK: Public interface
     
-    public func titleForOptionAtIndex(index: Int) -> String! {
+    public func titleForOptionAtIndex(index: Int) -> String? {
         if let options = configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
             return titleForOptionValue(options[index] as! NSObject)
         }
         return nil
     }
     
-    public func titleForOptionValue(optionValue: NSObject) -> String! {
+    public func titleForOptionValue(optionValue: NSObject) -> String {
         if let titleFormatter = configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] as? TitleFormatterClosure {
             return titleFormatter(optionValue)
-        }
-        else if optionValue is String {
-            return optionValue as! String
         }
         return "\(optionValue)"
     }

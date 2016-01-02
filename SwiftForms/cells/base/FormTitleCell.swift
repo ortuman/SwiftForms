@@ -10,11 +10,11 @@ import UIKit
 
 public class FormTitleCell: FormBaseCell {
 
-    /// MARK: Cell views
+    // MARK: Cell views
     
     public let titleLabel = UILabel()
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()

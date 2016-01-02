@@ -10,7 +10,7 @@ import UIKit
 
 public class FormButtonCell: FormTitleCell {
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -19,6 +19,6 @@ public class FormButtonCell: FormTitleCell {
     
     public override func update() {
         super.update()
-        titleLabel.text = rowDescriptor.title as String
+        titleLabel.text = rowDescriptor.title
     }
 }

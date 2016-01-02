@@ -8,11 +8,11 @@
 
 public class FormSliderCell: FormTitleCell {
     
-    /// MARK: Cell views
+    // MARK: Cell views
     
     public let sliderView = UISlider()
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -73,7 +73,7 @@ public class FormSliderCell: FormTitleCell {
         return constraints
     }
     
-    /// MARK: Actions
+    // MARK: Actions
     
     internal func valueChanged(_: UISlider) {
         rowDescriptor.value = sliderView.value

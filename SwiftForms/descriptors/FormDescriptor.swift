@@ -8,29 +8,33 @@
 
 import UIKit
 
-public class FormDescriptor: NSObject {
+public struct FormDescriptor {
 
-    /// MARK: Properties
+    // MARK: Properties
     
-    public var title: String!
-    
+    public let title: String
     public var sections: [FormSectionDescriptor] = []
     
-    /// MARK: Public
+    // MARK: Init
     
-    public func addSection(section: FormSectionDescriptor) {
+    public init(title: String) {
+        self.title = title
+    }
+    
+    // MARK: Public
+    
+    public mutating func addSection(section: FormSectionDescriptor) {
         sections.append(section)
     }
     
-    public func removeSection(section: FormSectionDescriptor) {
-        if let index = sections.indexOf(section) {
-            sections.removeAtIndex(index)
-        }
+    public mutating func removeSectionAtIndex(index: Int) throws {
+        guard index >= 0 && index < sections.count - 1 else { throw FormErrorType.SectionOutOfIndex }
+        sections.removeAtIndex(index)
     }
     
-    public func formValues() -> NSDictionary {
+    public func formValues() -> [String : AnyObject] {
         
-        let formValues = NSMutableDictionary()
+        var formValues: [String : AnyObject] = [:]
 
         for section in sections {
             for row in section.rows {
@@ -44,10 +48,10 @@ public class FormDescriptor: NSObject {
                 }
             }
         }
-        return formValues.copy() as! NSDictionary
+        return formValues
     }
     
-    public func validateForm() -> FormRowDescriptor! {
+    public func validateForm() -> FormRowDescriptor? {
         for section in sections {
             for row in section.rows {
                 if let required = row.configuration[FormRowDescriptor.Configuration.Required] as? Bool {

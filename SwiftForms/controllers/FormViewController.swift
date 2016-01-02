@@ -10,18 +10,18 @@ import UIKit
 
 public class FormViewController : UITableViewController {
 
-    /// MARK: Types
+    // MARK: Types
     
     private struct Static {
         static var onceDefaultCellClass: dispatch_once_t = 0
         static var defaultCellClasses: [FormRowType : FormBaseCell.Type] = [:]
     }
     
-    /// MARK: Properties
+    // MARK: Properties
     
     public var form: FormDescriptor!
     
-    /// MARK: Init
+    // MARK: Init
     
     public convenience init() {
         self.init(style: .Grouped)
@@ -49,7 +49,7 @@ public class FormViewController : UITableViewController {
     private func baseInit() {
     }
     
-    /// MARK: View life cycle
+    // MARK: View life cycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ public class FormViewController : UITableViewController {
         navigationItem.title = form.title
     }
     
-    /// MARK: Public interface
+    // MARK: Public interface
     
     public func valueForTag(tag: String) -> NSObject! {
         for section in form.sections {
@@ -72,26 +72,20 @@ public class FormViewController : UITableViewController {
     
     public func setValue(value: NSObject, forTag tag: String) {
         
-        var sectionIndex = 0
-        var rowIndex = 0
-        
-        for section in form.sections {
-            for row in section.rows {
+        for (sectionIndex, section) in form.sections.enumerate() {
+            for (rowIndex, row) in section.rows.enumerate() {
                 if row.tag == tag {
-                    row.value = value
+                    form.sections[sectionIndex].rows[rowIndex].value = value
                     if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: sectionIndex)) as? FormBaseCell {
                         cell.update()
                     }
                     return
                 }
-                ++rowIndex
             }
-            ++sectionIndex
-            rowIndex = 0
         }
     }
     
-    /// MARK: UITableViewDataSource
+    // MARK: UITableViewDataSource
     
     public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return form.sections.count
@@ -136,7 +130,7 @@ public class FormViewController : UITableViewController {
         return form.sections[section].footerTitle
     }
     
-    /// MARK: UITableViewDelegate
+    // MARK: UITableViewDelegate
     
     public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 

@@ -10,16 +10,16 @@ import UIKit
 
 public class FormValueCell: FormBaseCell {
     
-    /// MARK: Cell views
+    // MARK: Cell views
     
     public let titleLabel = UILabel()
     public let valueLabel = UILabel()
     
-    /// MARK: Properties
+    // MARK: Properties
     
     private var customConstraints: [AnyObject]!
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()

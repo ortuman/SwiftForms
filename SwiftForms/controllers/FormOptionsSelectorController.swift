@@ -10,11 +10,11 @@ import UIKit
 
 public class FormOptionsSelectorController: UITableViewController, FormSelector {
 
-    /// MARK: FormSelector
+    // MARK: FormSelector
     
     public var formCell: FormBaseCell!
     
-    /// MARK: Init 
+    // MARK: Init
     
     public init() {
         super.init(style: .Grouped)
@@ -33,7 +33,7 @@ public class FormOptionsSelectorController: UITableViewController, FormSelector 
         self.navigationItem.title = formCell.rowDescriptor.title
     }
     
-    /// MARK: UITableViewDataSource
+    // MARK: UITableViewDataSource
 
     public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -89,7 +89,7 @@ public class FormOptionsSelectorController: UITableViewController, FormSelector 
         return cell!
     }
     
-    /// MARK: UITableViewDelegate
+    // MARK: UITableViewDelegate
     
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         

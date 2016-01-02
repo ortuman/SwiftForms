@@ -10,16 +10,16 @@ import UIKit
 
 public class FormTextFieldCell: FormBaseCell {
 
-    /// MARK: Cell views
+    // MARK: Cell views
     
     public let titleLabel = UILabel()
     public let textField = UITextField()
     
-    /// MARK: Properties
+    // MARK: Properties
     
     private var customConstraints: [AnyObject]!
     
-    /// MARK: FormBaseCell
+    // MARK: FormBaseCell
     
     public override func configure() {
         super.configure()
@@ -144,7 +144,7 @@ public class FormTextFieldCell: FormBaseCell {
         return true
     }
     
-    /// MARK: Actions
+    // MARK: Actions
     
     internal func editingChanged(sender: UITextField) {
         let trimmedText = sender.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())

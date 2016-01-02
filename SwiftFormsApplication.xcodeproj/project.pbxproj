@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CB1F6C31C37F9B900CD2A7B /* FormErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1F6C21C37F9B900CD2A7B /* FormErrorType.swift */; };
 		0CCA33DD1B04FA5A006D9666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA33DC1B04FA5A006D9666 /* AppDelegate.swift */; };
 		0CCA33DF1B04FA5A006D9666 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA33DE1B04FA5A006D9666 /* ViewController.swift */; };
 		0CCA33E21B04FA5A006D9666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CCA33E01B04FA5A006D9666 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0CB1F6C21C37F9B900CD2A7B /* FormErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormErrorType.swift; sourceTree = "<group>"; };
 		0CCA33D71B04FA5A006D9666 /* SwiftFormsApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFormsApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCA33DB1B04FA5A006D9666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CCA33DC1B04FA5A006D9666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				0CCA34621B050525006D9666 /* cells */,
 				0CCA34701B050525006D9666 /* controllers */,
 				0CCA34741B050525006D9666 /* descriptors */,
+				0CB1F6C21C37F9B900CD2A7B /* FormErrorType.swift */,
 				0CCA34301B04FBE0006D9666 /* SwiftForms.h */,
 				0CCA342E1B04FBE0006D9666 /* Supporting Files */,
 			);
@@ -303,7 +306,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Miguel Angel Ortuno Ortuno";
 				TargetAttributes = {
 					0CCA33D61B04FA5A006D9666 = {
@@ -376,6 +379,7 @@
 				0CCA34781B050525006D9666 /* FormBaseCell.swift in Sources */,
 				0CCA34831B050525006D9666 /* FormTextViewCell.swift in Sources */,
 				0CCA34841B050525006D9666 /* FormOptionsSelectorController.swift in Sources */,
+				0CB1F6C31C37F9B900CD2A7B /* FormErrorType.swift in Sources */,
 				0CCA34861B050525006D9666 /* FormViewController.swift in Sources */,
 				0CCA347B1B050525006D9666 /* FormButtonCell.swift in Sources */,
 				0CDBB4F11B10699A00BE6ACF /* FormStepperCell.swift in Sources */,
@@ -434,6 +438,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -502,6 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftFormsApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yuilop.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -512,6 +518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftFormsApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yuilop.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -531,6 +538,7 @@
 				INFOPLIST_FILE = SwiftForms/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ortulabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -549,6 +557,7 @@
 				INFOPLIST_FILE = SwiftForms/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ortulabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
