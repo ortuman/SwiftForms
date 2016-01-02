@@ -24,11 +24,11 @@ Creating a form using SwiftForms is pretty straightforward. All you need is to d
 ```swift
 
 // Create form instace 
-let form = FormDescriptor()
+var form = FormDescriptor()
 form.title = "Example form"
 
 // Define first section
-let section1 = FormSectionDescriptor()
+var section1 = FormSectionDescriptor()
 
 var row: FormRowDescriptor! = FormRowDescriptor(tag: "name", rowType: .Email, title: "Email")
 section1.addRow(row)
@@ -37,7 +37,7 @@ row = FormRowDescriptor(tag: "pass", rowType: .Password, title: "Password")
 section1.addRow(row)
 
 // Define second section
-let section2 = FormSectionDescriptor()
+var section2 = FormSectionDescriptor()
 
 row = FormRowDescriptor(tag: "button", rowType: .Button, title: "Submit")
 section2.addRow(row)
