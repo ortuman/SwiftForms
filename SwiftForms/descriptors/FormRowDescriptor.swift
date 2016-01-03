@@ -82,20 +82,18 @@ public struct FormRowDescriptor {
     
     // MARK: Properties
     
-    public let tag: String?
+    public let tag: String
     public let title: String?
     public let rowType: FormRowType
 
     public var value: NSObject! {
         willSet {
-            if let willUpdateBlock = self.configuration[Configuration.WillUpdateClosure] as? UpdateClosure {
-                willUpdateBlock(self)
-            }
+            guard let willUpdateBlock = self.configuration[Configuration.WillUpdateClosure] as? UpdateClosure else { return }
+            willUpdateBlock(self)
         }
         didSet {
-            if let didUpdateBlock = self.configuration[Configuration.DidUpdateClosure] as? UpdateClosure {
-                didUpdateBlock(self)
-            }
+            guard let didUpdateBlock = self.configuration[Configuration.DidUpdateClosure] as? UpdateClosure else { return }
+            didUpdateBlock(self)
         }
     }
     

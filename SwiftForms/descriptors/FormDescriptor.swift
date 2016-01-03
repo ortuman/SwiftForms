@@ -38,12 +38,12 @@ public struct FormDescriptor {
 
         for section in sections {
             for row in section.rows {
-                if row.tag != nil && row.rowType != .Button {
+                if row.rowType != .Button {
                     if row.value != nil {
-                        formValues[row.tag!] = row.value!
+                        formValues[row.tag] = row.value!
                     }
                     else {
-                        formValues[row.tag!] = NSNull()
+                        formValues[row.tag] = NSNull()
                     }
                 }
             }
