@@ -56,9 +56,9 @@ class ExampleFormViewController: FormViewController {
     
     private func loadForm() {
         
-        var form = FormDescriptor(title: "Example Form")
+        let form = FormDescriptor(title: "Example Form")
         
-        var section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
+        let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         var row: FormRowDescriptor! = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "john@gmail.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
@@ -68,7 +68,7 @@ class ExampleFormViewController: FormViewController {
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "Enter password", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
         
-        var section2 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
+        let section2 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "First Name")
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. Miguel Ángel", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
@@ -82,7 +82,7 @@ class ExampleFormViewController: FormViewController {
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. Entrepreneur", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section2.addRow(row)
         
-        var section3 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
+        let section3 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
 
         row = FormRowDescriptor(tag: Static.URLTag, rowType: .URL, title: "URL")
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. gethooksapp.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
@@ -92,7 +92,7 @@ class ExampleFormViewController: FormViewController {
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. 0034666777999", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section3.addRow(row)
         
-        var section4 = FormSectionDescriptor(headerTitle: "An example header title", footerTitle: "An example footer title")
+        let section4 = FormSectionDescriptor(headerTitle: "An example header title", footerTitle: "An example footer title")
         
         row = FormRowDescriptor(tag: Static.enabled, rowType: .BooleanSwitch, title: "Enable")
         section4.addRow(row)
@@ -121,7 +121,7 @@ class ExampleFormViewController: FormViewController {
         
         section4.addRow(row)
         
-        var section5 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
+        let section5 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.picker, rowType: .Picker, title: "Gender")
         row.configuration[FormRowDescriptor.Configuration.Options] = ["F", "M", "U"]
@@ -166,7 +166,7 @@ class ExampleFormViewController: FormViewController {
         
         section5.addRow(row)
         
-        var section6 = FormSectionDescriptor(headerTitle: "Stepper & Slider", footerTitle: nil)
+        let section6 = FormSectionDescriptor(headerTitle: "Stepper & Slider", footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.stepper, rowType: .Stepper, title: "Step count")
         row.configuration[FormRowDescriptor.Configuration.MaximumValue] = 200.0
@@ -178,11 +178,11 @@ class ExampleFormViewController: FormViewController {
         row.value = 0.5
         section6.addRow(row)
         
-        var section7 = FormSectionDescriptor(headerTitle: "Multiline TextView", footerTitle: nil)
+        let section7 = FormSectionDescriptor(headerTitle: "Multiline TextView", footerTitle: nil)
         row = FormRowDescriptor(tag: Static.textView, rowType: .MultilineText, title: "Notes")
         section7.addRow(row)
         
-        var section8 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
+        let section8 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Dismiss")
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {

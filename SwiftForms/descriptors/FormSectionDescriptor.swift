@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct FormSectionDescriptor {
+public class FormSectionDescriptor {
 
     // MARK: Properties
     
@@ -26,11 +26,11 @@ public struct FormSectionDescriptor {
     
     // MARK: Public interface
     
-    public mutating func addRow(row: FormRowDescriptor) {
+    public func addRow(row: FormRowDescriptor) {
         rows.append(row)
     }
     
-    public mutating func removeRowAtIndex(index: Int) throws {
+    public func removeRowAtIndex(index: Int) throws {
         guard index >= 0 && index < rows.count - 1 else { throw FormErrorType.RowOutOfIndex }
         rows.removeAtIndex(index)
     }

@@ -33,10 +33,10 @@ public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDa
         
         titleLabel.text = rowDescriptor.title
         
-        if rowDescriptor.value != nil {
-            valueLabel.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)
+        if let value = rowDescriptor.value {
+            valueLabel.text = rowDescriptor.titleForOptionValue(value)
             if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
-                let index = options.indexOfObject(rowDescriptor.value)
+                let index = options.indexOfObject(value)
                 if index != NSNotFound {
                     picker.selectRow(index, inComponent: 0, animated: false)
                 }
@@ -56,7 +56,7 @@ public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDa
             }
         } else {
 			if let row = selectedRow as? FormPickerCell {
-                let optionValue = selectedRow.rowDescriptor.value
+                guard let optionValue = selectedRow.rowDescriptor.value else { return }
                 row.valueLabel.text = selectedRow.rowDescriptor.titleForOptionValue(optionValue)
                 row.hiddenTextField.becomeFirstResponder()
             }

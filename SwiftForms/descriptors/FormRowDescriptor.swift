@@ -41,7 +41,7 @@ public typealias UpdateClosure = (FormRowDescriptor) -> Void
 public typealias TitleFormatterClosure = (NSObject) -> String!
 public typealias VisualConstraintsClosure = (FormBaseCell) -> NSArray
 
-public struct FormRowDescriptor {
+public class FormRowDescriptor {
 
     // MARK: Types
     
@@ -86,7 +86,7 @@ public struct FormRowDescriptor {
     public let title: String?
     public let rowType: FormRowType
 
-    public var value: NSObject! {
+    public var value: NSObject? {
         willSet {
             guard let willUpdateBlock = self.configuration[Configuration.WillUpdateClosure] as? UpdateClosure else { return }
             willUpdateBlock(self)

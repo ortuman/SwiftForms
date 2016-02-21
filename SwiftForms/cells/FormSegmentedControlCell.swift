@@ -53,7 +53,7 @@ public class FormSegmentedControlCell: FormBaseCell {
         if rowDescriptor.value != nil {
             if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
                 for optionValue in options {
-                    if optionValue as! NSObject == rowDescriptor.value {
+                    if optionValue as? NSObject == rowDescriptor.value {
                         segmentedControl.selectedSegmentIndex = idx
                         break
                     }

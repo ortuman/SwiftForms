@@ -63,7 +63,7 @@ public class FormStepperCell: FormTitleCell {
             rowDescriptor.value = stepperView.minimumValue
         }
         
-        countLabel.text = rowDescriptor.value.description
+        countLabel.text = rowDescriptor.value?.description
     }
     
     public override func constraintsViews() -> [String : UIView] {
@@ -84,6 +84,6 @@ public class FormStepperCell: FormTitleCell {
     
     internal func valueChanged(_: UISwitch) {
         rowDescriptor.value = stepperView.value
-        countLabel.text = rowDescriptor.value.description
+        countLabel.text = rowDescriptor.value?.description
     }
 }
