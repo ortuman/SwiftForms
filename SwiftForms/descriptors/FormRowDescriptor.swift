@@ -10,6 +10,7 @@ import UIKit
 
 public enum FormRowType {
     case Unknown
+    case Label
     case Text
     case URL
     case Number
@@ -44,7 +45,7 @@ public typealias VisualConstraintsClosure = (FormBaseCell) -> NSArray
 public class FormRowDescriptor {
 
     // MARK: Types
-    
+
     public struct Configuration {
         public static let Required = "FormRowDescriptorConfigurationRequired"
 
@@ -53,35 +54,35 @@ public class FormRowDescriptor {
         public static let CellConfiguration = "FormRowDescriptorConfigurationCellConfiguration"
 
         public static let Placeholder = "FormRowDescriptorConfigurationPlaceholder"
-        
+
         public static let WillUpdateClosure = "FormRowDescriptorConfigurationWillUpdateClosure"
         public static let DidUpdateClosure = "FormRowDescriptorConfigurationDidUpdateClosure"
-        
+
         public static let MaximumValue = "FormRowDescriptorConfigurationMaximumValue"
         public static let MinimumValue = "FormRowDescriptorConfigurationMinimumValue"
         public static let Steps = "FormRowDescriptorConfigurationSteps"
-        
+
         public static let Continuous = "FormRowDescriptorConfigurationContinuous"
-        
+
         public static let DidSelectClosure = "FormRowDescriptorConfigurationDidSelectClosure"
-        
+
         public static let VisualConstraintsClosure = "FormRowDescriptorConfigurationVisualConstraintsClosure"
-        
+
         public static let Options = "FormRowDescriptorConfigurationOptions"
-        
+
         public static let TitleFormatterClosure = "FormRowDescriptorConfigurationTitleFormatterClosure"
-        
+
         public static let SelectorControllerClass = "FormRowDescriptorConfigurationSelectorControllerClass"
-        
+
         public static let AllowsMultipleSelection = "FormRowDescriptorConfigurationAllowsMultipleSelection"
-        
+
         public static let ShowsInputToolbar = "FormRowDescriptorConfigurationShowsInputToolbar"
-        
+
         public static let DateFormatter = "FormRowDescriptorConfigurationDateFormatter"
     }
-    
+
     // MARK: Properties
-    
+
     public let tag: String
     public let title: String?
     public let rowType: FormRowType
@@ -96,34 +97,34 @@ public class FormRowDescriptor {
             didUpdateBlock(self)
         }
     }
-    
+
     public var configuration: [String : Any] = [:]
-    
+
     // MARK: Init
-    
+
     public init(tag: String, rowType: FormRowType, title: String, placeholder: String? = nil) {
         self.tag = tag
         self.rowType = rowType
         self.title = title
-        
+
         if placeholder != nil {
             configuration[FormRowDescriptor.Configuration.Placeholder] = placeholder!
         }
-        
+
         configuration[Configuration.Required] = true
         configuration[Configuration.AllowsMultipleSelection] = false
         configuration[Configuration.ShowsInputToolbar] = false
     }
-    
+
     // MARK: Public interface
-    
+
     public func titleForOptionAtIndex(index: Int) -> String? {
         if let options = configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
             return titleForOptionValue(options[index] as! NSObject)
         }
         return nil
     }
-    
+
     public func titleForOptionValue(optionValue: NSObject) -> String {
         if let titleFormatter = configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] as? TitleFormatterClosure {
             return titleFormatter(optionValue)

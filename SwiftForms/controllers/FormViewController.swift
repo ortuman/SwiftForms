@@ -162,6 +162,7 @@ public class FormViewController : UITableViewController {
     private class func defaultCellClassForRowType(rowType: FormRowType) -> FormBaseCell.Type {
         dispatch_once(&Static.onceDefaultCellClass) {
             Static.defaultCellClasses[FormRowType.Text] = FormTextFieldCell.self
+            Static.defaultCellClasses[FormRowType.Label] = FormLabelCell.self
             Static.defaultCellClasses[FormRowType.Number] = FormTextFieldCell.self
             Static.defaultCellClasses[FormRowType.NumbersAndPunctuation] = FormTextFieldCell.self
             Static.defaultCellClasses[FormRowType.Decimal] = FormTextFieldCell.self
