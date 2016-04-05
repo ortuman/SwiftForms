@@ -1,5 +1,5 @@
 
-[![Version](https://img.shields.io/badge/pod-1.0.2-blue.svg)](http://cocoadocs.org/docsets/SwiftForms)
+[![Version](https://img.shields.io/badge/pod-1.0.3-blue.svg)](http://cocoadocs.org/docsets/SwiftForms)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 [![License](https://img.shields.io/badge/license-MIT-gray.svg)](http://cocoadocs.org/docsets/SwiftForms)
