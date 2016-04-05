@@ -21,7 +21,7 @@ public class FormSwitchCell: FormTitleCell {
         
         selectionStyle = .None
         
-        switchView.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
+        switchView.addTarget(self, action: #selector(FormSwitchCell.valueChanged(_:)), forControlEvents: .ValueChanged)
         accessoryView = switchView
     }
     

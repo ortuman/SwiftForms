@@ -23,7 +23,7 @@ public class FormDateCell: FormValueCell {
         contentView.addSubview(hiddenTextField)
         hiddenTextField.inputView = datePicker
         datePicker.datePickerMode = .Date
-        datePicker.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
+        datePicker.addTarget(self, action: #selector(FormDateCell.valueChanged(_:)), forControlEvents: .ValueChanged)
     }
     
     public override func update() {

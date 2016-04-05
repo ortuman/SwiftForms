@@ -43,7 +43,7 @@ public class FormTextFieldCell: FormBaseCell {
         contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
         contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
         
-        textField.addTarget(self, action: "editingChanged:", forControlEvents: .EditingChanged)
+        textField.addTarget(self, action: #selector(FormTextFieldCell.editingChanged(_:)), forControlEvents: .EditingChanged)
     }
     
     public override func update() {
