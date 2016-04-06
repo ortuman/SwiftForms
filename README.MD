@@ -93,7 +93,7 @@ After defining your class, don't forget to set `FormRowType.Configuration.Select
 Requirements
 ---------------------
 
-* iOS 7.0 and above
+* iOS 8.0 and above
 
 ## Installation
 
