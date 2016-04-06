@@ -31,6 +31,7 @@ public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDa
     public override func update() {
         super.update()
         
+        picker.reloadAllComponents()
         titleLabel.text = rowDescriptor.title
         
         if let value = rowDescriptor.value {
