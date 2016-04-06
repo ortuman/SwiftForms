@@ -113,7 +113,7 @@ class ExampleFormViewController: FormViewController {
             case 3:
                 return "!!!"
             default:
-                return nil
+                return ""
             }
         } as TitleFormatterClosure
         
@@ -134,7 +134,7 @@ class ExampleFormViewController: FormViewController {
             case "U":
                 return "I'd rather not to say"
             default:
-                return nil
+                return ""
             }
         } as TitleFormatterClosure
         
@@ -160,7 +160,7 @@ class ExampleFormViewController: FormViewController {
             case 4:
                 return "Camping"
             default:
-                return nil
+                return ""
             }
         } as TitleFormatterClosure
         

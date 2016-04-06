@@ -39,7 +39,7 @@ public enum FormRowType {
 
 public typealias DidSelectClosure = (Void) -> Void
 public typealias UpdateClosure = (FormRowDescriptor) -> Void
-public typealias TitleFormatterClosure = (NSObject) -> String!
+public typealias TitleFormatterClosure = (NSObject) -> String
 public typealias VisualConstraintsClosure = (FormBaseCell) -> NSArray
 
 public class FormRowDescriptor {
