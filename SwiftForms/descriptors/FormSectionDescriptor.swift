@@ -29,7 +29,9 @@ public class FormSectionDescriptor {
     public func addRow(row: FormRowDescriptor) {
         rows.append(row)
     }
-    
+    public func addRows(rows: [FormRowDescriptor]) {
+        self.rows.appendContentsOf(rows)
+    }
     public func removeRowAtIndex(index: Int) throws {
         guard index >= 0 && index < rows.count - 1 else { throw FormErrorType.RowOutOfIndex }
         rows.removeAtIndex(index)
