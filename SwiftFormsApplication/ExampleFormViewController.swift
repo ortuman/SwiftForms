@@ -47,9 +47,16 @@ class ExampleFormViewController: FormViewController {
         
         let message = self.form.formValues().description
         
-        let alert: UIAlertView = UIAlertView(title: "Form output", message: message, delegate: nil, cancelButtonTitle: "OK")
+        let alertController = UIAlertController(title: "Form output", message: message, preferredStyle: .Alert)
         
-        alert.show()
+        let cancel = UIAlertAction(title: "OK", style: .Cancel) { (action) in
+            print(action)
+        }
+        
+        alertController.addAction(cancel)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
     
     // MARK: Private interface
