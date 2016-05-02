@@ -28,7 +28,7 @@ public class FormDescriptor {
     }
     
     public func removeSectionAtIndex(index: Int) throws {
-        guard index >= 0 && index < sections.count - 1 else { throw FormErrorType.SectionOutOfIndex }
+        guard index >= 0 && index <= sections.count - 1 else { throw FormErrorType.SectionOutOfIndex }
         sections.removeAtIndex(index)
     }
     
