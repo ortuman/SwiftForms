@@ -3,7 +3,7 @@
 //  SwiftForms
 //
 //  Created by Miguel Angel Ortuno on 21/08/14.
-//  Copyright (c) 2014 Miguel Angel Ortuño. All rights reserved.
+//  Copyright (c) 2016 Miguel Angel Ortuño. All rights reserved.
 //
 
 import UIKit
@@ -19,6 +19,6 @@ public class FormButtonCell: FormTitleCell {
     
     public override func update() {
         super.update()
-        titleLabel.text = rowDescriptor.title
+        titleLabel.text = rowDescriptor?.title
     }
 }

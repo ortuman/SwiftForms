@@ -3,13 +3,13 @@
 //  SwiftForms
 //
 //  Created by Miguel Angel Ortuno on 22/08/14.
-//  Copyright (c) 2014 Miguel Angel Ortuño. All rights reserved.
+//  Copyright (c) 2016 Miguel Angel Ortuño. All rights reserved.
 //
 
 import UIKit
 
 public class FormDateCell: FormValueCell {
-
+    
     // MARK: Properties
     
     private let datePicker = UIDatePicker()
@@ -29,43 +29,41 @@ public class FormDateCell: FormValueCell {
     public override func update() {
         super.update()
         
-        if let showsInputToolbar = rowDescriptor.configuration[FormRowDescriptor.Configuration.ShowsInputToolbar] as? Bool {
-            if showsInputToolbar && hiddenTextField.inputAccessoryView == nil {
-                hiddenTextField.inputAccessoryView = inputAccesoryView()
+        if let showsInputToolbar = rowDescriptor?.configuration.cell.showsInputToolbar where showsInputToolbar && hiddenTextField.inputAccessoryView == nil {
+            hiddenTextField.inputAccessoryView = inputAccesoryView()
+        }
+        
+        titleLabel.text = rowDescriptor?.title
+        
+        if let rowType = rowDescriptor?.type {
+            switch rowType {
+            case .Date:
+                datePicker.datePickerMode = .Date
+                defaultDateFormatter.dateStyle = .LongStyle
+                defaultDateFormatter.timeStyle = .NoStyle
+            case .Time:
+                datePicker.datePickerMode = .Time
+                defaultDateFormatter.dateStyle = .NoStyle
+                defaultDateFormatter.timeStyle = .ShortStyle
+            default:
+                datePicker.datePickerMode = .DateAndTime
+                defaultDateFormatter.dateStyle = .LongStyle
+                defaultDateFormatter.timeStyle = .ShortStyle
             }
         }
         
-        titleLabel.text = rowDescriptor.title
-        
-        switch rowDescriptor.rowType {
-        case .Date:
-            datePicker.datePickerMode = .Date
-            defaultDateFormatter.dateStyle = .LongStyle
-            defaultDateFormatter.timeStyle = .NoStyle
-        case .Time:
-            datePicker.datePickerMode = .Time
-            defaultDateFormatter.dateStyle = .NoStyle
-            defaultDateFormatter.timeStyle = .ShortStyle
-        default:
-            datePicker.datePickerMode = .DateAndTime
-            defaultDateFormatter.dateStyle = .LongStyle
-            defaultDateFormatter.timeStyle = .ShortStyle
-        }
-        
-        if rowDescriptor.value != nil {
-            let date = rowDescriptor.value as? NSDate
-            datePicker.date = date!
-            valueLabel.text = self.getDateFormatter().stringFromDate(date!)
+        if let date = rowDescriptor?.value as? NSDate {
+            datePicker.date = date
+            valueLabel.text = getDateFormatter().stringFromDate(date)
         }
     }
     
     public override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
+        guard let row = selectedRow as? FormDateCell else { return }
         
-        let row: FormDateCell! = selectedRow as? FormDateCell
-        
-        if row.rowDescriptor.value == nil {
+        if row.rowDescriptor?.value == nil {
             let date = NSDate()
-            row.rowDescriptor.value = date
+            row.rowDescriptor?.value = date
             row.valueLabel.text = row.getDateFormatter().stringFromDate(date)
             row.update()
         }
@@ -84,7 +82,7 @@ public class FormDateCell: FormValueCell {
     // MARK: Actions
     
     internal func valueChanged(sender: UIDatePicker) {
-        rowDescriptor.value = sender.date
+        rowDescriptor?.value = sender.date
         valueLabel.text = getDateFormatter().stringFromDate(sender.date)
         update()
     }
@@ -92,10 +90,7 @@ public class FormDateCell: FormValueCell {
     // MARK: Private interface
     
     private func getDateFormatter() -> NSDateFormatter {
-        
-        if let dateFormatter = self.rowDescriptor.configuration[FormRowDescriptor.Configuration.DateFormatter] as? NSDateFormatter {
-            return dateFormatter
-        }
-        return defaultDateFormatter
+        guard let dateFormatter = rowDescriptor?.configuration.date.dateFormatter else { return defaultDateFormatter }
+        return dateFormatter
     }
 }

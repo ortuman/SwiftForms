@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C9D1DF31D2267EE00909941 /* FormOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D1DF21D2267EE00909941 /* FormOptionsViewController.swift */; };
 		0CB1F6C31C37F9B900CD2A7B /* FormErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1F6C21C37F9B900CD2A7B /* FormErrorType.swift */; };
 		0CCA33DD1B04FA5A006D9666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA33DC1B04FA5A006D9666 /* AppDelegate.swift */; };
 		0CCA33DF1B04FA5A006D9666 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA33DE1B04FA5A006D9666 /* ViewController.swift */; };
@@ -29,7 +30,6 @@
 		0CCA34811B050525006D9666 /* FormSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346D1B050525006D9666 /* FormSwitchCell.swift */; };
 		0CCA34821B050525006D9666 /* FormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346E1B050525006D9666 /* FormTextFieldCell.swift */; };
 		0CCA34831B050525006D9666 /* FormTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA346F1B050525006D9666 /* FormTextViewCell.swift */; };
-		0CCA34841B050525006D9666 /* FormOptionsSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34711B050525006D9666 /* FormOptionsSelectorController.swift */; };
 		0CCA34851B050525006D9666 /* FormSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34721B050525006D9666 /* FormSelector.swift */; };
 		0CCA34861B050525006D9666 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34731B050525006D9666 /* FormViewController.swift */; };
 		0CCA34871B050525006D9666 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA34751B050525006D9666 /* FormDescriptor.swift */; };
@@ -65,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C9D1DF21D2267EE00909941 /* FormOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormOptionsViewController.swift; sourceTree = "<group>"; };
 		0CB1F6C21C37F9B900CD2A7B /* FormErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormErrorType.swift; sourceTree = "<group>"; };
 		0CCA33D71B04FA5A006D9666 /* SwiftFormsApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFormsApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCA33DB1B04FA5A006D9666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		0CCA346D1B050525006D9666 /* FormSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSwitchCell.swift; sourceTree = "<group>"; };
 		0CCA346E1B050525006D9666 /* FormTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextFieldCell.swift; sourceTree = "<group>"; };
 		0CCA346F1B050525006D9666 /* FormTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextViewCell.swift; sourceTree = "<group>"; };
-		0CCA34711B050525006D9666 /* FormOptionsSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormOptionsSelectorController.swift; sourceTree = "<group>"; };
 		0CCA34721B050525006D9666 /* FormSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSelector.swift; sourceTree = "<group>"; };
 		0CCA34731B050525006D9666 /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		0CCA34751B050525006D9666 /* FormDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDescriptor.swift; sourceTree = "<group>"; };
@@ -233,9 +233,9 @@
 		0CCA34701B050525006D9666 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0CCA34711B050525006D9666 /* FormOptionsSelectorController.swift */,
 				0CCA34721B050525006D9666 /* FormSelector.swift */,
 				0CCA34731B050525006D9666 /* FormViewController.swift */,
+				0C9D1DF21D2267EE00909941 /* FormOptionsViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -382,7 +382,6 @@
 				0CCA34781B050525006D9666 /* FormBaseCell.swift in Sources */,
 				BDD1087A1C925D14000EDEE5 /* FormLabelCell.swift in Sources */,
 				0CCA34831B050525006D9666 /* FormTextViewCell.swift in Sources */,
-				0CCA34841B050525006D9666 /* FormOptionsSelectorController.swift in Sources */,
 				0CB1F6C31C37F9B900CD2A7B /* FormErrorType.swift in Sources */,
 				0CCA34861B050525006D9666 /* FormViewController.swift in Sources */,
 				0CCA347B1B050525006D9666 /* FormButtonCell.swift in Sources */,
@@ -394,6 +393,7 @@
 				0CCA347F1B050525006D9666 /* FormSegmentedControlCell.swift in Sources */,
 				0CCA34821B050525006D9666 /* FormTextFieldCell.swift in Sources */,
 				0CCA347E1B050525006D9666 /* FormPickerCell.swift in Sources */,
+				0C9D1DF31D2267EE00909941 /* FormOptionsViewController.swift in Sources */,
 				0CCA347D1B050525006D9666 /* FormDateCell.swift in Sources */,
 				0CCA34881B050525006D9666 /* FormRowDescriptor.swift in Sources */,
 			);
@@ -512,7 +512,7 @@
 				INFOPLIST_FILE = SwiftFormsApplication/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ortulabs.SwiftForms;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hooks.hooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -524,7 +524,7 @@
 				INFOPLIST_FILE = SwiftFormsApplication/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ortulabs.SwiftForms;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hooks.hooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

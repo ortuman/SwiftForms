@@ -9,16 +9,16 @@
 import UIKit
 
 public class FormBaseCell: UITableViewCell {
-
+    
     // MARK: Properties
     
-    public var rowDescriptor: FormRowDescriptor! {
+    public var rowDescriptor: FormRowDescriptor? {
         didSet {
             self.update()
         }
     }
     
-    public weak var formViewController: FormViewController!
+    public weak var formViewController: FormViewController?
     
     private var customConstraints: [NSLayoutConstraint] = []
     
@@ -27,7 +27,7 @@ public class FormBaseCell: UITableViewCell {
     public required override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -90,7 +90,6 @@ public class FormBaseCell: UITableViewCell {
     // MARK: Constraints
     
     public override func updateConstraints() {
-        
         if customConstraints.count > 0 {
             contentView.removeConstraints(customConstraints)
         }
@@ -99,17 +98,16 @@ public class FormBaseCell: UITableViewCell {
         
         customConstraints.removeAll()
         
-        var visualConstraints: NSArray!
+        var visualConstraints = [String]()
         
-        if let visualConstraintsClosure = rowDescriptor.configuration[FormRowDescriptor.Configuration.VisualConstraintsClosure] as? VisualConstraintsClosure {
+        if let visualConstraintsClosure = rowDescriptor?.configuration.cell.visualConstraintsClosure {
             visualConstraints = visualConstraintsClosure(self)
-        }
-        else {
-            visualConstraints = self.defaultVisualConstraints()
+        } else {
+            visualConstraints = defaultVisualConstraints()
         }
         
         for visualConstraint in visualConstraints {
-            let constraints = NSLayoutConstraint.constraintsWithVisualFormat(visualConstraint as! String, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            let constraints = NSLayoutConstraint.constraintsWithVisualFormat(visualConstraint, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
             for constraint in constraints {
                 customConstraints.append(constraint)
             }

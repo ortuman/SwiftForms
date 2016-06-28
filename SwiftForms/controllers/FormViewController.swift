@@ -9,17 +9,15 @@
 import UIKit
 
 public class FormViewController : UITableViewController {
-
-    // MARK: Types
     
-    private struct Static {
-        static var onceDefaultCellClass: dispatch_once_t = 0
-        static var defaultCellClasses: [FormRowType : FormBaseCell.Type] = [:]
-    }
+    // MARK: Class variables
+    
+    private static var onceDefaultCellClass: dispatch_once_t = 0
+    private static var defaultCellClasses: [FormRowDescriptor.RowType : FormBaseCell.Type] = [:]
     
     // MARK: Properties
     
-    public var form: FormDescriptor!
+    public var form = FormDescriptor()
     
     // MARK: Init
     
@@ -28,7 +26,7 @@ public class FormViewController : UITableViewController {
     }
     
     public convenience init(form: FormDescriptor) {
-        self.init()
+        self.init(style: .Grouped)
         self.form = form
     }
     
@@ -38,28 +36,22 @@ public class FormViewController : UITableViewController {
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        baseInit()
     }
     
     public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        baseInit()
-    }
-    
-    private func baseInit() {
     }
     
     // MARK: View life cycle
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
-        assert(form != nil, "self.form property MUST be assigned!")
         navigationItem.title = form.title
     }
     
     // MARK: Public interface
     
-    public func valueForTag(tag: String) -> NSObject! {
+    public func valueForTag(tag: String) -> AnyObject? {
         for section in form.sections {
             for row in section.rows {
                 if row.tag == tag {
@@ -70,8 +62,7 @@ public class FormViewController : UITableViewController {
         return nil
     }
     
-    public func setValue(value: NSObject, forTag tag: String) {
-        
+    public func setValue(value: AnyObject, forTag tag: String) {
         for (sectionIndex, section) in form.sections.enumerate() {
             for (rowIndex, row) in section.rows.enumerate() {
                 if row.tag == tag {
@@ -103,9 +94,8 @@ public class FormViewController : UITableViewController {
         
         let reuseIdentifier = NSStringFromClass(formBaseCellClass)
         
-        var cell: FormBaseCell? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? FormBaseCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? FormBaseCell
         if cell == nil {
-            
             cell = formBaseCellClass.init(style: .Default, reuseIdentifier: reuseIdentifier)
             cell?.formViewController = self
             cell?.configure()
@@ -114,10 +104,8 @@ public class FormViewController : UITableViewController {
         cell?.rowDescriptor = rowDescriptor
         
         // apply cell custom design
-        if let cellConfiguration = rowDescriptor.configuration[FormRowDescriptor.Configuration.CellConfiguration] as? NSDictionary {
-            for (keyPath, value) in cellConfiguration {
-                cell?.setValue(value, forKeyPath: keyPath as! String)
-            }
+        for (keyPath, value) in rowDescriptor.configuration.cell.appearance {
+            cell?.setValue(value, forKeyPath: keyPath)
         }
         return cell!
     }
@@ -133,7 +121,7 @@ public class FormViewController : UITableViewController {
     // MARK: UITableViewDelegate
     
     public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
+        
         let rowDescriptor = formRowDescriptorAtIndexPath(indexPath)
         
         if let formBaseCellClass = formBaseCellClassFromRowDescriptor(rowDescriptor) {
@@ -143,7 +131,7 @@ public class FormViewController : UITableViewController {
     }
     
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+        
         let rowDescriptor = formRowDescriptorAtIndexPath(indexPath)
         
         if let selectedRow = tableView.cellForRowAtIndexPath(indexPath) as? FormBaseCell {
@@ -152,45 +140,46 @@ public class FormViewController : UITableViewController {
             }
         }
         
-        if let didSelectClosure = rowDescriptor.configuration[FormRowDescriptor.Configuration.DidSelectClosure] as? DidSelectClosure {
+        if let didSelectClosure = rowDescriptor.configuration.button.didSelectClosure {
             didSelectClosure()
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    private class func defaultCellClassForRowType(rowType: FormRowType) -> FormBaseCell.Type {
-        dispatch_once(&Static.onceDefaultCellClass) {
-            Static.defaultCellClasses[FormRowType.Text] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.Label] = FormLabelCell.self
-            Static.defaultCellClasses[FormRowType.Number] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.NumbersAndPunctuation] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.Decimal] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.Name] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.Phone] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.URL] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.Twitter] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.NamePhone] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.Email] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.ASCIICapable] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.Password] = FormTextFieldCell.self
-            Static.defaultCellClasses[FormRowType.Button] = FormButtonCell.self
-            Static.defaultCellClasses[FormRowType.BooleanSwitch] = FormSwitchCell.self
-            Static.defaultCellClasses[FormRowType.BooleanCheck] = FormCheckCell.self
-            Static.defaultCellClasses[FormRowType.SegmentedControl] = FormSegmentedControlCell.self
-            Static.defaultCellClasses[FormRowType.Picker] = FormPickerCell.self
-            Static.defaultCellClasses[FormRowType.Date] = FormDateCell.self
-            Static.defaultCellClasses[FormRowType.Time] = FormDateCell.self
-            Static.defaultCellClasses[FormRowType.DateAndTime] = FormDateCell.self
-            Static.defaultCellClasses[FormRowType.Stepper] = FormStepperCell.self
-            Static.defaultCellClasses[FormRowType.Slider] = FormSliderCell.self
-            Static.defaultCellClasses[FormRowType.MultipleSelector] = FormSelectorCell.self
-            Static.defaultCellClasses[FormRowType.MultilineText] = FormTextViewCell.self
+    private class func defaultCellClassForRowType(rowType: FormRowDescriptor.RowType) -> FormBaseCell.Type {
+        dispatch_once(&FormViewController.onceDefaultCellClass) {
+            FormViewController.defaultCellClasses[.Text] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.Label] = FormLabelCell.self
+            FormViewController.defaultCellClasses[.Number] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.NumbersAndPunctuation] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.Decimal] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.Name] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.Phone] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.URL] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.Twitter] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.NamePhone] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.Email] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.ASCIICapable] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.Password] = FormTextFieldCell.self
+            FormViewController.defaultCellClasses[.Button] = FormButtonCell.self
+            FormViewController.defaultCellClasses[.BooleanSwitch] = FormSwitchCell.self
+            FormViewController.defaultCellClasses[.BooleanCheck] = FormCheckCell.self
+            FormViewController.defaultCellClasses[.SegmentedControl] = FormSegmentedControlCell.self
+            FormViewController.defaultCellClasses[.Picker] = FormPickerCell.self
+            FormViewController.defaultCellClasses[.Date] = FormDateCell.self
+            FormViewController.defaultCellClasses[.Time] = FormDateCell.self
+            FormViewController.defaultCellClasses[.DateAndTime] = FormDateCell.self
+            FormViewController.defaultCellClasses[.Stepper] = FormStepperCell.self
+            FormViewController.defaultCellClasses[.Slider] = FormSliderCell.self
+            FormViewController.defaultCellClasses[.MultipleSelector] = FormSelectorCell.self
+            FormViewController.defaultCellClasses[.MultilineText] = FormTextViewCell.self
         }
-        return Static.defaultCellClasses[rowType]!
+        return FormViewController.defaultCellClasses[rowType]!
     }
     
-    private func formRowDescriptorAtIndexPath(indexPath: NSIndexPath!) -> FormRowDescriptor {
+    private func formRowDescriptorAtIndexPath(indexPath: NSIndexPath) -> FormRowDescriptor {
+    
         let section = form.sections[indexPath.section]
         let rowDescriptor = section.rows[indexPath.row]
         return rowDescriptor
@@ -198,17 +187,13 @@ public class FormViewController : UITableViewController {
     
     private func formBaseCellClassFromRowDescriptor(rowDescriptor: FormRowDescriptor) -> FormBaseCell.Type! {
         
-        var formBaseCellClass: FormBaseCell.Type!
+        var formBaseCellClass: FormBaseCell.Type
         
-        if let cellClass: AnyClass = rowDescriptor.configuration[FormRowDescriptor.Configuration.CellClass] as? AnyClass {
-            formBaseCellClass = cellClass as? FormBaseCell.Type
+        if let cellClass = rowDescriptor.configuration.cell.cellClass as? FormBaseCell.Type {
+            formBaseCellClass = cellClass
+        } else {
+            formBaseCellClass = FormViewController.defaultCellClassForRowType(rowDescriptor.type)
         }
-        else {
-            formBaseCellClass = FormViewController.defaultCellClassForRowType(rowDescriptor.rowType)
-        }
-        
-        assert(formBaseCellClass != nil, "FormRowDescriptor.Configuration.CellClass must be a FormBaseCell derived class value.")
-        
         return formBaseCellClass
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 public class FormTitleCell: FormBaseCell {
-
+    
     // MARK: Cell views
     
     public let titleLabel = UILabel()

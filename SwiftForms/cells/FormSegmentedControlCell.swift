@@ -3,7 +3,7 @@
 //  SwiftForms
 //
 //  Created by Miguel Angel Ortuno on 21/08/14.
-//  Copyright (c) 2014 Miguel Angel Ortuño. All rights reserved.
+//  Copyright (c) 2016 Miguel Angel Ortuño. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +17,7 @@ public class FormSegmentedControlCell: FormBaseCell {
     
     // MARK: Properties
     
-    private var customConstraints: [AnyObject]!
+    private var customConstraints: [AnyObject] = []
     
     // MARK: FormBaseCell
     
@@ -46,20 +46,19 @@ public class FormSegmentedControlCell: FormBaseCell {
     public override func update() {
         super.update()
         
-        titleLabel.text = rowDescriptor.title
+        titleLabel.text = rowDescriptor?.title
         updateSegmentedControl()
         
+        guard let value = rowDescriptor?.value else { return }
+        guard let options = rowDescriptor?.configuration.selection.options where !options.isEmpty else { return }
+        
         var idx = 0
-        if rowDescriptor.value != nil {
-            if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
-                for optionValue in options {
-                    if optionValue as? NSObject == rowDescriptor.value {
-                        segmentedControl.selectedSegmentIndex = idx
-                        break
-                    }
-                    idx += 1
-                }
+        for optionValue in options {
+            if optionValue === value {
+                segmentedControl.selectedSegmentIndex = idx
+                break
             }
+            idx += 1
         }
     }
     
@@ -68,11 +67,9 @@ public class FormSegmentedControlCell: FormBaseCell {
     }
     
     public override func defaultVisualConstraints() -> [String] {
-        
-        if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
+        if let text = titleLabel.text where text.characters.count > 0 {
             return ["H:|-16-[titleLabel]-16-[segmentedControl]-16-|"]
-        }
-        else {
+        } else {
             return ["H:|-16-[segmentedControl]-16-|"]
         }
     }
@@ -80,21 +77,23 @@ public class FormSegmentedControlCell: FormBaseCell {
     // MARK: Actions
     
     internal func valueChanged(sender: UISegmentedControl) {
-        let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray
-        let optionValue = options?[sender.selectedSegmentIndex] as? NSObject
-        rowDescriptor.value = optionValue
+        guard let options = rowDescriptor?.configuration.selection.options where !options.isEmpty else { return }
+        let value = options[sender.selectedSegmentIndex]
+        rowDescriptor?.value = value
     }
     
     // MARK: Private
     
     private func updateSegmentedControl() {
         segmentedControl.removeAllSegments()
+        
+        guard let options = rowDescriptor?.configuration.selection.options where !options.isEmpty else { return }
+        
         var idx = 0
-        if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
-            for optionValue in options {
-                segmentedControl.insertSegmentWithTitle(rowDescriptor.titleForOptionValue(optionValue as! NSObject), atIndex: idx, animated: false)
-                idx += 1
-            }
+        for value in options {
+            let title = rowDescriptor?.configuration.selection.optionTitleClosure?(value)
+            segmentedControl.insertSegmentWithTitle(title, atIndex: idx, animated: false)
+            idx += 1
         }
     }
 }

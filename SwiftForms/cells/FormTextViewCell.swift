@@ -9,17 +9,18 @@
 import UIKit
 
 public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
-
+    
     // MARK: Cell views
     
     public let titleLabel = UILabel()
-    public let textField = UITextView()
+    public let textField  = UITextView()
     
     // MARK: Properties
     
     private var customConstraints: [AnyObject]!
     
     // MARK: Class Funcs
+    
     public override class func formRowCellHeight() -> CGFloat {
         return 110.0
     }
@@ -52,8 +53,8 @@ public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     
     public override func update() {
         
-        titleLabel.text = rowDescriptor.title
-        textField.text = rowDescriptor.value as? String
+        titleLabel.text = rowDescriptor?.title
+        textField.text = rowDescriptor?.value as? String
         
         textField.secureTextEntry = false
         textField.autocorrectionType = .Default
@@ -70,21 +71,16 @@ public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     }
     
     public override func defaultVisualConstraints() -> [String] {
-        
         if self.imageView!.image != nil {
-            
-            if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
+            if let text = titleLabel.text where text.characters.count > 0 {
                 return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
-            }
-            else {
+            } else {
                 return ["H:[imageView]-[textField]-16-|"]
             }
-        }
-        else {
-            if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
+        } else {
+            if let text = titleLabel.text where text.characters.count > 0 {
                 return ["H:|-16-[titleLabel]-[textField]-16-|"]
-            }
-            else {
+            } else {
                 return ["H:|-16-[textField]-16-|"]
             }
         }
@@ -93,7 +89,7 @@ public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     // MARK: UITextViewDelegate
     
     public func textViewDidChange(textView: UITextView) {
-        let trimmedText = textView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        rowDescriptor.value = trimmedText.characters.count > 0 ? trimmedText : nil
+        guard let text = textView.text where text.characters.count > 0 else { rowDescriptor?.value = nil; return }
+        rowDescriptor?.value = text
     }
 }

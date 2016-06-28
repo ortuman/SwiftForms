@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Miguel Angel Ortuno Ortuno. All rights reserved.
 //
 
+import UIKit
+
 public class FormSliderCell: FormTitleCell {
     
     // MARK: Cell views
@@ -37,26 +39,17 @@ public class FormSliderCell: FormTitleCell {
     public override func update() {
         super.update()
         
-        if let maximumValue = rowDescriptor.configuration[FormRowDescriptor.Configuration.MaximumValue] as? Float {
-            sliderView.maximumValue = maximumValue
-        }
+        if let maximumValue = rowDescriptor?.configuration.stepper.maximumValue { sliderView.maximumValue = Float(maximumValue) }
+        if let minimumValue = rowDescriptor?.configuration.stepper.minimumValue { sliderView.minimumValue = Float(minimumValue) }
+        if let continuous = rowDescriptor?.configuration.stepper.continuous     { sliderView.continuous = continuous }
         
-        if let minimumValue = rowDescriptor.configuration[FormRowDescriptor.Configuration.MinimumValue] as? Float {
-            sliderView.minimumValue = minimumValue
-        }
+        titleLabel.text = rowDescriptor?.title
         
-        if let continuous = rowDescriptor.configuration[FormRowDescriptor.Configuration.Continuous] as? Bool {
-            sliderView.continuous = continuous
-        }
-        
-        titleLabel.text = rowDescriptor.title
-        
-        if rowDescriptor.value != nil {
-            sliderView.value = rowDescriptor.value as! Float
-        }
-        else {
+        if let value = rowDescriptor?.value as? Float {
+            sliderView.value = value
+        } else {
             sliderView.value = sliderView.minimumValue
-            rowDescriptor.value = sliderView.minimumValue
+            rowDescriptor?.value = sliderView.minimumValue
         }
     }
     
@@ -76,6 +69,6 @@ public class FormSliderCell: FormTitleCell {
     // MARK: Actions
     
     internal func valueChanged(_: UISlider) {
-        rowDescriptor.value = sliderView.value
+        rowDescriptor?.value = sliderView.value
     }
 }

@@ -3,13 +3,13 @@
 //  SwiftForms
 //
 //  Created by Miguel Angel Ortuno on 22/08/14.
-//  Copyright (c) 2014 Miguel Angel Ortuño. All rights reserved.
+//  Copyright (c) 2016 Miguel Angel Ortuño. All rights reserved.
 //
 
 import UIKit
 
 public class FormCheckCell: FormTitleCell {
-
+    
     // MARK: FormBaseCell
     
     public override func configure() {
@@ -21,31 +21,35 @@ public class FormCheckCell: FormTitleCell {
     public override func update() {
         super.update()
         
-        titleLabel.text = rowDescriptor.title
+        titleLabel.text = rowDescriptor?.title
         
-        if rowDescriptor.value == nil {
-            rowDescriptor.value = false
+        var rowValue: Bool
+        if let value = rowDescriptor?.value as? Bool {
+            rowValue = value
+        } else {
+            rowValue = false
+            rowDescriptor?.value = rowValue
         }
         
-        accessoryType = (rowDescriptor.value as! Bool) ? .Checkmark : .None
+        accessoryType = (rowValue) ? .Checkmark : .None
     }
     
     public override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
-        
-        if let row = selectedRow as? FormCheckCell {
-            row.check()
-        }
+        guard let row = selectedRow as? FormCheckCell else { return }
+        row.check()
     }
     
     // MARK: Private interface
     
     private func check() {
-        if rowDescriptor.value != nil {
-            rowDescriptor.value = !(rowDescriptor.value as! Bool)
+        var newValue: Bool
+        if let value = rowDescriptor?.value as? Bool {
+            newValue = !value
         }
         else {
-            rowDescriptor.value = true
+            newValue = true
         }
-        accessoryType = (rowDescriptor.value as! Bool) ? .Checkmark : .None
+        rowDescriptor?.value = newValue
+        accessoryType = (newValue) ? .Checkmark : .None
     }
 }

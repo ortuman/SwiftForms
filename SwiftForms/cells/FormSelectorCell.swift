@@ -3,7 +3,7 @@
 //  SwiftForms
 //
 //  Created by Miguel Ángel Ortuño Ortuño on 23/08/14.
-//  Copyright (c) 2014 Miguel Angel Ortuño. All rights reserved.
+//  Copyright (c) 2016 Miguel Angel Ortuño. All rights reserved.
 //
 
 import UIKit
@@ -15,66 +15,49 @@ public class FormSelectorCell: FormValueCell {
     public override func update() {
         super.update()
         
-        titleLabel.text = rowDescriptor.title
-
-        var title: String!
+        titleLabel.text = rowDescriptor?.title
         
-        if let selectedValues = rowDescriptor.value as? NSArray { // multiple values
-            
-            let indexedSelectedValues = NSSet(array: selectedValues as [AnyObject])
-            
-            if let options = rowDescriptor.configuration[FormRowDescriptor.Configuration.Options] as? NSArray {
-                for optionValue in options {
-                    if indexedSelectedValues.containsObject(optionValue) {
-                        let optionTitle = rowDescriptor.titleForOptionValue(optionValue as! NSObject)
-                        if title != nil {
-                            title = title + ", \(optionTitle)"
-                        }
-                        else {
-                            title = optionTitle
-                        }
-                    }
+        var title: String?
+        if let multipleValues = rowDescriptor?.value as? [AnyObject] {
+            var multipleValuesTitle = ""
+            for (index, selectedValue) in multipleValues.enumerate() {
+                guard let selectedValueTitle = rowDescriptor?.configuration.selection.optionTitleClosure?(selectedValue) else { continue }
+                if index != 0 {
+                    multipleValuesTitle += ", "
                 }
+                multipleValuesTitle += selectedValueTitle
             }
-        }
-        else if let selectedValue = rowDescriptor.value { // single value
-            title = rowDescriptor.titleForOptionValue(selectedValue)
+            title = multipleValuesTitle
+        } else if let singleValue = rowDescriptor?.value {
+            title = rowDescriptor?.configuration.selection.optionTitleClosure?(singleValue)
         }
         
-        if title != nil && title.characters.count > 0 {
+        if let title = title where title.characters.count > 0 {
             valueLabel.text = title
             valueLabel.textColor = UIColor.blackColor()
-        }
-        else {
-            valueLabel.text = rowDescriptor.configuration[FormRowDescriptor.Configuration.Placeholder] as? String
+        } else {
+            valueLabel.text = rowDescriptor?.configuration.cell.placeholder
             valueLabel.textColor = UIColor.lightGrayColor()
         }
     }
     
     public override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
-        if let row = selectedRow as? FormSelectorCell {
+        guard let row = selectedRow as? FormSelectorCell else { return }
+        
+        formViewController.view.endEditing(true)
             
-            formViewController.view.endEditing(true)
+        var selectorControllerClass: UIViewController.Type
             
-            var selectorClass: UIViewController.Type!
-            
-            if let selectorControllerClass: AnyClass = row.rowDescriptor.configuration[FormRowDescriptor.Configuration.SelectorControllerClass] as? AnyClass {
-                selectorClass = selectorControllerClass as? UIViewController.Type
-            }
-            else { // fallback to default cell class
-                selectorClass = FormOptionsSelectorController.self
-            }
-            
-            if selectorClass != nil {
-                let selectorController = selectorClass.init()
-                if let formRowDescriptorViewController = selectorController as? FormSelector {
-                    formRowDescriptorViewController.formCell = row
-                    formViewController.navigationController?.pushViewController(selectorController, animated: true)
-                }
-                else {
-                    fatalError("FormRowDescriptor.Configuration.SelectorControllerClass must conform to FormSelector protocol.")
-                }
-            }
+        if let controllerClass = row.rowDescriptor?.configuration.selection.controllerClass as? UIViewController.Type {
+            selectorControllerClass = controllerClass
+        } else { // fallback to default cell class
+            selectorControllerClass = FormOptionsSelectorController.self
         }
+        
+        let selectorController = selectorControllerClass.init()
+        guard let formRowDescriptorViewController = selectorController as? FormSelector else { return }
+        
+        formRowDescriptorViewController.formCell = row
+        formViewController.navigationController?.pushViewController(selectorController, animated: true)
     }
 }

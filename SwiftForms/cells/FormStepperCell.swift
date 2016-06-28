@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Miguel Angel Ortuno Ortuno. All rights reserved.
 //
 
-public class FormStepperCell: FormTitleCell {
+import UIKit
 
+public class FormStepperCell: FormTitleCell {
+    
     // MARK: Cell views
     
     public let stepperView = UIStepper()
@@ -41,29 +43,20 @@ public class FormStepperCell: FormTitleCell {
     public override func update() {
         super.update()
         
-        if let maximumValue = rowDescriptor.configuration[FormRowDescriptor.Configuration.MaximumValue] as? Double {
-            stepperView.maximumValue = maximumValue
-        }
+        if let maximumValue = rowDescriptor?.configuration.stepper.maximumValue { stepperView.maximumValue = maximumValue }
+        if let minimumValue = rowDescriptor?.configuration.stepper.minimumValue { stepperView.minimumValue = minimumValue }
+        if let steps = rowDescriptor?.configuration.stepper.steps               { stepperView.stepValue = steps }
         
-        if let minimumValue = rowDescriptor.configuration[FormRowDescriptor.Configuration.MinimumValue] as? Double {
-            stepperView.minimumValue = minimumValue
-        }
+        titleLabel.text = rowDescriptor?.title
         
-        if let steps = rowDescriptor.configuration[FormRowDescriptor.Configuration.Steps] as? Double {
-            stepperView.stepValue = steps
-        }
-        
-        titleLabel.text = rowDescriptor.title
-        
-        if rowDescriptor.value != nil {
-            stepperView.value = rowDescriptor.value as! Double
-        }
-        else {
+        if let value = rowDescriptor?.value as? Double {
+            stepperView.value = value
+            countLabel.text = String(value)
+        } else {
             stepperView.value = stepperView.minimumValue
-            rowDescriptor.value = stepperView.minimumValue
+            rowDescriptor?.value = stepperView.minimumValue
+            countLabel.text = String(stepperView.minimumValue)
         }
-        
-        countLabel.text = rowDescriptor.value?.description
     }
     
     public override func constraintsViews() -> [String : UIView] {
@@ -83,7 +76,7 @@ public class FormStepperCell: FormTitleCell {
     // MARK: Actions
     
     internal func valueChanged(_: UISwitch) {
-        rowDescriptor.value = stepperView.value
-        countLabel.text = rowDescriptor.value?.description
+        rowDescriptor?.value = stepperView.value
+        countLabel.text = String(stepperView.value)
     }
 }
