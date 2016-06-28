@@ -30,7 +30,7 @@ form.title = "Example form"
 // Define first section
 var section1 = FormSectionDescriptor()
 
-var row: FormRowDescriptor! = FormRowDescriptor(tag: "name", rowType: .Email, title: "Email")
+var row = FormRowDescriptor(tag: "name", rowType: .Email, title: "Email")
 section1.rows.append(row)
 
 row = FormRowDescriptor(tag: "pass", rowType: .Password, title: "Password")
