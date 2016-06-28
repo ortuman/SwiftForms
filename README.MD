@@ -51,7 +51,7 @@ To see a more complex form definition you can take a look to the example applica
 Cell appearance
 ----------------------
 
-Every row descriptor has a `configuration` dictionary that allows to customize cell's appearance and behavior. In order to change concrete visual aspects of a row simply set `FormRowDescriptor.Configuration.CellConfiguration` value to a dictionary containing custom key-value coding properties.
+Every row descriptor has a `configuration` dictionary that allows to customize cell's appearance and behavior. In order to change concrete visual aspects of a row simply set `row.configuration.cell.appearance` value to a dictionary containing custom key-value coding properties.
 
 Here's an example:
 
