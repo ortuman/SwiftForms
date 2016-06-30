@@ -141,7 +141,7 @@ public class FormViewController : UITableViewController {
         }
         
         if let didSelectClosure = rowDescriptor.configuration.button.didSelectClosure {
-            didSelectClosure()
+            didSelectClosure(rowDescriptor)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

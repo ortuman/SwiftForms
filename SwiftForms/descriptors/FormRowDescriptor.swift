@@ -78,7 +78,7 @@ public final class FormRowDescriptor {
     }
     
     public struct ButtonConfiguration {
-        public var didSelectClosure: ((Void) -> Void)?
+        public var didSelectClosure: ((FormRowDescriptor) -> Void)?
         
         public init() {
             didSelectClosure = nil

@@ -55,7 +55,6 @@ class ExampleFormViewController: FormViewController {
         alertController.addAction(cancel)
         
         self.presentViewController(alertController, animated: true, completion: nil)
-        
     }
     
     // MARK: Private interface
@@ -197,7 +196,7 @@ class ExampleFormViewController: FormViewController {
         let section8 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.button, type: .Button, title: "Dismiss")
-        row.configuration.button.didSelectClosure = {
+        row.configuration.button.didSelectClosure = { _ in
             self.view.endEditing(true)
         }
         section8.rows.append(row)
