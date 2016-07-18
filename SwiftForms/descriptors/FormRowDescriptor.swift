@@ -56,7 +56,7 @@ public final class FormRowDescriptor {
             appearance = [:]
             placeholder = nil
             showsInputToolbar = false
-            required = false
+            required = true
             willUpdateClosure = nil
             didUpdateClosure = nil
             visualConstraintsClosure = nil
