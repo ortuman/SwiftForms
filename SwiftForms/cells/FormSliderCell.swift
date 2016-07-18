@@ -70,5 +70,6 @@ public class FormSliderCell: FormTitleCell {
     
     internal func valueChanged(_: UISlider) {
         rowDescriptor?.value = sliderView.value
+        update()
     }
 }

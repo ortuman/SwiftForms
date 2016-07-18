@@ -50,6 +50,6 @@ public class FormCheckCell: FormTitleCell {
             newValue = true
         }
         rowDescriptor?.value = newValue
-        accessoryType = (newValue) ? .Checkmark : .None
+        update()
     }
 }

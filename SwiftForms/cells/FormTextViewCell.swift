@@ -91,5 +91,6 @@ public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     public func textViewDidChange(textView: UITextView) {
         guard let text = textView.text where text.characters.count > 0 else { rowDescriptor?.value = nil; return }
         rowDescriptor?.value = text
+        update()
     }
 }

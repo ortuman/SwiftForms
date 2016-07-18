@@ -77,6 +77,6 @@ public class FormStepperCell: FormTitleCell {
     
     internal func valueChanged(_: UISwitch) {
         rowDescriptor?.value = stepperView.value
-        countLabel.text = String(stepperView.value)
+        update()
     }
 }

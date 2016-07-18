@@ -42,5 +42,6 @@ public class FormSwitchCell: FormTitleCell {
     
     internal func valueChanged(_: UISwitch) {
         rowDescriptor?.value = switchView.on
+        update()
     }
 }
