@@ -6,6 +6,6 @@ Pod::Spec.new do |s|
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.authors = "Miguel Ángel Ortuño"
   s.ios.deployment_target = "8.0"
-  s.source = { :git => "https://github.com/ortuman/SwiftForms.git", :tag => '1.5.1' }
+  s.source = { :git => "https://github.com/ortuman/SwiftForms.git", :tag => '1.5.2' }
   s.source_files = 'SwiftForms/*.swift','SwiftForms/descriptors/*.swift', 'SwiftForms/cells/base/*.swift', 'SwiftForms/cells/*.swift', 'SwiftForms/controllers/*.swift'
 end
