@@ -95,12 +95,6 @@ Requirements
 
 * iOS 8.0 and above
 
-## Installation
-
-> **Embedded frameworks require a minimum deployment target of iOS 8.**
->
-> To use SwiftForms with a project targeting iOS 7, you must include all Swift files located inside the `SwiftForms` directory directly in your project.
-
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects.
