@@ -118,6 +118,30 @@ public class FormViewController : UITableViewController {
         return form.sections[section].footerTitle
     }
     
+    public override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let headerView = form.sections[section].headerView else { return nil }
+        return headerView
+    }
+    
+    public override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let footerView = form.sections[section].footerView else { return nil }
+        return footerView
+    }
+    
+    public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let headerView = form.sections[section].headerView where headerView.translatesAutoresizingMaskIntoConstraints else {
+            return form.sections[section].headerViewHeight
+        }
+        return headerView.frame.size.height
+    }
+    
+    public override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard let footerView = form.sections[section].footerView where footerView.translatesAutoresizingMaskIntoConstraints else {
+            return form.sections[section].footerViewHeight
+        }
+        return footerView.frame.size.height
+    }
+    
     // MARK: UITableViewDelegate
     
     public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
