@@ -130,6 +130,7 @@ class ExampleFormViewController: FormViewController {
         let section5 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.picker, type: .Picker, title: "Gender")
+        row.configuration.cell.showsInputToolbar = true
         row.configuration.selection.options = ["F", "M", "U"]
         row.configuration.selection.optionTitleClosure = { value in
             guard let option = value as? String else { return "" }

@@ -32,6 +32,10 @@ public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDa
         super.update()
         picker.reloadAllComponents()
         
+        if let showsInputToolbar = rowDescriptor?.configuration.cell.showsInputToolbar where showsInputToolbar && hiddenTextField.inputAccessoryView == nil {
+            hiddenTextField.inputAccessoryView = inputAccesoryView()
+        }
+        
         titleLabel.text = rowDescriptor?.title
         
         if let selectedValue = rowDescriptor?.value {
@@ -49,6 +53,10 @@ public class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewDa
                 }
             }
         }
+    }
+    
+    public override func firstResponderElement() -> UIResponder? {
+        return hiddenTextField
     }
     
     public override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
