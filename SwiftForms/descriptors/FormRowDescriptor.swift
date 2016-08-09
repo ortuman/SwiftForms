@@ -100,11 +100,7 @@ public final class FormRowDescriptor {
     }
     
     public struct DateConfiguration {
-        public var dateFormatter: NSDateFormatter
-        
-        public init() {
-            dateFormatter = NSDateFormatter()
-        }
+        public var dateFormatter: NSDateFormatter?
     }
     
     public struct RowConfiguration {

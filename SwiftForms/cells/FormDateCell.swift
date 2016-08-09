@@ -14,6 +14,7 @@ public class FormDateCell: FormValueCell {
     
     private let datePicker = UIDatePicker()
     private let hiddenTextField = UITextField(frame: CGRectZero)
+    
     private let defaultDateFormatter = NSDateFormatter()
     
     // MARK: FormBaseCell
