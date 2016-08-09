@@ -150,7 +150,9 @@ class ExampleFormViewController: FormViewController {
         section5.rows.append(row)
 
         row = FormRowDescriptor(tag: Static.birthday, type: .Date, title: "Birthday")
+        row.configuration.cell.showsInputToolbar = true
         section5.rows.append(row)
+        
         row = FormRowDescriptor(tag: Static.categories, type: .MultipleSelector, title: "Categories")
         row.configuration.selection.options = [0, 1, 2, 3, 4]
         row.configuration.selection.allowsMultipleSelection = true
