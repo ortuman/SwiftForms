@@ -144,6 +144,5 @@ public class FormTextFieldCell: FormBaseCell {
     internal func editingChanged(sender: UITextField) {
         guard let text = sender.text where text.characters.count > 0 else { rowDescriptor?.value = nil; update(); return }
         rowDescriptor?.value = text
-        update()
     }
 }
