@@ -13,32 +13,32 @@ public final class FormRowDescriptor {
     // MARK: Types
     
     public enum RowType {
-        case Unknown
-        case Label
-        case Text
-        case URL
-        case Number
-        case NumbersAndPunctuation
-        case Decimal
-        case Name
-        case Phone
-        case NamePhone
-        case Email
-        case Twitter
-        case ASCIICapable
-        case Password
-        case Button
-        case BooleanSwitch
-        case BooleanCheck
-        case SegmentedControl
-        case Picker
-        case Date
-        case Time
-        case DateAndTime
-        case Stepper
-        case Slider
-        case MultipleSelector
-        case MultilineText
+        case unknown
+        case label
+        case text
+        case url
+        case number
+        case numbersAndPunctuation
+        case decimal
+        case name
+        case phone
+        case namePhone
+        case email
+        case twitter
+        case asciiCapable
+        case password
+        case button
+        case booleanSwitch
+        case booleanCheck
+        case segmentedControl
+        case picker
+        case date
+        case time
+        case dateAndTime
+        case stepper
+        case slider
+        case multipleSelector
+        case multilineText
     }
     
     public struct CellConfiguration {
@@ -100,7 +100,7 @@ public final class FormRowDescriptor {
     }
     
     public struct DateConfiguration {
-        public var dateFormatter: NSDateFormatter?
+        public var dateFormatter: DateFormatter?
     }
     
     public struct RowConfiguration {

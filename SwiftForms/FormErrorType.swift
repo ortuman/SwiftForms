@@ -6,7 +6,7 @@
 //  Copyright © 2016 Miguel Angel Ortuno Ortuno. All rights reserved.
 //
 
-public enum FormErrorType: ErrorType {
-    case SectionOutOfIndex
-    case RowOutOfIndex
+public enum FormErrorType: Error {
+    case sectionOutOfIndex
+    case rowOutOfIndex
 }

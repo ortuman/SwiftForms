@@ -8,55 +8,55 @@
 
 import UIKit
 
-public class FormValueCell: FormBaseCell {
+open class FormValueCell: FormBaseCell {
     
     // MARK: Cell views
     
-    public let titleLabel = UILabel()
-    public let valueLabel = UILabel()
+    open let titleLabel = UILabel()
+    open let valueLabel = UILabel()
     
     // MARK: Properties
     
-    private var customConstraints: [AnyObject]!
+    fileprivate var customConstraints: [AnyObject]!
     
     // MARK: FormBaseCell
     
-    public override func configure() {
+    open override func configure() {
         super.configure()
         
-        accessoryType = .DisclosureIndicator
+        accessoryType = .disclosureIndicator
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        valueLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        valueLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         
-        valueLabel.textColor = UIColor.lightGrayColor()
-        valueLabel.textAlignment = .Right
+        valueLabel.textColor = UIColor.lightGray
+        valueLabel.textAlignment = .right
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(valueLabel)
         
-        titleLabel.setContentHuggingPriority(500, forAxis: .Horizontal)
-        titleLabel.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
+        titleLabel.setContentHuggingPriority(500, for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(1000, for: .horizontal)
         
         // apply constant constraints
-        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
-        contentView.addConstraint(NSLayoutConstraint(item: valueLabel, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
-        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
-        contentView.addConstraint(NSLayoutConstraint(item: valueLabel, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: valueLabel, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: valueLabel, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1.0, constant: 0.0))
     }
     
-    public override func constraintsViews() -> [String : UIView] {
+    open override func constraintsViews() -> [String : UIView] {
         return ["titleLabel" : titleLabel, "valueLabel" : valueLabel]
     }
     
-    public override func defaultVisualConstraints() -> [String] {
+    open override func defaultVisualConstraints() -> [String] {
         
         // apply default constraints
         var rightPadding = 0
-        if accessoryType == .None {
+        if accessoryType == .none {
             rightPadding = 16
         }
         

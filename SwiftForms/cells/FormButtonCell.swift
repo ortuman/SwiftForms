@@ -8,16 +8,16 @@
 
 import UIKit
 
-public class FormButtonCell: FormTitleCell {
+open class FormButtonCell: FormTitleCell {
     
     // MARK: FormBaseCell
     
-    public override func configure() {
+    open override func configure() {
         super.configure()
-        titleLabel.textAlignment = .Center
+        titleLabel.textAlignment = .center
     }
     
-    public override func update() {
+    open override func update() {
         super.update()
         titleLabel.text = rowDescriptor?.title
     }

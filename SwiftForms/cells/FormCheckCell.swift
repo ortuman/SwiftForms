@@ -8,17 +8,17 @@
 
 import UIKit
 
-public class FormCheckCell: FormTitleCell {
+open class FormCheckCell: FormTitleCell {
     
     // MARK: FormBaseCell
     
-    public override func configure() {
+    open override func configure() {
         super.configure()
-        selectionStyle = .Default
-        accessoryType = .None
+        selectionStyle = .default
+        accessoryType = .none
     }
     
-    public override func update() {
+    open override func update() {
         super.update()
         
         titleLabel.text = rowDescriptor?.title
@@ -28,20 +28,20 @@ public class FormCheckCell: FormTitleCell {
             rowValue = value
         } else {
             rowValue = false
-            rowDescriptor?.value = rowValue
+            rowDescriptor?.value = rowValue as AnyObject
         }
         
-        accessoryType = (rowValue) ? .Checkmark : .None
+        accessoryType = (rowValue) ? .checkmark : .none
     }
     
-    public override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
+    open override class func formViewController(_ formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
         guard let row = selectedRow as? FormCheckCell else { return }
         row.check()
     }
     
     // MARK: Private interface
     
-    private func check() {
+    fileprivate func check() {
         var newValue: Bool
         if let value = rowDescriptor?.value as? Bool {
             newValue = !value
@@ -49,7 +49,7 @@ public class FormCheckCell: FormTitleCell {
         else {
             newValue = true
         }
-        rowDescriptor?.value = newValue
+        rowDescriptor?.value = newValue as AnyObject
         update()
     }
 }
