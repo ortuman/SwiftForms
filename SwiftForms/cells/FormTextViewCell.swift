@@ -8,61 +8,61 @@
 
 import UIKit
 
-public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
+open class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     
     // MARK: Cell views
     
-    public let titleLabel = UILabel()
-    public let textField  = UITextView()
+    open let titleLabel = UILabel()
+    open let textField  = UITextView()
     
     // MARK: Properties
     
-    private var customConstraints: [AnyObject]!
+    fileprivate var customConstraints: [AnyObject]!
     
     // MARK: Class Funcs
     
-    public override class func formRowCellHeight() -> CGFloat {
+    open override class func formRowCellHeight() -> CGFloat {
         return 110.0
     }
     
     // MARK: FormBaseCell
     
-    public override func configure() {
+    open override func configure() {
         super.configure()
         
-        selectionStyle = .None
+        selectionStyle = .none
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         
-        titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        textField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        textField.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(textField)
         
-        titleLabel.setContentHuggingPriority(500, forAxis: .Horizontal)
+        titleLabel.setContentHuggingPriority(500, for: .horizontal)
         
-        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 1.0, constant: 0.0))
-        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
-        contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 0.0))
-        contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0.0))
         
         textField.delegate = self
     }
     
-    public override func update() {
+    open override func update() {
         
         titleLabel.text = rowDescriptor?.title
         textField.text = rowDescriptor?.value as? String
         
-        textField.secureTextEntry = false
-        textField.autocorrectionType = .Default
-        textField.autocapitalizationType = .Sentences
-        textField.keyboardType = .Default
+        textField.isSecureTextEntry = false
+        textField.autocorrectionType = .default
+        textField.autocapitalizationType = .sentences
+        textField.keyboardType = .default
     }
     
-    public override func constraintsViews() -> [String : UIView] {
+    open override func constraintsViews() -> [String : UIView] {
         var views = ["titleLabel" : titleLabel, "textField" : textField]
         if self.imageView!.image != nil {
             views["imageView"] = imageView
@@ -70,15 +70,15 @@ public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
         return views
     }
     
-    public override func defaultVisualConstraints() -> [String] {
+    open override func defaultVisualConstraints() -> [String] {
         if self.imageView!.image != nil {
-            if let text = titleLabel.text where text.characters.count > 0 {
+            if let text = titleLabel.text , text.characters.count > 0 {
                 return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
             } else {
                 return ["H:[imageView]-[textField]-16-|"]
             }
         } else {
-            if let text = titleLabel.text where text.characters.count > 0 {
+            if let text = titleLabel.text , text.characters.count > 0 {
                 return ["H:|-16-[titleLabel]-[textField]-16-|"]
             } else {
                 return ["H:|-16-[textField]-16-|"]
@@ -88,9 +88,9 @@ public class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     
     // MARK: UITextViewDelegate
     
-    public func textViewDidChange(textView: UITextView) {
-        guard let text = textView.text where text.characters.count > 0 else { rowDescriptor?.value = nil; update(); return }
-        rowDescriptor?.value = text
+    open func textViewDidChange(_ textView: UITextView) {
+        guard let text = textView.text , text.characters.count > 0 else { rowDescriptor?.value = nil; update(); return }
+        rowDescriptor?.value = text as AnyObject
         update()
     }
 }

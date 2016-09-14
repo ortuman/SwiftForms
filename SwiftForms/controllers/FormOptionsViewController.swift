@@ -8,72 +8,72 @@
 
 import UIKit
 
-public class FormOptionsSelectorController: UITableViewController, FormSelector {
+open class FormOptionsSelectorController: UITableViewController, FormSelector {
     
     // MARK: FormSelector
     
-    public var formCell: FormBaseCell?
+    open var formCell: FormBaseCell?
     
     // MARK: Init
     
     public init() {
-        super.init(style: .Grouped)
+        super.init(style: .grouped)
     }
     
     public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = formCell?.rowDescriptor?.title
     }
     
     // MARK: UITableViewDataSource
     
-    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let options = formCell?.rowDescriptor?.configuration.selection.options where !options.isEmpty else { return 0 }
+    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let options = formCell?.rowDescriptor?.configuration.selection.options , !options.isEmpty else { return 0 }
         return options.count
     }
     
-    public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.1
     }
     
-    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let reuseIdentifier = NSStringFromClass(self.dynamicType)
+        let reuseIdentifier = NSStringFromClass(type(of: self))
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: reuseIdentifier)
+            cell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
         
         let options = formCell!.rowDescriptor!.configuration.selection.options
-        let optionValue = options[indexPath.row]
+        let optionValue = options[(indexPath as NSIndexPath).row]
         
         cell?.textLabel?.text = formCell?.rowDescriptor?.configuration.selection.optionTitleClosure?(optionValue)
         
         if let selectedOptions = formCell?.rowDescriptor?.value as? [AnyObject] {
-            if let _ = selectedOptions.indexOf({ $0 === optionValue }) {
-                cell?.accessoryType = .Checkmark
+            if let _ = selectedOptions.index(where: { $0 === optionValue }) {
+                cell?.accessoryType = .checkmark
             } else {
-                cell?.accessoryType = .None
+                cell?.accessoryType = .none
             }
             
         } else if let selectedOption = formCell?.rowDescriptor?.value {
             if optionValue === selectedOption {
-                cell?.accessoryType = .Checkmark
+                cell?.accessoryType = .checkmark
             } else {
-                cell?.accessoryType = .None
+                cell?.accessoryType = .none
             }
         }
 
@@ -82,9 +82,9 @@ public class FormOptionsSelectorController: UITableViewController, FormSelector 
     
     // MARK: UITableViewDelegate
     
-    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRow(at: indexPath)
         
         var allowsMultipleSelection = false
         if let allowsMultipleSelectionValue = formCell?.rowDescriptor?.configuration.selection.allowsMultipleSelection {
@@ -92,22 +92,22 @@ public class FormOptionsSelectorController: UITableViewController, FormSelector 
         }
         
         let options = formCell!.rowDescriptor!.configuration.selection.options
-        let selectedOption = options[indexPath.row]
+        let selectedOption = options[(indexPath as NSIndexPath).row]
         
         if allowsMultipleSelection {
             if var selectedOptions = formCell?.rowDescriptor?.value as? [AnyObject] {
-                if let index = selectedOptions.indexOf({ $0 === selectedOption }) {
-                    selectedOptions.removeAtIndex(index)
-                    cell?.accessoryType = .None
+                if let index = selectedOptions.index(where: { $0 === selectedOption }) {
+                    selectedOptions.remove(at: index)
+                    cell?.accessoryType = .none
                 } else {
                     selectedOptions.append(selectedOption)
-                    cell?.accessoryType = .Checkmark
+                    cell?.accessoryType = .checkmark
                 }
-                formCell?.rowDescriptor?.value = selectedOptions
+                formCell?.rowDescriptor?.value = selectedOptions as AnyObject
                 
             } else {
-                formCell?.rowDescriptor?.value = [AnyObject](arrayLiteral: selectedOption)
-                cell?.accessoryType = .Checkmark
+                formCell?.rowDescriptor?.value = [AnyObject](arrayLiteral: selectedOption) as AnyObject
+                cell?.accessoryType = .checkmark
             }
 
         } else {
@@ -117,9 +117,9 @@ public class FormOptionsSelectorController: UITableViewController, FormSelector 
         formCell?.update()
         
         if allowsMultipleSelection {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         } else {
-            self.navigationController?.popViewControllerAnimated(true)
+            let _ = self.navigationController?.popViewController(animated: true)
         }
     }
 }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class FormSelectorCell: FormValueCell {
+open class FormSelectorCell: FormValueCell {
     
     // MARK: FormBaseCell
     
-    public override func update() {
+    open override func update() {
         super.update()
         
         titleLabel.text = rowDescriptor?.title
@@ -20,7 +20,7 @@ public class FormSelectorCell: FormValueCell {
         var title: String?
         if let multipleValues = rowDescriptor?.value as? [AnyObject] {
             var multipleValuesTitle = ""
-            for (index, selectedValue) in multipleValues.enumerate() {
+            for (index, selectedValue) in multipleValues.enumerated() {
                 guard let selectedValueTitle = rowDescriptor?.configuration.selection.optionTitleClosure?(selectedValue) else { continue }
                 if index != 0 {
                     multipleValuesTitle += ", "
@@ -32,16 +32,16 @@ public class FormSelectorCell: FormValueCell {
             title = rowDescriptor?.configuration.selection.optionTitleClosure?(singleValue)
         }
         
-        if let title = title where title.characters.count > 0 {
+        if let title = title , title.characters.count > 0 {
             valueLabel.text = title
-            valueLabel.textColor = UIColor.blackColor()
+            valueLabel.textColor = UIColor.black
         } else {
             valueLabel.text = rowDescriptor?.configuration.cell.placeholder
-            valueLabel.textColor = UIColor.lightGrayColor()
+            valueLabel.textColor = UIColor.lightGray
         }
     }
     
-    public override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
+    open override class func formViewController(_ formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
         guard let row = selectedRow as? FormSelectorCell else { return }
         
         formViewController.view.endEditing(true)

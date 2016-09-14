@@ -8,29 +8,29 @@
 
 import UIKit
 
-public class FormDateCell: FormValueCell {
+open class FormDateCell: FormValueCell {
     
     // MARK: Properties
     
-    private let datePicker = UIDatePicker()
-    private let hiddenTextField = UITextField(frame: CGRectZero)
+    fileprivate let datePicker = UIDatePicker()
+    fileprivate let hiddenTextField = UITextField(frame: CGRect.zero)
     
-    private let defaultDateFormatter = NSDateFormatter()
+    fileprivate let defaultDateFormatter = DateFormatter()
     
     // MARK: FormBaseCell
     
-    public override func configure() {
+    open override func configure() {
         super.configure()
         contentView.addSubview(hiddenTextField)
         hiddenTextField.inputView = datePicker
-        datePicker.datePickerMode = .Date
-        datePicker.addTarget(self, action: #selector(FormDateCell.valueChanged(_:)), forControlEvents: .ValueChanged)
+        datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(FormDateCell.valueChanged(_:)), for: .valueChanged)
     }
     
-    public override func update() {
+    open override func update() {
         super.update()
         
-        if let showsInputToolbar = rowDescriptor?.configuration.cell.showsInputToolbar where showsInputToolbar && hiddenTextField.inputAccessoryView == nil {
+        if let showsInputToolbar = rowDescriptor?.configuration.cell.showsInputToolbar , showsInputToolbar && hiddenTextField.inputAccessoryView == nil {
             hiddenTextField.inputAccessoryView = inputAccesoryView()
         }
         
@@ -38,59 +38,59 @@ public class FormDateCell: FormValueCell {
         
         if let rowType = rowDescriptor?.type {
             switch rowType {
-            case .Date:
-                datePicker.datePickerMode = .Date
-                defaultDateFormatter.dateStyle = .LongStyle
-                defaultDateFormatter.timeStyle = .NoStyle
-            case .Time:
-                datePicker.datePickerMode = .Time
-                defaultDateFormatter.dateStyle = .NoStyle
-                defaultDateFormatter.timeStyle = .ShortStyle
+            case .date:
+                datePicker.datePickerMode = .date
+                defaultDateFormatter.dateStyle = .long
+                defaultDateFormatter.timeStyle = .none
+            case .time:
+                datePicker.datePickerMode = .time
+                defaultDateFormatter.dateStyle = .none
+                defaultDateFormatter.timeStyle = .short
             default:
-                datePicker.datePickerMode = .DateAndTime
-                defaultDateFormatter.dateStyle = .LongStyle
-                defaultDateFormatter.timeStyle = .ShortStyle
+                datePicker.datePickerMode = .dateAndTime
+                defaultDateFormatter.dateStyle = .long
+                defaultDateFormatter.timeStyle = .short
             }
         }
         
-        if let date = rowDescriptor?.value as? NSDate {
+        if let date = rowDescriptor?.value as? Date {
             datePicker.date = date
-            valueLabel.text = getDateFormatter().stringFromDate(date)
+            valueLabel.text = getDateFormatter().string(from: date)
         }
     }
     
-    public override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
+    open override class func formViewController(_ formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
         guard let row = selectedRow as? FormDateCell else { return }
         
         if row.rowDescriptor?.value == nil {
-            let date = NSDate()
-            row.rowDescriptor?.value = date
-            row.valueLabel.text = row.getDateFormatter().stringFromDate(date)
+            let date = Date()
+            row.rowDescriptor?.value = date as AnyObject
+            row.valueLabel.text = row.getDateFormatter().string(from: date)
             row.update()
         }
         
         row.hiddenTextField.becomeFirstResponder()
     }
     
-    public override func firstResponderElement() -> UIResponder? {
+    open override func firstResponderElement() -> UIResponder? {
         return hiddenTextField
     }
     
-    public override class func formRowCanBecomeFirstResponder() -> Bool {
+    open override class func formRowCanBecomeFirstResponder() -> Bool {
         return true
     }
     
     // MARK: Actions
     
-    internal func valueChanged(sender: UIDatePicker) {
-        rowDescriptor?.value = sender.date
-        valueLabel.text = getDateFormatter().stringFromDate(sender.date)
+    internal func valueChanged(_ sender: UIDatePicker) {
+        rowDescriptor?.value = sender.date as AnyObject
+        valueLabel.text = getDateFormatter().string(from: sender.date)
         update()
     }
     
     // MARK: Private interface
     
-    private func getDateFormatter() -> NSDateFormatter {
+    fileprivate func getDateFormatter() -> DateFormatter {
         guard let dateFormatter = rowDescriptor?.configuration.date.dateFormatter else { return defaultDateFormatter }
         return dateFormatter
     }
