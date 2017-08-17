@@ -23,6 +23,7 @@ open class FormDateCell: FormValueCell {
         super.configure()
         contentView.addSubview(hiddenTextField)
         hiddenTextField.inputView = datePicker
+        hiddenTextField.isAccessibilityElement = false
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(FormDateCell.valueChanged(_:)), for: .valueChanged)
     }

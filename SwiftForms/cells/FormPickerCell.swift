@@ -24,6 +24,7 @@ open class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewData
         picker.delegate = self
         picker.dataSource = self
         hiddenTextField.inputView = picker
+        hiddenTextField.isAccessibilityElement = false
         
         contentView.addSubview(hiddenTextField)
     }
