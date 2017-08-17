@@ -64,8 +64,7 @@ open class FormBaseCell: UITableViewCell {
         actionBar.sizeToFit()
         actionBar.barStyle = .default
         
-        let doneButton = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .done, target: self, action: #selector(FormBaseCell.handleDoneAction(_:)))
-        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(FormBaseCell.handleDoneAction(_:)))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         actionBar.items = [flexible, doneButton]
         
