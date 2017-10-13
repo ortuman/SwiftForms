@@ -12,8 +12,8 @@ open class FormStepperCell: FormTitleCell {
     
     // MARK: Cell views
     
-    open let stepperView = UIStepper()
-    open let countLabel = UILabel()
+    public  let stepperView = UIStepper()
+    public  let countLabel = UILabel()
     
     // MARK: FormBaseCell
     
@@ -33,7 +33,7 @@ open class FormStepperCell: FormTitleCell {
         contentView.addSubview(countLabel)
         contentView.addSubview(stepperView)
         
-        titleLabel.setContentHuggingPriority(500, for: .horizontal)
+        titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
         
         contentView.addConstraint(NSLayoutConstraint(item: stepperView, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1.0, constant: 0.0))
         
@@ -75,7 +75,7 @@ open class FormStepperCell: FormTitleCell {
     
     // MARK: Actions
     
-    internal func valueChanged(_: UISwitch) {
+    @objc internal func valueChanged(_: UISwitch) {
         rowDescriptor?.value = stepperView.value as AnyObject
         update()
     }

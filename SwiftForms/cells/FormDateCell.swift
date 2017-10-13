@@ -12,10 +12,10 @@ open class FormDateCell: FormValueCell {
     
     // MARK: Properties
     
-    fileprivate let datePicker = UIDatePicker()
-    fileprivate let hiddenTextField = UITextField(frame: CGRect.zero)
+    private let datePicker = UIDatePicker()
+    private let hiddenTextField = UITextField(frame: CGRect.zero)
     
-    fileprivate let defaultDateFormatter = DateFormatter()
+    private let defaultDateFormatter = DateFormatter()
     
     // MARK: FormBaseCell
     
@@ -83,7 +83,7 @@ open class FormDateCell: FormValueCell {
     
     // MARK: Actions
     
-    internal func valueChanged(_ sender: UIDatePicker) {
+    @objc internal func valueChanged(_ sender: UIDatePicker) {
         rowDescriptor?.value = sender.date as AnyObject
         valueLabel.text = getDateFormatter().string(from: sender.date)
         update()

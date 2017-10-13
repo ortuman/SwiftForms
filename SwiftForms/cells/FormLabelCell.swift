@@ -8,11 +8,11 @@
 
 import UIKit
 
-class FormLabelCell: FormValueCell {
+open class FormLabelCell: FormValueCell {
     
     /// MARK: FormBaseCell
     
-    override func configure() {
+    override open func configure() {
         super.configure()
         
         accessoryType = .none
@@ -29,8 +29,8 @@ class FormLabelCell: FormValueCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(valueLabel)
         
-        titleLabel.setContentHuggingPriority(500, for: .horizontal)
-        titleLabel.setContentCompressionResistancePriority(1000, for: .horizontal)
+        titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
         
         // apply constant constraints
         contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1.0, constant: 0.0))
@@ -39,7 +39,7 @@ class FormLabelCell: FormValueCell {
         contentView.addConstraint(NSLayoutConstraint(item: valueLabel, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1.0, constant: 0.0))
     }
     
-    override func update() {
+    override open func update() {
         super.update()
         
         titleLabel.text = rowDescriptor?.title

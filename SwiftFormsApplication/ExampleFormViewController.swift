@@ -43,7 +43,7 @@ class ExampleFormViewController: FormViewController {
     
     // MARK: Actions
     
-    func submit(_: UIBarButtonItem!) {
+    @objc func submit(_: UIBarButtonItem!) {
         
         let message = self.form.formValues().description
         

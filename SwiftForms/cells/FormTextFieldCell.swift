@@ -12,8 +12,8 @@ open class FormTextFieldCell: FormBaseCell {
     
     // MARK: Cell views
     
-    open let titleLabel = UILabel()
-    open let textField  = UITextField()
+    public  let titleLabel = UILabel()
+    @objc public  let textField  = UITextField()
     
     // MARK: Properties
     
@@ -35,8 +35,8 @@ open class FormTextFieldCell: FormBaseCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(textField)
         
-        titleLabel.setContentHuggingPriority(500, for: .horizontal)
-        titleLabel.setContentCompressionResistancePriority(1000, for: .horizontal)
+        titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
         
         contentView.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1.0, constant: 0.0))
         contentView.addConstraint(NSLayoutConstraint(item: textField, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1.0, constant: 0.0))
@@ -141,7 +141,7 @@ open class FormTextFieldCell: FormBaseCell {
     
     // MARK: Actions
     
-    internal func editingChanged(_ sender: UITextField) {
+    @objc func editingChanged(_ sender: UITextField) {
         guard let text = sender.text, text.characters.count > 0 else { rowDescriptor?.value = nil; update(); return }
         rowDescriptor?.value = text as AnyObject
     }

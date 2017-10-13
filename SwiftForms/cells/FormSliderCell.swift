@@ -12,7 +12,7 @@ open class FormSliderCell: FormTitleCell {
     
     // MARK: Cell views
     
-    open let sliderView = UISlider()
+    public  let sliderView = UISlider()
     
     // MARK: FormBaseCell
     
@@ -29,7 +29,7 @@ open class FormSliderCell: FormTitleCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(sliderView)
         
-        titleLabel.setContentHuggingPriority(500, for: .horizontal)
+        titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
         
         contentView.addConstraint(NSLayoutConstraint(item: sliderView, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1.0, constant: 0.0))
         
@@ -68,7 +68,7 @@ open class FormSliderCell: FormTitleCell {
     
     // MARK: Actions
     
-    internal func valueChanged(_: UISlider) {
+    @objc internal func valueChanged(_: UISlider) {
         rowDescriptor?.value = sliderView.value as AnyObject
         update()
     }
