@@ -12,7 +12,7 @@ Purpose
 -------
 SwiftForms is a powerful and extremely flexible library written in Swift that allows to create forms by just defining them in a couple of lines. It also provides the ability to customize cells appearance, use custom cells and define your own selector controllers.
 
-#####Here is an screenshot from an example application using SwiftForms
+Here is an screenshot from an example application using SwiftForms
 
 ![Screenshot of Example application](SwiftFormsApplication/Example.gif)
 
