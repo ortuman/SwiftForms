@@ -192,6 +192,8 @@ class ExampleFormViewController: FormViewController {
         row.configuration.stepper.minimumValue = 20.0
         row.configuration.stepper.steps = 2.0
         row.value = 0.5 as AnyObject
+        row.configuration.cell.appearance = ["titleLabel.textColor": UIColor.black,
+                                             "sliderView.tintColor": UIColor.red]
         section6.rows.append(row)
         
         row = FormRowDescriptor(tag: Static.picker, type: .picker, title: "Favorite")
@@ -208,6 +210,8 @@ class ExampleFormViewController: FormViewController {
         
         let section7 = FormSectionDescriptor(headerTitle: "Multiline TextView", footerTitle: nil)
         row = FormRowDescriptor(tag: Static.textView, type: .multilineText, title: "Notes")
+        row.configuration.cell.appearance = ["textField.textColor": UIColor.blue,
+                                             "textField.text": "This is a non-text view" as AnyObject]
         section7.rows.append(row)
         
         let section8 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
