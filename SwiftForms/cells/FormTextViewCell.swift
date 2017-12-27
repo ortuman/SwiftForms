@@ -12,8 +12,8 @@ open class FormTextViewCell : FormBaseCell, UITextViewDelegate {
     
     // MARK: Cell views
     
-    public  let titleLabel = UILabel()
-    public  let textField  = UITextView()
+    @objc public let titleLabel = UILabel()
+    @objc public let textField  = UITextView()
     
     // MARK: Properties
     
