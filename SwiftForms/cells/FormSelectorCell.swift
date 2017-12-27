@@ -32,7 +32,7 @@ open class FormSelectorCell: FormValueCell {
             title = rowDescriptor?.configuration.selection.optionTitleClosure?(singleValue)
         }
         
-        if let title = title , title.characters.count > 0 {
+        if let title = title , title.count > 0 {
             valueLabel.text = title
             valueLabel.textColor = UIColor.black
         } else {

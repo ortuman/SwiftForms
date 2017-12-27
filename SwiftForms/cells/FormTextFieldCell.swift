@@ -117,13 +117,13 @@ open class FormTextFieldCell: FormBaseCell {
     
     open override func defaultVisualConstraints() -> [String] {
         if self.imageView!.image != nil {
-            if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
+            if titleLabel.text != nil && (titleLabel.text!).count > 0 {
                 return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
             } else {
                 return ["H:[imageView]-[textField]-16-|"]
             }
         } else {
-            if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
+            if titleLabel.text != nil && (titleLabel.text!).count > 0 {
                 return ["H:|-16-[titleLabel]-[textField]-16-|"]
             } else {
                 return ["H:|-16-[textField]-16-|"]
@@ -142,7 +142,7 @@ open class FormTextFieldCell: FormBaseCell {
     // MARK: Actions
     
     @objc func editingChanged(_ sender: UITextField) {
-        guard let text = sender.text, text.characters.count > 0 else { rowDescriptor?.value = nil; update(); return }
+        guard let text = sender.text, text.count > 0 else { rowDescriptor?.value = nil; update(); return }
         rowDescriptor?.value = text as AnyObject
     }
 }

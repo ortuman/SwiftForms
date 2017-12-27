@@ -12,8 +12,8 @@ open class FormValueCell: FormBaseCell {
     
     // MARK: Cell views
     
-    public  let titleLabel = UILabel()
-    public  let valueLabel = UILabel()
+    @objc public  let titleLabel = UILabel()
+    @objc public  let valueLabel = UILabel()
     
     // MARK: Properties
     
@@ -60,7 +60,7 @@ open class FormValueCell: FormBaseCell {
             rightPadding = 16
         }
         
-        if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
+        if titleLabel.text != nil && (titleLabel.text!).count > 0 {
             return ["H:|-16-[titleLabel]-[valueLabel]-\(rightPadding)-|"]
         }
         else {
