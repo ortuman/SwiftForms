@@ -77,8 +77,6 @@
 		0CCA342C1B04FBDF006D9666 /* SwiftForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCA342F1B04FBE0006D9666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CCA34301B04FBE0006D9666 /* SwiftForms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftForms.h; sourceTree = "<group>"; };
-		0CCA343E1B04FBE0006D9666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CCA343F1B04FBE0006D9666 /* SwiftFormsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFormsTests.swift; sourceTree = "<group>"; };
 		0CCA34601B0502B5006D9666 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		0CCA34641B050525006D9666 /* FormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBaseCell.swift; sourceTree = "<group>"; };
 		0CCA34651B050525006D9666 /* FormTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTitleCell.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 			children = (
 				0CCA33D91B04FA5A006D9666 /* SwiftFormsApplication */,
 				0CCA342D1B04FBE0006D9666 /* SwiftForms */,
-				0CCA343C1B04FBE0006D9666 /* SwiftFormsTests */,
 				0CCA33D81B04FA5A006D9666 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -179,23 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				0CCA342F1B04FBE0006D9666 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0CCA343C1B04FBE0006D9666 /* SwiftFormsTests */ = {
-			isa = PBXGroup;
-			children = (
-				0CCA343F1B04FBE0006D9666 /* SwiftFormsTests.swift */,
-				0CCA343D1B04FBE0006D9666 /* Supporting Files */,
-			);
-			path = SwiftFormsTests;
-			sourceTree = "<group>";
-		};
-		0CCA343D1B04FBE0006D9666 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0CCA343E1B04FBE0006D9666 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -535,7 +515,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ortulabs.SwiftFormsApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -549,7 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ortulabs.SwiftFormsApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -574,7 +554,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ortulabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -597,7 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ortulabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

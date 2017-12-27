@@ -11,6 +11,8 @@ import SwiftForms
 
 class ExampleFormViewController: FormViewController {
     
+    let pickerOptions = ["One", "Two", "Three"] as [AnyObject]
+    
     struct Static {
         static let nameTag = "name"
         static let passwordTag = "password"
@@ -190,6 +192,18 @@ class ExampleFormViewController: FormViewController {
         row.configuration.stepper.minimumValue = 20.0
         row.configuration.stepper.steps = 2.0
         row.value = 0.5 as AnyObject
+        section6.rows.append(row)
+        
+        row = FormRowDescriptor(tag: Static.picker, type: .picker, title: "Favorite")
+        row.configuration.cell.showsInputToolbar = true
+        row.configuration.selection.options = pickerOptions
+        row.configuration.selection.optionTitleClosure = { value in
+            guard let option = value as? String else { return "" }
+            return option
+        }
+        row.value = pickerOptions[0] as AnyObject
+        row.configuration.cell.appearance = [
+            "valueLabel.accessibilityIdentifier": "PickerTextFied" as AnyObject]
         section6.rows.append(row)
         
         let section7 = FormSectionDescriptor(headerTitle: "Multiline TextView", footerTitle: nil)
