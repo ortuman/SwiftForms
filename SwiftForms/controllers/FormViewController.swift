@@ -146,12 +146,12 @@ open class FormViewController : UITableViewController {
         return form.sections[section].footerTitle
     }
     
-    open override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    open override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = form.sections[section].headerView else { return nil }
         return headerView
     }
     
-    open override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let footerView = form.sections[section].footerView else { return nil }
         return footerView
     }
