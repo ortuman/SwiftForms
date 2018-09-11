@@ -38,6 +38,7 @@ open class FormPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerViewData
         }
         
         titleLabel.text = rowDescriptor?.title
+        valueLabel.text = ""
         
         if let selectedValue = rowDescriptor?.value {
             valueLabel.text = rowDescriptor?.configuration.selection.optionTitleClosure?(selectedValue)
