@@ -58,7 +58,7 @@ open class FormViewController : UITableViewController {
         self.form = form
     }
     
-    public override init(style: UITableViewStyle) {
+    public override init(style: UITableView.Style) {
         super.init(style: style)
     }
     

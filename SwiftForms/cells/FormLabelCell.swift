@@ -20,8 +20,8 @@ open class FormLabelCell: FormValueCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-        valueLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
+        valueLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         
         valueLabel.textColor = UIColor.lightGray
         valueLabel.textAlignment = .right

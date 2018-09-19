@@ -33,7 +33,7 @@ open class FormSegmentedControlCell: FormBaseCell {
         titleLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 500), for: .horizontal)
         segmentedControl.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 500), for: .horizontal)
         
-        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(segmentedControl)

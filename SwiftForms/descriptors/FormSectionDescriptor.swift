@@ -20,8 +20,8 @@ public final class FormSectionDescriptor {
     public var headerView: UIView?
     public var footerView: UIView?
     
-    public var headerViewHeight: CGFloat = UITableViewAutomaticDimension
-    public var footerViewHeight: CGFloat = UITableViewAutomaticDimension
+    public var headerViewHeight: CGFloat = UITableView.automaticDimension
+    public var footerViewHeight: CGFloat = UITableView.automaticDimension
     
     // MARK: Init
     
