@@ -68,7 +68,7 @@ class ExampleFormViewController: FormViewController {
         let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         var row = FormRowDescriptor(tag: Static.emailTag, type: .email, title: "Email")
-        row.configuration.cell.appearance = ["textField.placeholder" : "john@gmail.com" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
+        row.configuration.cell.appearance = ["textField.placeholder" : "john@gmail.com" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject ]
         section1.rows.append(row)
 
         row = FormRowDescriptor(tag: Static.passwordTag, type: .password, title: "Password")
