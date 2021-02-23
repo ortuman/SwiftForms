@@ -63,7 +63,7 @@ open class FormOptionsSelectorController: UITableViewController, FormSelector {
         cell?.textLabel?.text = formCell?.rowDescriptor?.configuration.selection.optionTitleClosure?(optionValue)
         
         if let selectedOptions = formCell?.rowDescriptor?.value as? [AnyObject] {
-            if let _ = selectedOptions.index(where: { $0 === optionValue }) {
+            if let _ = selectedOptions.firstIndex(where: { $0 === optionValue }) {
                 cell?.accessoryType = .checkmark
             } else {
                 cell?.accessoryType = .none
@@ -96,7 +96,7 @@ open class FormOptionsSelectorController: UITableViewController, FormSelector {
         
         if allowsMultipleSelection {
             if var selectedOptions = formCell?.rowDescriptor?.value as? [AnyObject] {
-                if let index = selectedOptions.index(where: { $0 === selectedOption }) {
+                if let index = selectedOptions.firstIndex(where: { $0 === selectedOption }) {
                     selectedOptions.remove(at: index)
                     cell?.accessoryType = .none
                 } else {

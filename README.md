@@ -1,5 +1,5 @@
 
-[![Version](https://img.shields.io/badge/pod-1.8.2-orange.svg)](http://cocoadocs.org/docsets/SwiftForms)
+[![Version](https://img.shields.io/badge/pod-1.8.4-orange.svg)](http://cocoadocs.org/docsets/SwiftForms)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 [![License](https://img.shields.io/badge/license-MIT-gray.svg)](http://cocoadocs.org/docsets/SwiftForms)
@@ -19,11 +19,11 @@ Here is an screenshot from an example application using SwiftForms
 How to create a form
 --------------------
 
-Creating a form using SwiftForms is pretty straightforward. All you need is to derive your controller from `FormViewController` and define a `FormDescriptor` instance along with its sections and rows. Here is an example of how to create a simple form to input an email and a user password. 
+Creating a form using SwiftForms is pretty straightforward. All you need is to derive your controller from `FormViewController` and define a `FormDescriptor` instance along with its sections and rows. Here is an example of how to create a simple form to input an email and a user password.
 
 ```swift
 
-// Create form instace 
+// Create form instace
 var form = FormDescriptor()
 form.title = "Example form"
 
@@ -69,15 +69,15 @@ Here are the methods that help you to define custom cell behavior.
 func configure() {
     /// override
 }
-    
+
 func update() {
     /// override
 }
-    
+
 class func formRowCellHeight() -> CGFloat {
     return 44.0
 }
-    
+
 class func formViewController(formViewController: FormViewController, didSelectRow: FormBaseCell) {
 }
 ```
@@ -86,7 +86,7 @@ Once you have defined your custom cell, and in order to use it for a concrete ro
 Custom selector controllers
 -------------------------------------
 
-In order to customize selector controller your class should conform to `FormSelector` protocol. That way you'll have access to the cell instance that pushed the controller, being able to alter its properties or setting it's row value accordingly to user interaction. 
+In order to customize selector controller your class should conform to `FormSelector` protocol. That way you'll have access to the cell instance that pushed the controller, being able to alter its properties or setting it's row value accordingly to user interaction.
 
 After defining your class, don't forget to set `row.configuration.selection.controllerClass` value in the configuration dictionary to use your custom selector controller.
 
@@ -152,4 +152,3 @@ If you are using SwiftForms in your project and have any suggestion or question:
 Miguel Angel Ortuño, <ortuman@gmail.com>
 
 [@ortuman](http://twitter.com/ortuman)
-
